@@ -1,0 +1,225 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/* bootstrap 3 helpers */
+@import url(http://fonts.googleapis.com/css?family=Allura&subset=latin,latin-ext);
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-form input, .form-inline input {
+	width:auto;
+}
+
+/* end */
+
+/* custom theme */
+
+header {
+	  height:160px;
+  	margin-bottom:5px;
+    background-image: image-url("1.jpg");
+    background-size: cover;
+  
+}
+
+
+ 
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+      position: static;
+    
+  }
+  
+  #sidebar.affix {
+      position: fixed;
+      top: 80px;
+      width: 150px;
+  }
+}
+
+.affix, .affix-top {
+   position:static;
+}
+
+
+
+/* theme */
+.cattitle {
+
+font-size: 130px;
+color: white;
+
+}
+body {
+  padding-top: 40px;
+  color: black;
+  background-color:#eee;
+}
+
+#headtext {
+text-align: center;
+
+
+}
+a,a:hover {
+/*	color:black;
+*/  text-decoration:none;
+background-color: transparent;
+
+}
+
+.highlight-bk {
+	background-color:#ff3333;
+    padding:1px;
+    width:100%;
+}
+
+.highlight {
+	color:black;
+}
+  
+h3.highlight  {
+	padding-top:13px;
+/*    padding-bottom:14px;
+*/ /* 	border-bottom:2px solid #c92c2c;*/
+}
+
+#logo > a {
+    font-size: 25px;
+    color: #c92c2c;
+
+  /*  font-family: 'Allura', cursive;
+*/
+}
+
+
+#logo > a:hover {
+    font-size: 25px;
+    color: #c92c2c;
+    background-color: #FFB600;
+}
+
+
+
+.dropdown-menu {
+   background-color: #ffb600;
+   border: none;
+
+}
+#menuicons > li > a {
+    color: #c92c2c;
+    padding-left:20px;
+    padding-right:20px;
+    
+}
+
+.navbar {
+    background-color:#ffb600;
+  	color:#ffffff;
+    border:0;
+  	border-radius:0;
+}
+.navbar-nav > li > a {
+  	color:#fff;
+  	padding-left:20px;
+  	padding-right:20px;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    color:#666666; 
+}
+.navbar-nav > li:last-child > a {
+}
+.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+	background-color:transparent;
+}
+.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+	color: #f0f0f0;
+	background-color:transparent;
+  	opacity:.9;
+    border-color:#ff3333;
+}
+
+.nav .open > a {
+    border-color:#777777;
+    border-width:0;
+}
+
+.accordion-group {
+	border-width:0;
+
+}
+
+.dropdown-menu {
+	width: 150px;
+}
+
+.accordion-heading .accordion-toggle, .accordion-inner, .nav-stacked li > a {
+	padding-left:1px;
+}
+
+.caret {
+	color:#fff;
+}
+
+.navbar-toggle {
+	color:#fff;
+    border-width:0;
+}
+  
+.navbar-toggle:hover {
+	background-color:#fff;
+}
+
+.panel {
+	padding-left:27px;
+    padding-right:27px;
+    margin-top: 30px;
+    min-height: 350px;
+}
+
+.footer {
+  background-color: white;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.footer > a{
+  color: black;
+}
+
+.box {
+	text-align: center;
+}
+
+#links > tbody > tr> td {
+  padding: 30px;
+}
+
+#links > a:hover {
+ color: none;
+}
+
+#add {
+  font-size: 22px;
+
+}
+/* end theme */
