@@ -3,6 +3,13 @@ class NewsController < ApplicationController
 
   # GET /news
   # GET /news.json
+  def search
+    @search = News.search do
+      keywords(params[:q])
+    end
+  end
+
+
   def index
     @news = News.all.order('created_at DESC')
 
@@ -72,6 +79,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:title, :body)
+      params.require(:news).permit(:title, :body, :file)
     end
 end

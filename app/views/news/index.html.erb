@@ -2,8 +2,13 @@
 <% content_for :cattitle do %> 
 
 
+HISZPAŃSKI ONLINE
 <% end %>
 
+<% content_for :catdes do %> 
+MATERIAŁY DO NAUKI JĘZYKA HISZPAŃSKIEGO
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -23,7 +28,7 @@
   <div class="news">
         <h2><%= link_to news.title, news %></h2>
         <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-        <%= news.body.truncate_words(60) %>
+        <%= news.body.truncate_words(60).html_safe %>
 
         <%= link_to "czytaj więcej", news %>
 

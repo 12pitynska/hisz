@@ -51,7 +51,7 @@ AKTUALNOŚCI
       <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
 <p>
   
-  <%= @news.body %>
+  <%= @news.body.html_safe %>
 </p>
 
 

@@ -1,5 +1,16 @@
 source 'https://rubygems.org'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem "paperclip"
+
+
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'sprockets', '~> 2.0'
+
 gem 'devise', '~> 3.4.1'
 
 gem 'bootstrap-sass', '~> 3.2.0'
