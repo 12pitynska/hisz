@@ -5,6 +5,12 @@ AKTUALNOŚCI
 <% end %>
 
 
+<% content_for :catdes do %> 
+  <%= @news.title %>, <%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+<% end %>
+
+
+
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">

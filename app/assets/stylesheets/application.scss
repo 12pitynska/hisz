@@ -62,10 +62,17 @@ header {
 /* theme */
 .cattitle {
 
-font-size: 130px;
+font-size: 80px;
 color: white;
 
 }
+
+
+.catdes {
+  font-size: 30px;
+  color: white;
+}
+
 body {
   padding-top: 40px;
   color: black;
@@ -102,7 +109,7 @@ h3.highlight  {
 
 #logo > a {
     font-size: 25px;
-    color: #c92c2c;
+    color: #FFB600;
 
   /*  font-family: 'Allura', cursive;
 */
@@ -112,25 +119,40 @@ h3.highlight  {
 #logo > a:hover {
     font-size: 25px;
     color: #c92c2c;
-    background-color: #FFB600;
+    background-color: #4D363E;
 }
 
 
 
 .dropdown-menu {
-   background-color: #ffb600;
+   background-color: #4D363E;
    border: none;
+   color: white;
 
 }
+
+.dropdown-menu > li > a {
+
+   color: white;
+
+}
+
 #menuicons > li > a {
-    color: #c92c2c;
+    color: #FFB600;
     padding-left:20px;
     padding-right:20px;
     
 }
 
+#menuicons > li > a:hover {
+    color: #c92c2c;
+    background-color: #4D363E;
+     
+    
+}
+
 .navbar {
-    background-color:#ffb600;
+    background-color:#4D363E;
   	color:#ffffff;
     border:0;
   	border-radius:0;
