@@ -1,0 +1,40 @@
+
+<% content_for :cattitle do %> 
+
+
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+<!-- <h1>Listing News</h1> -->
+
+
+<% content_for :rightmenu do %>
+
+  
+        <div class="welcome" > <h3 class="highlight"> HISZPAŃSKI ONLINE </h3> <p> to wciąż rosnąca baza materiałów do nauki języka hiszpańskiego, współtworzona przez użytkowników serwisu! </p> <p> Zarejestruj się lub zaloguj aby móc korzystać ze wszystkich opcji!</p></div></li>
+
+<% end %>
+  
+    <% @news.each do |news| %>
+  
+  <div class="news">
+        <h2><%= link_to news.title, news %></h2>
+        <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+        <%= news.body.truncate_words(60) %>
+
+        <%= link_to "czytaj więcej", news %>
+
+      </div>
+        <!-- <td><%= link_to 'Show', news %></td>
+        <td><%= link_to 'Edit', edit_news_path(news) %></td>
+        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+         <% end %>
+
+</table>
+
+<br>
+<!-- 
+<%= link_to 'New News', new_news_path %>
+ -->
