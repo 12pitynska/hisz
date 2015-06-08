@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem "paperclip"
-gem 'dragonfly', '~> 0.9.12'
+
 gem 'bootsy'
 
 gem 'tinymce-rails', '4.1.6'

@@ -77,9 +77,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    dragonfly (0.9.15)
-      multi_json (~> 1.0)
-      rack
     erubis (2.7.0)
     execjs (2.5.2)
     globalid (0.3.5)
@@ -210,7 +207,6 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
-  dragonfly (~> 0.9.12)
   jbuilder (~> 2.0)
   jquery-rails
   paperclip

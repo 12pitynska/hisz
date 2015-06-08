@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @theory.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @theory.body.html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_theory_path(@theory) %> |
+<%= link_to 'Back', theories_path %>

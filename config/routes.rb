@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :theories
+
+  resources :articles
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :news
 

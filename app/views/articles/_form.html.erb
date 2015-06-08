@@ -1,10 +1,10 @@
-<%= form_for @news,  html: { multipart: true } do |f| %>
-  <% if @news.errors.any? %>
+<%= form_for @article,  html: { multipart: true } do |f| %>
+  <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
-      <% @news.errors.full_messages.each do |message| %>
+      <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

@@ -1,0 +1,45 @@
+
+<% content_for :cattitle do %> 
+
+
+HISZPAŃSKI ONLINE
+<% end %>
+
+<% content_for :catdes do %> 
+MATERIAŁY DO NAUKI JĘZYKA HISZPAŃSKIEGO
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+<!-- <h1>Listing News</h1> -->
+
+
+<% content_for :rightmenu do %>
+
+  
+        <div class="welcome" > <h3 class="highlight"> HISZPAŃSKI ONLINE </h3> <p> to wciąż rosnąca baza materiałów do nauki języka hiszpańskiego, współtworzona przez użytkowników serwisu! </p> <p> 
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub <%= link_to "zaloguj", new_user_session_path %> aby móc korzystać ze wszystkich opcji serwisu!</p></div></li>
+
+<% end %>
+  
+    <% @articles.each do |article| %>
+  
+  <div class="article">
+        <h2><%= link_to article.title, article %></h2>
+        <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+        <%= article.body.truncate_words(60).html_safe %>
+
+        <%= link_to "czytaj więcej", article %>
+
+      </div>
+        <!-- <td><%= link_to 'Show', article %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+         <% end %>
+
+</table>
+
+<br>
+<!-- 
+<%= link_to 'New News', new_article_path %>
+ -->
