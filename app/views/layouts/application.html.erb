@@ -215,19 +215,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="/assets/application.js"></script>
 	
-<%= javascript_include_tag 'ckeditor/ckeditor.js' %>
-<script type="text/javascript">
-  $(document).ready(function() {
-      if ($('textarea.ckeditor').length > 0) {
-          var data = $('textarea.ckeditor');
-          $.each(data, function(i) {
-              CKEDITOR.replace(data[i].id);
-          });
-      }
-  });
-</script>
 
   </body>
 </html>
-
-<%= tinymce %>
+<%= tinymce :relative_urls => false %>

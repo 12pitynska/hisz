@@ -16,3 +16,8 @@ plugins:
   - link
   - emoticons
 language: 'pl'
+relative_urls: false
+
+
+remove_script_host: false
+

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :news
 
   devise_for :users
   resources :links
-
+    resources :images
+  post '/tinymce_assets' => 'tinymce_assets#create'
   root to: "news#index"
 
-  post '/tinymce_assets' => 'tinymce_assets#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

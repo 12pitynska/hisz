@@ -3,13 +3,14 @@ source 'https://rubygems.org'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem "paperclip"
+gem 'dragonfly', '~> 0.9.12'
+gem 'bootsy'
 
-
-gem 'tinymce-rails'
+gem 'tinymce-rails', '4.1.6'
 gem 'tinymce-rails-langs'
 
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
-gem 'sprockets', '~> 2.0'
+ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'sprockets', '~> 2.8'
 
 gem 'devise', '~> 3.4.1'
 
