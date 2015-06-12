@@ -34,16 +34,22 @@
 
 <% @news.each do |news| %>
   
- <div class="col-md-2">
-         <img src="http://placehold.it/140x140" class="img-rounded" style="width: 100px; height: 100px">
-  </div>
-       <div class="col-md-10">
+ <div class="row">
+      <% unless  news.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag news.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
 
-    <h2><%= link_to news.title, news %></h2>
-    <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-    <%= news.body.truncate_words(60).html_safe %>
-    <%= link_to "czytaj więcej", news %>
-  </div>
+      <% unless  news.image.blank? %>   <div class="col-md-10 shorttext">     <% end %>
+
+        <h2><%= link_to news.title, news %></h2>
+        <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+        <%= news.body.truncate_words(60).html_safe %>
+        <%= link_to "czytaj więcej", news %>
+        
+      <% unless  news.image.blank? %>  </div> <% end %>
+</div>
           <!-- <td><%= link_to 'Show', news %></td>
         <td><%= link_to 'Edit', edit_news_path(news) %></td>
         <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->

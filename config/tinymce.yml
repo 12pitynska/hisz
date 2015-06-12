@@ -20,4 +20,6 @@ relative_urls: false
 
 
 remove_script_host: false
+extended_valid_elements: "table[class=table table-bordered] "
+
 

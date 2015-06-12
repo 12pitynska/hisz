@@ -22,20 +22,29 @@ W JĘZYKU HISZPAŃSKIM
 </div>
 <% end %>
   
-    <% @articles.each do |article| %>
+   <% @articles.each do |article| %>
   
-  <div class="article">
+ <div class="row">
+      <% unless  article.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag article.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
+
+      <% unless  article.image.blank? %>   <div class="col-md-10 shorttext">     <% end %>
+
         <h2><%= link_to article.title, article %></h2>
         <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
         <%= article.body.truncate_words(60).html_safe %>
-
         <%= link_to "czytaj więcej", article %>
-
-      </div>
-        <!-- <td><%= link_to 'Show', article %></td>
+        
+      <% unless  article.image.blank? %>  </div> <% end %>
+</div>
+          <!-- <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-         <% end %>
+<% end %>
+
 
 </table>
 

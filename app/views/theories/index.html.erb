@@ -21,20 +21,29 @@ JĘZYKA HISZPAŃSKIEGO
 
 <% end %>
   
-    <% @theories.each do |article| %>
+   <% @theories.each do |theory| %>
   
-  <div class="article">
-        <h2><%= link_to article.title, article %></h2>
-        <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-        <%= article.body.truncate_words(60).html_safe %>
+ <div class="row">
+      <% unless  theory.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag theory.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
 
-        <%= link_to "czytaj więcej", article %>
+      <% unless  theory.image.blank? %>   <div class="col-md-10 shorttext">     <% end %>
 
-      </div>
-        <!-- <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-         <% end %>
+        <h2><%= link_to theory.title, theory %></h2>
+        <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+        <%= theory.body.truncate_words(60).html_safe %>
+        <%= link_to "czytaj więcej", theory %>
+        
+      <% unless  theory.image.blank? %>  </div> <% end %>
+</div>
+          <!-- <td><%= link_to 'Show', theory %></td>
+        <td><%= link_to 'Edit', edit_theory_path(theory) %></td>
+        <td><%= link_to 'Destroy', theory, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+<% end %>
+
 
 </table>
 

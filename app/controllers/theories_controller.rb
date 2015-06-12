@@ -70,6 +70,6 @@ class TheoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body)
+      params.require(:theory).permit(:title, :body, :image)
     end
 end
