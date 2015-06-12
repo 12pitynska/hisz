@@ -9,6 +9,8 @@ gem 'bootsy'
 gem 'tinymce-rails', '4.1.6'
 gem 'tinymce-rails-langs'
 
+gem "survey", "~> 0.1"
+
  gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'sprockets', '~> 2.8'
 

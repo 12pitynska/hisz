@@ -173,6 +173,9 @@ GEM
       rails (>= 3)
       sunspot (= 2.2.0)
     sunspot_solr (2.2.0)
+    survey (0.2)
+      rails (>= 3.2.6, < 5)
+      railties (>= 3.2.6, < 5)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -220,6 +223,7 @@ DEPENDENCIES
   sqlite3
   sunspot_rails
   sunspot_solr
+  survey (~> 0.1)
   tinymce-rails (= 4.1.6)
   tinymce-rails-imageupload (~> 4.0.0.beta)
   tinymce-rails-langs

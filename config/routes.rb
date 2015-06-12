@@ -7,6 +7,15 @@ Rails.application.routes.draw do
 
   resources :articles
 
+
+
+
+  scope module: 'contests' do
+   resources :surveys
+   resources :attempts
+  
+  end
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :news
 

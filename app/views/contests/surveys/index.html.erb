@@ -1,0 +1,27 @@
+<div class="questionnaires_<%= action_name %>">
+  <h1>
+      Surveys Index
+  </h1>
+  <hr>
+  <%= link_to "New Survey", new_survey_path %>
+<br><br>
+  <table class="table table-striped">
+    <tbody>
+      <th> Nazwa testu </th>
+      <th> Weź udział </th>
+      <th> Twój wynik <th>
+    <% @surveys.each do |survey| %>
+      <tr><td>
+        <%= link_to survey.name, edit_survey_path(survey) %>
+      </td>
+        <td>
+       <%= link_to 'test', new_attempt_path(survey_id: survey.id) %>
+      </td>
+        <td>
+       <%= link_to 'wynik', attempt_path(survey.id) %>
+      </td> </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+</div>
