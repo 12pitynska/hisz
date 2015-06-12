@@ -15,6 +15,8 @@ class TheoriesController < ApplicationController
   # GET /theories/1
   # GET /theories/1.json
   def show
+    @surveys = Survey::Survey.where(theory_id: @theory.id)
+  
   end
 
   # GET /theories/new
@@ -74,6 +76,6 @@ class TheoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body, :image, :level_id)
+      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id)
     end
 end

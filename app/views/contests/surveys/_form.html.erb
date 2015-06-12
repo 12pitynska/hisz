@@ -38,6 +38,14 @@
 
   <br/ >
 
+
+
+ <div class="field">
+    <%= f.label 'Gramatyka' %><br>
+    <%= collection_select(:survey_survey, :theory_id, Theory.all, :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+  
+
   <div class="field">
     <%= f.submit %>
   </div>

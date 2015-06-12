@@ -34,7 +34,8 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
     <tbody>
       <th> Nazwa testu </th>
       <th> Weź udział </th>
-      <th> Twój wynik <th>
+      <th> Twój wynik </th>
+             <th>gramatyka</th>
     <% @surveys.each do |survey| %>
       <tr><td>
         <%= link_to survey.name, edit_survey_path(survey) %>
@@ -44,7 +45,15 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       </td>
         <td>
        <%= link_to 'wynik', attempt_path(survey.id) %>
-      </td> </tr>
+      </td> 
+
+  <td>
+       <%= survey.theory_id %> <% if survey.theory_id == nil %> puste <% end %>
+
+<%= @par %> 
+
+      </td> 
+    </tr>
     <% end %>
   </tbody>
   </table>

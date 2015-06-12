@@ -31,6 +31,13 @@
   </div>
   
 
+ <div class="field">
+    <%= f.label 'Quiz' %><br>
+    <%= collection_select(:theory, :survey_id, Survey::Survey.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+  
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

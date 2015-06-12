@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612164752) do
+ActiveRecord::Schema.define(version: 20150612203417) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -140,7 +140,10 @@ ActiveRecord::Schema.define(version: 20150612164752) do
     t.boolean  "active",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "theory_id"
   end
+
+  add_index "survey_surveys", ["theory_id"], name: "index_survey_surveys_on_theory_id"
 
   create_table "theories", force: :cascade do |t|
     t.string   "title"
@@ -152,9 +155,11 @@ ActiveRecord::Schema.define(version: 20150612164752) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "level_id"
+    t.integer  "survey_id"
   end
 
   add_index "theories", ["level_id"], name: "index_theories_on_level_id"
+  add_index "theories", ["survey_id"], name: "index_theories_on_survey_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

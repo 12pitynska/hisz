@@ -27,5 +27,37 @@
   <%= @theory.body.html_safe %>
 </div>
 
+
+
+<% unless @surveys == nil %>
+
+
+  <table class="table table-striped">
+    <tbody>
+      <th> Nazwa testu </th>
+      <th> Weź udział </th>
+      <th> Twój wynik <th>
+      <% @surveys.each do |survey| %>
+      <tr><td>
+        <%= link_to survey.name, edit_survey_path(survey) %>
+      </td>
+        <td>
+       <%= link_to 'test', new_attempt_path(survey_id: survey.id) %>
+      </td>
+        <td>
+       <%= link_to 'wynik', attempt_path(survey.id) %>
+      </td> </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+    <% end %>
+
+
+
+
+<h1>zle</h1>
+
+
 <%= link_to 'Edit', edit_theory_path(@theory) %> |
 <%= link_to 'Back', theories_path %>

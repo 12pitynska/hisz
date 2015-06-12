@@ -4,6 +4,9 @@ class Contests::SurveysController < ApplicationController
 
   def index
     @surveys = Survey::Survey.all
+
+   @par = Survey::Survey::AccessibleAttributes
+
   end
 
   def new
@@ -44,7 +47,7 @@ class Contests::SurveysController < ApplicationController
   end
 
   def survey_params
-    rails4? ? params_whitelist : params[:survey_survey]
+         params.require(:survey_survey).permit([:name, :description, :finished, :active, :theory_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
   end
 
   def params_whitelist
