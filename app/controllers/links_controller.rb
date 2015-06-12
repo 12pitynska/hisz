@@ -7,6 +7,10 @@ class LinksController < ApplicationController
     @links = Link.all
   end
 
+  def list
+      @category = Category.find(params[:id]) 
+      @links = Link.where(id_category == @category.id)
+  end
   # GET /links/1
   # GET /links/1.json
   def show
@@ -69,6 +73,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :url, :description)
+      params.require(:link).permit(:title, :url, :description, :category_id)
     end
 end

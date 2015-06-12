@@ -1,0 +1,101 @@
+
+<% content_for :cattitle do %> 
+
+BAZA LINKÓW
+<% end %>
+
+<% content_for :catdes do %> 
+ <%= @category.name %>
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+
+                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
+                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
+                     <li><a href="/links"><i class="glyphicon glyphicon-eye-open"></i> Wszystkie</a></li>
+                    <li><a href="/categories/1"><i class="glyphicon glyphicon-headphones"></i>  Muzyka, nagrania </a></li>
+                    <li><a href="/categories/5"><i class="glyphicon glyphicon-facetime-video"></i> Filmy, wideo</a></li>
+                    <li><a href="/categories/3"><i class="glyphicon glyphicon-align-left"></i> Teksty, wiadomości</a></li>
+                    <li><a href="/categories/6"><i class="glyphicon glyphicon-pencil"></i> Serwisy edukacyjne</a></li>
+                    <li><a href="/categories/2"><i class="glyphicon glyphicon-book"></i> Słowniki</a></li>
+                    <li><a href="/categories/7"><i class="glyphicon glyphicon-play"></i> Gry</a></li>
+
+                    <li><a href="/categories/8"><i class="glyphicon glyphicon-asterisk"></i> Inne</a></li>
+                   
+        </ul>
+
+
+
+<% end %>
+
+
+
+
+
+<table class="table" id="links">
+ <!--  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead> -->
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+              <td> 
+
+      <% if link.category_id == 1 %>
+          <i class="glyphicon glyphicon-headphones"></i> 
+      <% end %>
+         
+       <% if link.category_id == 2 %>
+          <i class="glyphicon glyphicon-book"></i> 
+      <% end %>
+
+    <% if link.category_id == 3 %>
+          <i class="glyphicon glyphicon-align-left"></i> 
+      <% end %>
+
+    <% if link.category_id == 5 %>
+          <i class="glyphicon glyphicon-facetime-video"></i> 
+      <% end %>
+
+    <% if link.category_id == 6 %>
+          <i class="glyphicon glyphicon-pencil"></i> 
+      <% end %>
+
+    <% if link.category_id == 7 %>
+          <i class="glyphicon glyphicon-play"></i> 
+      <% end %>
+    <% if link.category_id == 9 %>
+          <i class="glyphicon glyphicon-asterisk"></i> 
+      <% end %>
+
+
+
+        </td>
+
+
+        <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
+        <td><%= link.url %></td>
+        <td><%= link.description %></td>
+    <!--     <td><%= link_to 'Show', link %></td>
+        <td><%= link_to 'Edit', edit_link_path(link) %></td>
+        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
