@@ -224,10 +224,11 @@ h3.highlight  {
 }
 
 .panel {
-	padding-left:27px;
-    padding-right:27px;
+	padding-left:60px;
+    padding-right:60px;
     margin-top: 30px;
     min-height: 350px;
+    padding-top: 20px;
 }
 
 .footer {
@@ -268,9 +269,10 @@ text-align: center;
 .thumbimage {
 padding-bottom: 15px;
 padding-top: 15px;
+padding-left: 0px;
 }
 .shorttext {
-padding-left: 40px;
+
 padding-top: 0px;
 }
 .tinyimage {
