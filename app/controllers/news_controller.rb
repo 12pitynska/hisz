@@ -13,7 +13,7 @@ class NewsController < ApplicationController
   def index
     @news = News.all.order('created_at DESC')
     @links = Link.all.count
-        @archnews = News.all.order('created_at ASC').last(5).reverse
+        @archnews = News.all.order('created_at ASC').last(4).reverse
 
   end
 
