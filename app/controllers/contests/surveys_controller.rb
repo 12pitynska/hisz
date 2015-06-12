@@ -3,13 +3,15 @@ class Contests::SurveysController < ApplicationController
   before_filter :load_survey, :only => [:show, :edit, :update]
 
   def index
-    @surveys = Survey::Survey.all
+   @surveys = Survey::Survey.all
 
    @par = Survey::Survey::AccessibleAttributes
 
   end
 
   def new
+
+
     @survey = Survey::Survey.new
   end
 

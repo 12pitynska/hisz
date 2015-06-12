@@ -1,16 +1,32 @@
+<% content_for :cattitle do %> 
+
+GRAMATYKA 
+<% end %>
+
+<% content_for :catdes do %> 
+  <%= @theory.title.upcase %>
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">
+<% unless @surveys == nil %>
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
-                    <li><h3 class="highlight">POZIOMY </i></h3></li>
-                     <li><a href="/theories">Wszystkie</a></li>
-                    <li><a href="/levels/1">  Początkujący</a></li>
-                    <li><a href="/levels/2"> Średniozaawansowany</a></li>
-                    <li><a href="/levels/3">Zaawansowany</a></li>
-              
-                   
+
+                    <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+      <% @surveys.each do |survey| %>
+    
+      <li>  <%= link_to "TEST", new_attempt_path(survey_id: survey.id) %> </li>
+   
+    <% end %>
+
+    <% end %>
+
         </ul>
+
 
 
 
@@ -29,34 +45,6 @@
 
 
 
-<% unless @surveys == nil %>
-
-
-  <table class="table table-striped">
-    <tbody>
-      <th> Nazwa testu </th>
-      <th> Weź udział </th>
-      <th> Twój wynik <th>
-      <% @surveys.each do |survey| %>
-      <tr><td>
-        <%= link_to survey.name, edit_survey_path(survey) %>
-      </td>
-        <td>
-       <%= link_to 'test', new_attempt_path(survey_id: survey.id) %>
-      </td>
-        <td>
-       <%= link_to 'wynik', attempt_path(survey.id) %>
-      </td> </tr>
-    <% end %>
-  </tbody>
-  </table>
-
-    <% end %>
-
-
-
-
-<h1>zle</h1>
 
 
 <%= link_to 'Edit', edit_theory_path(@theory) %> |

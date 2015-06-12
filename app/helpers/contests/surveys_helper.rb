@@ -4,6 +4,11 @@ module Contests::SurveysHelper
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
 
+def sur 
+   Survey::Survey.all
+end
+
+
   def new_survey
     new_survey_path
   end

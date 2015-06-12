@@ -1,6 +1,6 @@
 <h2 class="survey-title">
   <%= @survey.name %>
-  <p><small><%= @attempt.survey.description %></small></p>
+ <p><%= @attempt.survey.description %></p>
 </h2>
 <%= form_for(@attempt, url: attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>
@@ -19,5 +19,5 @@
       </li>
     <% end -%>
   </ol>
-  <%= f.submit "Submit", class: 'btn btn-default' %>
+  <%= f.submit "Wyślij", class: 'btn btn-default' %>
 <% end -%>

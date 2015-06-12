@@ -9,6 +9,8 @@ class Contests::AttemptsController < ApplicationController
 
   def new
     @participant = current_user # you have to decide what to do here
+    
+  @surveys = Survey::Survey.where(theory_id: @survey.theory_id)
 
     unless @survey.nil?
       @attempt = @survey.attempts.new
