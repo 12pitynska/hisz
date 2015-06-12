@@ -10,7 +10,7 @@ class Contests::SurveysController < ApplicationController
   end
 
   def new
-
+  
 
     @survey = Survey::Survey.new
   end

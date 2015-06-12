@@ -1,11 +1,11 @@
 <% content_for :cattitle do %> 
 
 
-QUIZ 
+  <%= @theory.title.upcase %>
 <% end %>
 
 <% content_for :catdes do %> 
-  <%= @survey.name %>
+  <%= @survey.name.upcase %>
 <!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
 
@@ -17,7 +17,7 @@ QUIZ
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > PODOBNE ĆWICZENIA </h3></li>
+                    <li>  <h3 class="highlight" > POWIĄZANE ĆWICZENIA </h3></li>
                       <% @surveys.each do |survey| %>
     
      					 <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>

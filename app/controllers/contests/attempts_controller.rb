@@ -9,8 +9,8 @@ class Contests::AttemptsController < ApplicationController
 
   def new
     @participant = current_user # you have to decide what to do here
-    
-  @surveys = Survey::Survey.where(theory_id: @survey.theory_id)
+   @theory = Theory.where(id: @survey.theory_id).first
+    @surveys = Survey::Survey.where(theory_id: @survey.theory_id)
 
     unless @survey.nil?
       @attempt = @survey.attempts.new
@@ -31,9 +31,9 @@ class Contests::AttemptsController < ApplicationController
     @attempt.participant = current_user
 
     if @attempt.valid? && @attempt.save
-      redirect_to view_context.new_attempt_path, alert: I18n.t("attempts_controller.#{action_name}")
+      redirect_to view_context.attempt_path(@attempt.id), alert: I18n.t("attempts_controller.#{action_name}")
     else
-      render :action => :new
+      render :action => :show
     end
   end
 
