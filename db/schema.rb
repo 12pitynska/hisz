@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612113543) do
+ActiveRecord::Schema.define(version: 20150612114646) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(version: 20150612113543) do
     t.datetime "updated_at"
   end
 
+  create_table "levels", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "links", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
@@ -102,7 +108,10 @@ ActiveRecord::Schema.define(version: 20150612113543) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "level_id"
   end
+
+  add_index "theories", ["level_id"], name: "index_theories_on_level_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

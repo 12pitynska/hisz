@@ -49,11 +49,10 @@ AKTUALNOŚCI
   <%= @news.title %>
 </h2>
       <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-<p>
-  
+<div style="float: left">
+  <%= image_tag @news.image(:medium), :class => "main-image" %>
   <%= @news.body.html_safe %>
-</p>
-
+</div>
 
 
 

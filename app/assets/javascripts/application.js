@@ -15,7 +15,7 @@
 //= require bootsy
 
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require tinymce-jquery
 
 //= require_tree .
@@ -29,3 +29,9 @@ $(document).ready(function(){$('#sidebar').affix({
       }
 });	
 })
+
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+        $(this).collapse('hide');
+    }
+});

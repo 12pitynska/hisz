@@ -5,7 +5,11 @@ class TheoriesController < ApplicationController
   # GET /theories.json
   def index
     @theories = Theory.all.order('created_at DESC')
+     
+  end
 
+  def indexlevel
+    @theories = Theory.where(level_id:  @level.id)
   end
 
   # GET /theories/1
@@ -70,6 +74,6 @@ class TheoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body, :image)
+      params.require(:theory).permit(:title, :body, :image, :level_id)
     end
 end

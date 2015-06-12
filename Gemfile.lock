@@ -108,6 +108,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    polskie_stringi (0.0.7)
     pr_geohash (1.0.0)
     rack (1.6.1)
     rack-test (0.6.3)
@@ -210,6 +211,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   paperclip
+  polskie_stringi (~> 0.0.4)
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

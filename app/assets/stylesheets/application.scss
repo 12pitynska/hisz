@@ -231,7 +231,7 @@ h3.highlight  {
 }
 
 .footer {
-  background-color: white;
+  background-color: #c92c2c;
   height: 40px;
   width: 100%;
   text-align: center;
@@ -274,5 +274,20 @@ padding-left: 40px;
 padding-top: 0px;
 }
 .tinyimage {
-  padding: 10px;
+  margin: 10px;
+}
+
+.main-image {
+  float: left;
+  margin: 10px;
+  margin-right: 20px;
+}
+
+ img {
+  margin: 10px;
+}
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+max-height: 550px;
+
 }

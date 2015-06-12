@@ -5,7 +5,7 @@ theme_advanced_buttons3_add:
   - tablecontrols
   - fullscreen
 toolbar:
-  - styleselect  undo redo | alignleft aligncenter alignright alignjustify | bold italic | bullist numlist outdent indent | forecolor backcolor | link | uploadimage | table
+  - styleselect | code |  undo redo | alignleft aligncenter alignright alignjustify | bold italic | bullist numlist outdent indent | forecolor backcolor | link | uploadimage | table | code
 
 
 plugins:
@@ -15,11 +15,11 @@ plugins:
   - textcolor
   - link
   - emoticons
+  - code
+
 language: 'pl'
 relative_urls: false
 
 
 remove_script_host: false
-extended_valid_elements: "table[class=table table-bordered] "
-
-
+extended_valid_elements: "table[class=table table-striped]"

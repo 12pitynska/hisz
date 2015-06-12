@@ -1,0 +1,59 @@
+
+<% content_for :cattitle do %> 
+
+GRAMATYKA
+<% end %>
+
+<% content_for :catdes do %> 
+ POZIOM <%= @level.name.upcase %>
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+
+                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
+                    <li><h3 class="highlight">POZIOMY </i></h3></li>
+                     <li><a href="/theories">Wszystkie</a></li>
+                    <li><a href="/levels/1">  Początkujący</a></li>
+                    <li><a href="/levels/2"> Średniozaawansowany</a></li>
+                    <li><a href="/levels/3">Zaawansowany</a></li>
+              
+                   
+        </ul>
+
+
+
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+ <% @theories.each do |theory| %>
+  
+ <div class="row">
+      <% unless  theory.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag theory.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
+
+      <% unless  theory.image.blank? %>   <div class="col-md-10 shorttext">     <% end %>
+
+        <h2><%= link_to theory.title, theory %></h2>
+        <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+        <%= theory.body.truncate_words(60).html_safe %>
+        <%= link_to "czytaj więcej", theory %>
+        
+      <% unless  theory.image.blank? %>  </div> <% end %>
+</div>
+          <!-- <td><%= link_to 'Show', theory %></td>
+        <td><%= link_to 'Edit', edit_theory_path(theory) %></td>
+        <td><%= link_to 'Destroy', theory, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+<% end %>
+
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>
