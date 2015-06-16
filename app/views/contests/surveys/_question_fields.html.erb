@@ -1,15 +1,13 @@
-<li>
-  <legend>Question</legend>
+
+  <legend>Nowe pytanie</legend>
   <div class="field">
-    <%= f.label :text %> <br />
-    <%= f.text_field :text %>
+    <%= f.label "Treść pytania" %> <br />
+    <%= f.text_field :text, class: "form-control " %> </div>   <div class="field">
     <ul class="options">
       <%= f.fields_for :options do |builder| %>
           <%= render "option_fields", :f => builder %>
       <% end -%>
     </ul>
-    <%= link_to_add_field "Add a new Option", f, :options %>
-    <br/ >
-    <%= link_to_remove_field "Remove Question", f %>
-  </div>
-</li>
+    <%= link_to_add_field "Dodaj nową odpowiedź", f, :options %> </div>  
+
+    <div class="field">  <%= link_to_remove_field "Usuń pytanie", f %> </div>  

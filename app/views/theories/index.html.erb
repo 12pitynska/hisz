@@ -41,7 +41,7 @@ JĘZYKA HISZPAŃSKIEGO
 
         <h2><%= link_to theory.title, theory %></h2>
         <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-        <%= theory.body.truncate_words(60).html_safe %>
+        <%= theory.body.truncate_words(50).html_safe %>
         <%= link_to "czytaj więcej", theory %>
         
        </div> 

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootsy
 
@@ -24,7 +25,7 @@
 
 $(document).ready(function(){$('#sidebar').affix({
       offset: {
-       top: 100
+       top: 125
       
       }
 });	

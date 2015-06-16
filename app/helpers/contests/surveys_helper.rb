@@ -114,6 +114,8 @@ end
     survey.attempts.count
   end
 
+  
+
   private
 
   def __link_to_function(name, on_click_event, opts={})

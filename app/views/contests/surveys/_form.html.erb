@@ -10,18 +10,18 @@
     </ul>
   <% end -%>
 
-  <div class="field">
-    <%= f.label :name %> <br />
-    <%= f.text_field :name %> <br />
-    <%= f.label :attempts_number %> <br />
-    <%= f.text_field :attempts_number %> <br />
-    <%= f.label :active %> <br />
-    <%= f.select :active, ["true", "false"] %>
+  <div class="form-group ">
+    <%= f.label "Nazwa" %> <br />
+    <%= f.text_field :name , class: "form-control "  %> <br />
+    <%= f.label "Ilość dopuszczalnych prób" %> <br />
+  <%= f.text_field :attempts_number , class: "form-control "  %> <br />
+    <%= f.label "Aktywny w serwisie" %> <br />
+    <%= f.select :active, ["true", "false"], {prompt: "Wybierz z listy"}, class: "form-control "  %>
   </div>
 
   <div class="field">
-    <%= f.label :description %> <br />
-    <%= f.text_area :description, :size => "100x5" %> <br />
+    <%= f.label "Opis" %> <br />
+    <%= f.text_area :description, :size => "100x5" , class: "form-control "  %> <br />
   </div>
 
   <br/ >
@@ -33,7 +33,7 @@
       <% end %>
     </ul>
     <br/ >
-    <%= link_to_add_field "Add a new Question", f, :questions %>
+    <%= link_to_add_field "Dodaj nowe pytanie", f, :questions %>
   </div>
 
   <br/ >
@@ -41,13 +41,13 @@
 
 
  <div class="field">
-    <%= f.label 'Gramatyka' %><br>
-    <%= collection_select(:survey_survey, :theory_id, Theory.all, :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+    <%= f.label 'Przyporządkuj do zagadnienia' %><br>
+    <%= collection_select(:survey_survey, :theory_id, Theory.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
   </div>
   
 
   <div class="field">
-    <%= f.submit %>
+    <%= f.submit "Zapisz",  class: "btn btn-default"  %>
   </div>
 <% end -%>
 

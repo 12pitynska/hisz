@@ -1,44 +1,22 @@
-
 <% content_for :cattitle do %> 
-
-AKTUALNOŚCI
+	AKTUALNOŚCI
 <% end %>
-
 
 <% content_for :catdes do %> 
   <%= @article.title %>, <%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
 <% end %>
 
-
-
 <% content_for :rightmenu do %>
- 
-   
-
-
-
-                  
-                  
-
-
+              
 <% end %>
-
-
-
-
-
 
 <p id="notice"><%= notice %></p>
 
-<h2>
+<h2> <%= @article.title %> </h2>
 
-  <%= @article.title %>
-</h2>
-      <p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-<p>
-  
-  <%= @article.body.html_safe %>
-</p>
+<p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+
+<p> <%= @article.body.html_safe %> </p>
 
 
 

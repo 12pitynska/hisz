@@ -1,9 +1,8 @@
-<li>
-  <div class="field">
-    <%= f.label :text %> <br/ >
-    <%= f.text_field :text %>
+
+  <div class="field ">
+    <%= f.label "Odpowiedź"  %> <br/ >
+   <div class="col-lg-9">  <%= f.text_field :text, class: "form-control " %>   </div>
     <%= f.check_box :correct %>
-    <%= f.label :correct %>
-    <%= link_to_remove_field "Remove", f %>
+    <%= f.label "Poprawna" %>
+    <%= link_to_remove_field "Usuń", f %>
   </div>
-</li>

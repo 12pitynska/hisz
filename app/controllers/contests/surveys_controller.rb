@@ -1,6 +1,6 @@
 class Contests::SurveysController < ApplicationController
 
-  before_filter :load_survey, :only => [:show, :edit, :update]
+  before_filter :load_survey, :only => [:show, :edit, :update, :destroy]
 
   def index
    @surveys = Survey::Survey.all
@@ -37,6 +37,12 @@ class Contests::SurveysController < ApplicationController
       render :action => :edit
     end
   end
+
+ def destroy
+    @survey.destroy
+    default_redirect
+end
+
 
   private
 

@@ -36,6 +36,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       <th> Weź udział </th>
       <th> Twój wynik </th>
              <th>gramatyka</th>
+                          <th>Usuń</th>
     <% @surveys.each do |survey| %>
       <tr><td>
         <%= link_to survey.name, edit_survey_path(survey) %>
@@ -47,11 +48,15 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
        <%= link_to 'wynik', attempt_path(survey.id) %>
       </td> 
 
+
+
   <td>
        <%= survey.theory_id %> <% if survey.theory_id == nil %> puste <% end %>
 
 
       </td> 
+       <td><%= link_to 'Destroy', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+
     </tr>
     <% end %>
   </tbody>

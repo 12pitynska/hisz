@@ -48,7 +48,7 @@
 
         <h2><%= link_to news.title, news %></h2>
         <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-        <%= news.body.truncate_words(60).html_safe %>
+        <%= news.body.truncate_words(50).html_safe %>
         <%= link_to "czytaj więcej", news %>
         
       </div>      <% unless  news.image.blank? %>

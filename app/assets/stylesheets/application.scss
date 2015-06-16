@@ -20,6 +20,8 @@
 @import "bootsy";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+  @import "font-awesome";
 
 .navbar-form input, .form-inline input {
 	width:auto;
@@ -28,6 +30,67 @@
 /* end */
 
 /* custom theme */
+
+
+
+.box {
+  text-align: center;
+}
+
+#links > tbody > tr> td {
+  padding: 30px;
+}
+
+#links > a:hover {
+ color: none;
+}
+
+#add {
+  font-size: 22px;
+
+}
+
+
+.welcome {
+text-align: center;
+}
+/* end theme */
+
+.thumbimage {
+padding-bottom: 15px;
+padding-top: 15px;
+padding-left: 0px;
+}
+.shorttext {
+
+padding-top: 0px;
+}
+.tinyimage {
+  margin: 10px;
+}
+
+.main-image {
+  float: left;
+  margin: 10px;
+  margin-right: 20px;
+}
+
+ img {
+  margin: 10px;
+}
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+max-height: 550px;
+
+}
+
+.bg-success {
+color: green;
+}
+
+.bg-danger {
+color: red;
+}
 
 header {
 	  height:160px;
@@ -44,7 +107,7 @@ header {
 @media (min-width: 979px) {
   #sidebar.affix-top {
       position: static;
-    
+    width: 175px;
   }
 
   a {
@@ -60,7 +123,7 @@ header {
   #sidebar.affix {
       position: fixed;
       top: 80px;
-      width: 150px;
+      width: 175px;
   }
 }
 
@@ -229,10 +292,11 @@ h3.highlight  {
     margin-top: 30px;
     min-height: 350px;
     padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 .footer {
-  background-color: #c92c2c;
+  background-color: white;
   height: 40px;
   width: 100%;
   text-align: center;
@@ -243,61 +307,3 @@ h3.highlight  {
   color: black;
 }
 
-.box {
-	text-align: center;
-}
-
-#links > tbody > tr> td {
-  padding: 30px;
-}
-
-#links > a:hover {
- color: none;
-}
-
-#add {
-  font-size: 22px;
-
-}
-
-
-.welcome {
-text-align: center;
-}
-/* end theme */
-
-.thumbimage {
-padding-bottom: 15px;
-padding-top: 15px;
-padding-left: 0px;
-}
-.shorttext {
-
-padding-top: 0px;
-}
-.tinyimage {
-  margin: 10px;
-}
-
-.main-image {
-  float: left;
-  margin: 10px;
-  margin-right: 20px;
-}
-
- img {
-  margin: 10px;
-}
-
-.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
-max-height: 550px;
-
-}
-
-.bg-success {
-color: green;
-}
-
-.bg-danger {
-color: red;
-}
