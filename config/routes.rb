@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :levels
 
   resources :categories
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :articles
 
+ resources :vocabularies do
+    resources :words
+  end
 
 
 

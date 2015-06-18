@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>polish:</strong>
+  <%= @vocabulary.polish %>
+</p>
+<p>
+  <strong>spanish:</strong>
+  <%= @vocabulary.spanish %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vocabulary.description %>
+</p>
+
+
+<%= render "words/form" %>
+
+		<%= render @vocabulary.words %>
+<%= link_to 'Edit', edit_vocabulary_path(@vocabulary) %> |
+<%= link_to 'Back', vocabularies_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Words</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Polish</th>
+      <th>Spanish</th>
+      <th>Description</th>
+       <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.polish %></td>
+        <td><%= word.spanish %></td>
+        <td><%= word.description %></td>
+          <td><%= word.vocabulary_id %></td>
+   
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

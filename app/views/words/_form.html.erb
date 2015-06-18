@@ -1,0 +1,27 @@
+
+<%= form_for([@vocabulary, @vocabulary.words.build]) do |f| %>
+
+<h1> Dodaj słówko </h1>
+  
+
+  <div class="field">
+    <%= f.label :polish %><br>
+    <%= f.text_field :polish %>
+  </div>
+  <div class="field">
+    <%= f.label :spanish %><br>
+    <%= f.text_field :spanish %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

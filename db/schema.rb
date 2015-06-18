@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618084944) do
+ActiveRecord::Schema.define(version: 20150618094849) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -181,5 +181,24 @@ ActiveRecord::Schema.define(version: 20150618084944) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vocabularies", force: :cascade do |t|
+    t.string   "polish"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "spanish"
+    t.text     "description"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string   "polish"
+    t.string   "spanish"
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "vocabulary_id"
+  end
+
+  add_index "words", ["vocabulary_id"], name: "index_words_on_vocabulary_id"
 
 end
