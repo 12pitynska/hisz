@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     resources :words
   end
 
-
-
   scope module: 'contests' do
    resources :surveys
    resources :attempts
@@ -23,17 +21,18 @@ Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :news
 
-
-   get 'theories/level/:id' => 'theories#fromlevel', as: 'theories_level'
-   get 'articles/level/:id' => 'articles#fromlevel', as: 'articles_level'
-   get 'links/category/:id' => 'links#fromcategory', as: 'links_category'
+  get 'theories/level/:id' => 'theories#fromlevel', as: 'theories_level'
+  get 'articles/level/:id' => 'articles#fromlevel', as: 'articles_level'
+  get 'links/category/:id' => 'links#fromcategory', as: 'links_category'
 
  #get 'showtheories/:id' => 'levels#show_theories'
 
   devise_for :users
   resources :links
-    resources :images
-  post '/tinymce_assets' => 'tinymce_assets#create'
+  resources :images
+
+  post 'tinymce_assets' => 'tinymce_assets#create'
+
   root to: "news#index"
 
 
