@@ -93,9 +93,9 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
         <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
 <!--         <td><%= link.url %></td> -->
       <!--  -->  <td><%= link.description %></td>
-      <!--   <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= link_to 'Pokaz', link %></td>
+        <td><%= link_to 'Edytuj', edit_link_path(link) %></td>
+        <td><%= link_to 'Usuń', link, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td>
       </tr>
     <% end %>
   </tbody>

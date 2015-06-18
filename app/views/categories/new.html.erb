@@ -1,5 +1,17 @@
-<h1>New Category</h1>
+
+<% content_for :cattitle do %> 
+
+
+ BAZA LINKÓW
+<% end %>
+
+<% content_for :catdes do %> 
+LISTA KATEGORII
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+<h1>Dodaj kategorię</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Powrót', categories_path %>

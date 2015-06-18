@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :roles
+
   resources :levels
 
   resources :categories
@@ -29,6 +31,8 @@ Rails.application.routes.draw do
  #get 'showtheories/:id' => 'levels#show_theories'
 
   devise_for :users
+resources :users 
+
   resources :links
   resources :images
 

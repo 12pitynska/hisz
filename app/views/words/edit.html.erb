@@ -1,6 +1,29 @@
-<h1>Editing Word</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @word %> |
-<%= link_to 'Back', words_path %>
+<%= form_for([@vocabulary, @word]) do |f| %>
+
+<br>
+<h3> Dodaj nowe słówko do kategorii</h3>
+    <div class="form-group ">
+
+  <div class="field">
+    <%= f.label 'Polski' %><br>
+    <%= f.text_field :polish, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label 'Hiszpański' %><br>
+    <%= f.text_field :spanish, class: "form-control " %>
+  </div>
+  <div class="field">
+    <%= f.label 'Opis' %><br>
+    <%= f.text_area :description, class: "form-control"  %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit  'Zapisz' %>
+  </div>
+
+</div>
+<% end %>

@@ -1,0 +1,39 @@
+<% content_for :cattitle do %> 
+
+
+UŻYTKOWNICY
+<% end %>
+
+<% content_for :catdes do %> 
+
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+<table class="table" id="links">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Rola</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+          <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role_id %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

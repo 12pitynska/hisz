@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :catdes do %> 
-  W JĘZYKU HISZPAŃSKIM
+      POZIOM <%= @level.name.upcase %>
 <% end %>
 
 <% content_for :rightmenu do %>
@@ -25,7 +25,14 @@
       <% unless  article.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
       <% if  article.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
         <h2><%= link_to article.title, article %></h2>
-        <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+
+        <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %>  
+
+          <%= link_to 'Edytuj', edit_article_path(article) %>
+       
+        <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      </p>
         <%= article.body.truncate_words(50).html_safe %>
         <%= link_to "czytaj więcej", article %>       
   </div> 
@@ -35,11 +42,6 @@
         </div>
       <% end %>
   </div>
-        <!-- <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+ 
+       
 <% end %>
-
-<!-- 
-<%= link_to 'New News', new_article_path %>
- -->

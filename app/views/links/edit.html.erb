@@ -1,6 +1,19 @@
-<h1>Editing Link</h1>
+
+<% content_for :cattitle do %> 
+
+
+ BAZA LINKÓW
+<% end %>
+
+<% content_for :catdes do %> 
+DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+<h1>Edytuj link</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @link %> |
-<%= link_to 'Back', links_path %>
+<%= link_to 'Wyświetl', @link %> |
+<%= link_to 'Powrót', links_path %>

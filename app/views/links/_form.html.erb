@@ -10,18 +10,19 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label "Nazwa" %><br>
+    <%= f.text_field :title, class: "form-control "  %> 
   </div>
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.label "Adres URL" %><br>
+    <%= f.text_field :url, class: "form-control "  %> 
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label "Krótki opis" %><br>
+    <%= f.text_area :description , class: "form-control "  %> 
   </div>
 
 
@@ -33,6 +34,7 @@
   
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Zapisz",  class: "btn btn-default"  %>
   </div>
+</div>
 <% end %>

@@ -1,3 +1,15 @@
+<% content_for :cattitle do %> 
+
+
+ĆWICZENIA
+<% end %>
+
+<% content_for :catdes do %> 
+  <%= @attempt.survey.name.upcase %>
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
 <div class="container">
   <h2 class="survey-title">
     <%= @attempt.survey.name %>

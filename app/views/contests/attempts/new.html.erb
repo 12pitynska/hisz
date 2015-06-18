@@ -1,7 +1,7 @@
 <% content_for :cattitle do %> 
 
 
-  <%= @theory.title.upcase %>
+ĆWICZENIA
 <% end %>
 
 <% content_for :catdes do %> 
@@ -20,7 +20,7 @@
                     <li>  <h3 class="highlight" > POWIĄZANE ĆWICZENIA </h3></li>
                       <% @surveys.each do |survey| %>
     
-     					 <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
+     					 <li>  <% unless survey.id == @survey.id %> <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> <% end %> </li>
    
 					<% end %>
 

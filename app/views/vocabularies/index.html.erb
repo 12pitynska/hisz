@@ -39,11 +39,12 @@ BAZA HISZPAŃSKICH SŁÓWEK
     <% @vocabularies.each do |vocabulary| %>
       <tr>
         <td><%= link_to vocabulary.polish, vocabulary %></td>
-          <td><%= vocabulary.spanish %></td>
+               <td><%= link_to vocabulary.spanish, vocabulary %></td>
+
             <td><%= vocabulary.description %></td>
-        <td><%= link_to 'Show', vocabulary %></td>
-        <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
-        <td><%= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', vocabulary %></td>
+        <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
+        <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>
       </tr>
     <% end %>
   </tbody>

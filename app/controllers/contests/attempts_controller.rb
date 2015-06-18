@@ -9,8 +9,11 @@ class Contests::AttemptsController < ApplicationController
 
   def new
     @participant = current_user # you have to decide what to do here
-   @theory = Theory.where(id: @survey.theory_id).first
-    @surveys = Survey::Survey.where(theory_id: @survey.theory_id)
+    @theory = Theory.where(id: @survey.theory_id).first
+    @article = Article.where(id: @survey.article_id).first
+    @vocabulary = Vocabulary.where(id: @survey.vocabulary_id).first
+
+    @surveys = Survey::Survey.where("theory_id = ? OR article_id = ? OR vocabulary_id = ?", @survey.theory_id, @survey.article_id, @survey.vocabulary_id)
 
     unless @survey.nil?
       @attempt = @survey.attempts.new

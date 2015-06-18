@@ -21,6 +21,10 @@
         <td><%= word.description %></td>
           <td><%= word.vocabulary_id %></td>
    
+    <td><%= link_to 'Pokaz', word %></td>
+        <td><%= link_to 'Edytuj', edit_word_path(word) %></td>
+      
+   <td><%= link_to 'Usuń', @word, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td>
       </tr>
     <% end %>
   </tbody>

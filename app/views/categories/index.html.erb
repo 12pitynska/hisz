@@ -1,14 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Categories</h1>
+<% content_for :cattitle do %> 
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+
+ BAZA LINKÓW
+<% end %>
+
+<% content_for :catdes do %> 
+LISTA KATEGORII
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
+
+
+
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+
+                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ KATEGORIĘ', new_category_path %> </h3> </li>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+<h1>Kategorie linków</h1>
+
+<table class="table" id="links">
+
 
   <tbody>
     <% @categories.each do |category| %>
@@ -16,9 +39,9 @@
            <td><%= category.id %></td>
         <td><%= category.name %></td>
 
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Wyświetl', category %></td>
+        <td><%= link_to 'Edytuj', edit_category_path(category) %></td>
+        <td><%= link_to 'Usuń', category, method: :delete, data: { confirm: 'Na pewno chcesz usunąć kategorię?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +49,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+

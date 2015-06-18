@@ -10,14 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="form-group ">
   <div class="field">
     <%= f.label :Tytuł %><br>
-    <%= f.text_field :title %>
-  </div>
+    <%= f.text_field :title , class: "form-control "  %> 
 
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label 'Obrazek' %><br>
     <%= f.file_field :image %>
   </div>
 
@@ -27,8 +26,9 @@
 
   </div>
   <div class="actions">
-    <%= f.submit %>
+ <%= f.submit "Zapisz",  class: "btn btn-default"  %>
   </div>
+</div>
 <% end %>
 
 

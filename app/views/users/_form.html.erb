@@ -1,0 +1,31 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>Użytkownik nie został zapisany. <br> Błędy: <%= @user.errors.count %> </h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+ <div class: "form-group">
+    <%= f.label 'Rola' %><br>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div><br>
+
+
+<div class: "form-group">
+  <%= f.label 'E-mail' %><br>
+  <%= f.text_field :email ,  class: "form-control" %><br>
+<div class: "form-group">
+  <%= f.label 'Hasło' %><br>
+  <%= f.password_field :password, placeholder: "Pozostaw puste jeśli niezmienione" ,  class: "form-control" %>
+</div><br>
+  <div class="actions">
+    <%= f.submit 'Zapisz' %>
+  </div>
+<% end %>

@@ -1,6 +1,15 @@
+<% content_for :cattitle do %> 
+	EDYTUJ ARTYKUŁ
+<% end %>
+
+<% content_for :catdes do %> 
+  <%= @article.title %>, <%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+<% end %>
+
+
 <h1>Edytuj artykuł</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Wyświetl artykuł', @article %> |
+<%= link_to 'Powrót', articles_path %>

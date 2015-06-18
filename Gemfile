@@ -16,6 +16,8 @@ gem "survey", "~> 0.1"
 gem 'sprockets', '~> 2.8'
 
 gem 'devise', '~> 3.4.1'
+gem 'cancancan', '~> 1.10'
+
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

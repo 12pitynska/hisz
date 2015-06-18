@@ -31,35 +31,39 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
 
     <% @surveys.each do |survey| %>
  <tr>
+       
         <td>
-        <%= link_to survey.name, edit_survey_path(survey) %>
+       <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %>
       </td>
-        <td>
-       <%= link_to 'Rozwiąż', new_attempt_path(survey_id: survey.id) %>
+
+
+       <td>
+       <%= survey.description %>
       </td>
-        <td>
+      <!--   <td>
        <%= link_to 'Twój wynik', attempt_path(survey.id) %>
-      </td> 
-
+      </td>  -->
 
 
   <td>
-       <%= survey.theory_id %> <% if survey.theory_id == nil %> puste <% end %>
+       <%= survey.theory_id %> <% if survey.theory_id == nil %> - <% end %>
 
   </td> 
 
 
   <td>
-       <%= survey.article_id %> <% if survey.article_id == nil %> puste <% end %>
+       <%= survey.article_id %> <% if survey.article_id == nil %> - <% end %>
 
   </td> 
 
   <td>
-       <%= survey.vocabulary_id %> <% if survey.vocabulary_id == nil %> puste <% end %>
+       <%= survey.vocabulary_id %> <% if survey.vocabulary_id == nil %> - <% end %>
 
   </td> 
 
-       <td><%= link_to 'Destroy', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
+      </td>
+       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
 
     </tr>
     <% end %>
