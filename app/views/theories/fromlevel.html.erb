@@ -1,20 +1,17 @@
+
 <% content_for :cattitle do %> 
 
-
-GRAMATYKA 
+GRAMATYKA
 <% end %>
 
 <% content_for :catdes do %> 
-JĘZYKA HISZPAŃSKIEGO
+ POZIOM <%= @level.name.upcase %>
 <!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
 
 
-<!-- <h1>Listing News</h1> -->
-
 
 <% content_for :rightmenu do %>
- 
    <ul class="nav nav-stacked">
 
          
@@ -29,9 +26,13 @@ JĘZYKA HISZPAŃSKIEGO
 
 
 
+
 <% end %>
 
-   <% @theories.each do |theory| %>
+
+<p id="notice"><%= notice %></p>
+
+    <% @theories.each do |theory| %>
   
  <div class="row">
 
@@ -41,7 +42,7 @@ JĘZYKA HISZPAŃSKIEGO
 
         <h2><%= link_to theory.title, theory %></h2>
         <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-        <%= theory.body.truncate_words(50).html_safe %>
+        <%= theory.body.truncate_words(60).html_safe %>
         <%= link_to "czytaj więcej", theory %>
         
        </div> 
@@ -50,16 +51,11 @@ JĘZYKA HISZPAŃSKIEGO
                   <div class="thumbimage"> <%= image_tag theory.image.url(:thumb) %> </div>
          </div>
       <% end %>
-
 </div>
           <!-- <td><%= link_to 'Show', theory %></td>
         <td><%= link_to 'Edit', edit_theory_path(theory) %></td>
         <td><%= link_to 'Destroy', theory, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 <% end %>
 
-
-
-<br>
-<!-- 
-<%= link_to 'New News', new_article_path %>
- -->
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>

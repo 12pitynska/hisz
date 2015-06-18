@@ -8,7 +8,8 @@ class TheoriesController < ApplicationController
      
   end
 
-  def indexlevel
+  def fromlevel
+    @level = Level.find(params[:id])
     @theories = Theory.where(level_id:  @level.id)
   end
 

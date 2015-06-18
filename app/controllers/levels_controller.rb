@@ -13,6 +13,10 @@ class LevelsController < ApplicationController
      @theories = Theory.where(level_id:  @level.id)
   end
 
+ # def show_theories
+   #   @theories = Theory.where(level_id:  @level.id)
+  #end
+
   # GET /levels/new
   def new
     @level = Level.new

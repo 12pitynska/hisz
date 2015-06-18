@@ -13,6 +13,12 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def fromlevel
+    @level = Level.find(params[:id])
+    @articles = Article.where(level_id:  @level.id)
+  end
+
+
   # GET /articles/new
   def new
     @article = Article.new
@@ -70,6 +76,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :image)
+      params.require(:article).permit(:title, :body, :image, :level_id)
     end
 end

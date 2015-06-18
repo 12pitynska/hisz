@@ -11,6 +11,13 @@ class LinksController < ApplicationController
       @category = Category.find(params[:id]) 
       @links = Link.where(id_category == @category.id)
   end
+
+
+  def fromcategory
+    @category = Category.find(params[:id])
+    @links = Link.where(category_id:  @category.id)
+  end
+
   # GET /links/1
   # GET /links/1.json
   def show
