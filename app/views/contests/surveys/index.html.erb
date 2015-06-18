@@ -46,8 +46,15 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
   <td>
        <%= survey.theory_id %> <% if survey.theory_id == nil %> puste <% end %>
 
+  </td> 
 
-      </td> 
+
+  <td>
+       <%= survey.article_id %> <% if survey.article_id == nil %> puste <% end %>
+
+  </td> 
+
+
        <td><%= link_to 'Destroy', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
 
     </tr>

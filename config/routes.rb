@@ -33,7 +33,8 @@ Rails.application.routes.draw do
 
   post 'tinymce_assets' => 'tinymce_assets#create'
   post 'news/new/tinymce_assets' => 'tinymce_assets#create'
-
+  post 'articles/new/tinymce_assets' => 'tinymce_assets#create'
+  post 'theories/new/tinymce_assets' => 'tinymce_assets#create'
   root to: "news#index"
 
 

@@ -41,9 +41,15 @@
 
 
  <div class="field">
-    <%= f.label 'Przyporządkuj do zagadnienia' %><br>
+    <%= f.label 'Przyporządkuj do zagadnienia gramatycznego' %><br>
     <%= collection_select(:survey_survey, :theory_id, Theory.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
   </div>
+
+   <div class="field">
+    <%= f.label 'Przyporządkuj do artykułu' %><br>
+    <%= collection_select(:survey_survey, :article_id, Article.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+  
   
 
   <div class="field">

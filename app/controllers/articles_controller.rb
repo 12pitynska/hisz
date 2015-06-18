@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @surveys = Survey::Survey.where(article_id: @article.id)
   end
 
   def fromlevel

@@ -7,8 +7,22 @@
 <% end %>
 
 <% content_for :rightmenu do %>
-              
-<% end %>
+ 
+   <ul class="nav nav-stacked">
+   <% unless @surveys == nil %>
+
+
+                    <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+      <% @surveys.each do |survey| %>
+    
+      <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
+   
+         <% end %>
+
+    <% end %>
+
+    <% end %>
+
 
 <p id="notice"><%= notice %></p>
 
