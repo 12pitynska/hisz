@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'theories/level/:id' => 'theories#fromlevel', as: 'theories_level'
   get 'articles/level/:id' => 'articles#fromlevel', as: 'articles_level'
+  get 'vocabularies/level/:id' => 'vocabularies#fromlevel', as: 'vocabularies_level'
   get 'links/category/:id' => 'links#fromcategory', as: 'links_category'
 
  #get 'showtheories/:id' => 'levels#show_theories'

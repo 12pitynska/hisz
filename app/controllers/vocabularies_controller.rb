@@ -14,6 +14,11 @@ class VocabulariesController < ApplicationController
 
   end
 
+  def fromlevel
+    @level = Level.find(params[:id])
+    @vocabularies = Vocabulary.where(level_id:  @level.id)
+  end
+
   # GET /vocabularies/new
   def new
     @vocabulary = Vocabulary.new
@@ -71,6 +76,6 @@ class VocabulariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vocabulary_params
-      params.require(:vocabulary).permit(:polish, :spanish, :description)
+      params.require(:vocabulary).permit(:polish, :spanish, :description, :level_id)
     end
 end

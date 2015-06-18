@@ -24,6 +24,16 @@
     <%= f.label 'Krótki opis' %><br>
     <%= f.text_area :description, class: "form-control " %>
   </div>
+
+ <div class="field">
+    <%= f.label 'Poziom' %><br>
+    <%= collection_select(:vocabulary, :level_id, Level.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+  
+
+  
+
+
   <div class="actions">
     <%= f.submit 'Zapisz' %>
   </div>
