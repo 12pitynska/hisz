@@ -55,7 +55,7 @@ end
   end
 
   def survey_params
-         params.require(:survey_survey).permit([:name, :description, :finished, :active, :theory_id, :article_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
+         params.require(:survey_survey).permit([:name, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
   end
 
   def params_whitelist

@@ -50,6 +50,10 @@
     <%= collection_select(:survey_survey, :article_id, Article.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
   </div>
   
+     <div class="field">
+    <%= f.label 'Przyporządkuj do zestawu słówek' %><br>
+    <%= collection_select(:survey_survey, :vocabulary_id, Vocabulary.all.order('polish ASC'), :id, :polish, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
   
 
   <div class="field">

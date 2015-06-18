@@ -10,6 +10,8 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies/1
   # GET /vocabularies/1.json
   def show
+        @surveys = Survey::Survey.where(vocabulary_id: @vocabulary.id)
+
   end
 
   # GET /vocabularies/new
