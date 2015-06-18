@@ -25,27 +25,20 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
 
 
 
-<div class="questionnaires_<%= action_name %>">
 
- 
-
-<br><br>
-  <table class="table table-striped">
+<table class="table" id="links">
     <tbody>
-      <th> Nazwa testu </th>
-      <th> Weź udział </th>
-      <th> Twój wynik </th>
-             <th>gramatyka</th>
-                          <th>Usuń</th>
+
     <% @surveys.each do |survey| %>
-      <tr><td>
+ <tr>
+        <td>
         <%= link_to survey.name, edit_survey_path(survey) %>
       </td>
         <td>
-       <%= link_to 'test', new_attempt_path(survey_id: survey.id) %>
+       <%= link_to 'Rozwiąż', new_attempt_path(survey_id: survey.id) %>
       </td>
         <td>
-       <%= link_to 'wynik', attempt_path(survey.id) %>
+       <%= link_to 'Twój wynik', attempt_path(survey.id) %>
       </td> 
 
 
@@ -62,4 +55,3 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
   </tbody>
   </table>
 
-</div>
