@@ -10,20 +10,22 @@
       </ul>
     </div>
   <% end %>
+    <div class="form-group ">
 
   <div class="field">
-    <%= f.label :polish %><br>
-    <%= f.text_field :polish %>
+    <%= f.label 'Polska nazwa' %><br>
+    <%= f.text_field :polish , class: "form-control " %>
   </div>
   <div class="field">
-    <%= f.label :spanish %><br>
-    <%= f.text_field :spanish %>
+    <%= f.label 'Hiszpańska nazwa' %><br>
+    <%= f.text_field :spanish , class: "form-control "%>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.label 'Krótki opis' %><br>
+    <%= f.text_area :description, class: "form-control " %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Zapisz' %>
   </div>
+</div>
 <% end %>

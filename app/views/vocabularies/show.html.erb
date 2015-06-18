@@ -1,22 +1,52 @@
-<p id="notice"><%= notice %></p>
+<% content_for :cattitle do %> 
+  <%= @vocabulary.polish.upcase %>
+<% end %>
 
-<p>
-  <strong>polish:</strong>
-  <%= @vocabulary.polish %>
-</p>
-<p>
-  <strong>spanish:</strong>
-  <%= @vocabulary.spanish %>
-</p>
+<% content_for :catdes do %> 
+  <%= @vocabulary.spanish.upcase %>
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @vocabulary.description %>
-</p>
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+
+                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li>
+                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
+                      
+   </ul>
+
+
+
+<% end %>
+
+
+
+<table class="table" id="links">
+  <tbody>
+   
+       
+ 
+      <tr>
+      
+         <td><h4>POLSKI</h4></td>
+         <td><h4>HISZPAŃSKI</h4></td>
+         <td><h4>KOMENTARZ</h4></td>   
+    <!--      <td><h4>ID</h4></td>
+        -->
+      </tr>
+
+
+<%= render @vocabulary.words %>
+
+
+   
+  </tbody>
+</table>
 
 
 <%= render "words/form" %>
 
-		<%= render @vocabulary.words %>
+	
 <%= link_to 'Edit', edit_vocabulary_path(@vocabulary) %> |
 <%= link_to 'Back', vocabularies_path %>

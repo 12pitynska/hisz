@@ -1,19 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% content_for :cattitle do %> 
+ SŁOWNICTWO
+<% end %>
 
-<h1>Listing Vocabularies</h1>
+<% content_for :catdes do %> 
+BAZA HISZPAŃSKICH SŁÓWEK
+<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+<% end %>
 
-<table>
-  <thead>
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+
+                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li>
+                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
+                      
+   </ul>
+
+
+
+<% end %>
+<table class="table" id="links">
+
+ 
+<!--   <thead>
     <tr>
       <th>Polish</th>   <th>Spansih</th>   <th>Description</th>
-      <th colspan="3"></th>
+  
     </tr>
-  </thead>
+  </thead> -->
 
   <tbody>
     <% @vocabularies.each do |vocabulary| %>
       <tr>
-        <td><%= vocabulary.polish %></td>
+        <td><%= link_to vocabulary.polish, vocabulary %></td>
           <td><%= vocabulary.spanish %></td>
             <td><%= vocabulary.description %></td>
         <td><%= link_to 'Show', vocabulary %></td>
@@ -26,4 +45,3 @@
 
 <br>
 
-<%= link_to 'New Vocabulary', new_vocabulary_path %>

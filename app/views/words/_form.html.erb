@@ -1,27 +1,27 @@
 
 <%= form_for([@vocabulary, @vocabulary.words.build]) do |f| %>
-
-<h1> Dodaj słówko </h1>
-  
+<br>
+<h3> Dodaj nowe słówko do kategorii</h3>
+    <div class="form-group ">
 
   <div class="field">
-    <%= f.label :polish %><br>
-    <%= f.text_field :polish %>
+    <%= f.label 'Polski' %><br>
+    <%= f.text_field :polish, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :spanish %><br>
-    <%= f.text_field :spanish %>
+    <%= f.label 'Hiszpański' %><br>
+    <%= f.text_field :spanish, class: "form-control " %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label 'Opis' %><br>
+    <%= f.text_area :description, class: "form-control"  %>
   </div>
-
-
 
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  'Zapisz' %>
   </div>
+
+</div>
 <% end %>
