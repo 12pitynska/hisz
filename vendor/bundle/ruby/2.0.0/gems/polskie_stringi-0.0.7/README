@@ -1,0 +1,13 @@
+PolskieStringi
+==============
+
+Rozszerzenie klasy String, naprawiające metody upcase, downcase i capitalize aby działały dla polskich znaków. dodana też metoda no_pl zamieniająca polskie litery na ich odpowiedniki w kodach ASCII. Dla każdej z funkcji istnieją ich odpowiedniki z !, np upcase! no_pl! itp
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2011 v1x100r, released under the MIT license

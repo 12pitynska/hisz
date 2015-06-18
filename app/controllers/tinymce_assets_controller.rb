@@ -5,7 +5,7 @@ class TinymceAssetsController < ApplicationController
     image    = Image.create(file: params[:file])
     render json: {
       image: {
-        url:    image.file.url
+        url: root_url+image.file.url
       }
     }, layout: false, content_type: "text/html"
   end
