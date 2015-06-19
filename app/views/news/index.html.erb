@@ -6,7 +6,6 @@
   MATERIAŁY DO NAUKI JĘZYKA HISZPAŃSKIEGO
 <% end %>
 
-<p id="notice"><%= notice %></p>
 
 <% content_for :rightmenu do %>
   <% unless user_signed_in? %>
@@ -57,11 +56,11 @@
         <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
   <% if user_signed_in? %>
               <%= link_to 'Edytuj', edit_news_path(news) %>
-        <%= link_to 'Usuń', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+              <%= link_to 'Usuń', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<% end %>
+    <% end %>
 
-        <%= news.body.truncate_words(50).html_safe %>
+        <%= news.body.truncate_words(40).html_safe %>
         <%= link_to "czytaj więcej", news %>
         
       </div>      <% unless  news.image.blank? %>
