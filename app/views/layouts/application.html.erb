@@ -52,7 +52,7 @@
                 <ul class="dropdown-menu">                
 
             			<% if user_signed_in? %>
-                  <li>             <% unless current_user == nil %> <%= current_user.role.name %> <% end %></li>
+        
             			  <li><%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></li>
                     <li><%= link_to "Edytuj swój profil", edit_user_registration_path %></li>
                   <% else %>	
