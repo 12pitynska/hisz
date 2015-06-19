@@ -13,11 +13,21 @@
 
 <% content_for :rightmenu do %>
  
+
+<% unless user_signed_in? %>
+      <div class="welcome" > 
+        <h3 class="highlight">  </h3> 
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> rozwiązywać ćwiczenia i korzystać ze wszystkich opcji serwisu!
+    </p>
+  </div>
+<% end %>
+ 
    <ul class="nav nav-stacked">
 <% unless @surveys == nil %>
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li>
-
-                    <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+                
+   <% if user_signed_in? %>     <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> 
+    <% end %>
+                 <% if user_signed_in? %>        <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
       <% @surveys.each do |survey| %>
     
       <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
@@ -25,15 +35,13 @@
     <% end %>
 
     <% end %>
-
+ <% end %>
         </ul>
 
 
 
 
 <% end %>
-
-
 
 
 
@@ -63,10 +71,10 @@
    
   </tbody>
 </table>
-
+  <% if user_signed_in? %> 
 
 <%= render "words/form" %>
 
 	
-<%= link_to 'Edit', edit_vocabulary_path(@vocabulary) %> |
-<%= link_to 'Back', vocabularies_path %>
+  <%= link_to 'Edytuj', edit_vocabulary_path(@vocabulary) %> |     <% end %>
+<%= link_to 'Powrót', vocabularies_path %>

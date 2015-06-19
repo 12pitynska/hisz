@@ -9,12 +9,12 @@
          <td><%= word.description %></td>   
     <!--      <td><%= word.vocabulary_id %></td> -->
        
-   
+     <% if user_signed_in? %> 
         <td><%= link_to 'Edytuj', edit_vocabulary_word_path(id: word.id, vocabulary_id: @vocabulary.id) %></td>
 
- <td><%= link_to 'Usuń' ,[word.vocabulary, word], method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td>
+        <td><%= link_to 'Usuń' ,[word.vocabulary, word], method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td>
 
-
+<% end %>
 
       </tr>
 

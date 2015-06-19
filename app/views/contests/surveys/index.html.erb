@@ -13,10 +13,24 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ QUIZ', new_survey_path %> </h3></li>
+                <% if user_signed_in? %>        <li>  <h3 class="highlight" > <%= link_to 'DODAJ QUIZ', new_survey_path %> </h3></li>
                 
-              
+
+
+               <% end %>
                    
+
+<% unless user_signed_in? %>
+      <div class="welcome" > 
+   
+     <h3 class="highlight">  </h3> 
+     
+    <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> rozwiązywać ćwiczenia i korzystać ze wszystkich opcji serwisu!
+    
+  </p>
+  </div>
+<% end %>
+
         </ul>
 
 
@@ -43,7 +57,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       <!--   <td>
        <%= link_to 'Twój wynik', attempt_path(survey.id) %>
       </td>  -->
-
+   <% if user_signed_in? %> 
 
   <td>
        <%= survey.theory_id %> <% if survey.theory_id == nil %> - <% end %>
@@ -64,7 +78,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
       </td>
        <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-
+ <% end %>
     </tr>
     <% end %>
   </tbody>

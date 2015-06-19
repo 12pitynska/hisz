@@ -4,6 +4,11 @@ class Ability
   def initialize(user)
    # user ||= User.new # guest user
      can :read, [News, Article, Link, Vocabulary, Word, Survey, Theory]
+             can [:read, :fromcategory], Link
+        can [:read, :fromlevel], Theory
+        can [:read, :fromlevel], Article
+        can [:read, :fromlevel], Vocabulary
+
  
    if user != nil
 

@@ -11,7 +11,7 @@ BAZA HISZPAŃSKICH SŁÓWEK
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li>
+                <% if user_signed_in? %>         <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> <% end %>
                     <li><h3 class="highlight">POZIOM </i></h3></li>
                     <li><%= link_to "Wszystkie", vocabularies_path %></li>
                     <li><%= link_to "Początkujący", vocabularies_level_path(1) %></li>

@@ -15,7 +15,7 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
+            <% if user_signed_in? %>             <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li> <% end %>
                     <li><h3 class="highlight">KATEGORIE </i></h3></li>
                   <li> <%= link_to links_path do %><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li><% end %>
                   <li> <%= link_to links_category_path(1) do %><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li><% end %>
@@ -87,9 +87,9 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
         <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
 <!--         <td><%= link.url %></td> -->
       <!--  -->  <td><%= link.description %></td>
-        <td><%= link_to 'Pokaz', link %></td>
+       <% if user_signed_in? %>      <td><%= link_to 'Pokaż', link %></td>
         <td><%= link_to 'Edytuj', edit_link_path(link) %></td>
-        <td><%= link_to 'Usuń', link, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td>
+        <td><%= link_to 'Usuń', link, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td> <% end %>
       </tr>
     <% end %>
   </tbody>

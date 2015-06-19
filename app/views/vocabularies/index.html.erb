@@ -11,7 +11,8 @@ BAZA HISZPAŃSKICH SŁÓWEK
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li>
+           <% if user_signed_in? %>         <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> <% end %>
+
                     <li><h3 class="highlight">POZIOM </i></h3></li>
                     <li><%= link_to "Wszystkie", vocabularies_path %></li>
                     <li><%= link_to "Początkujący", vocabularies_level_path(1) %></li>
@@ -42,9 +43,13 @@ BAZA HISZPAŃSKICH SŁÓWEK
                <td><%= link_to vocabulary.spanish, vocabulary %></td>
 
             <td><%= vocabulary.description %></td>
+        
+  <% if user_signed_in? %>
         <td><%= link_to 'Pokaż', vocabulary %></td>
         <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
         <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>
+
+     <% end %>     
       </tr>
     <% end %>
   </tbody>
