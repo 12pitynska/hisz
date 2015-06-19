@@ -1,5 +1,4 @@
 class Contests::SurveysController < ApplicationController
-
   before_filter :load_survey, :only => [:show, :edit, :update, :destroy]
   authorize_resource
   def index

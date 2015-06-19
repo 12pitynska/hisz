@@ -50,7 +50,10 @@ AKTUALNOŚCI
 </h2>
       <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
 <div style="float: left">
+ 
+<% unless @news.image.blank? %>
   <%= image_tag @news.image(:medium), :class => "main-image" %>
+<% end %>
   <%= @news.body.html_safe %>
 </div>
 

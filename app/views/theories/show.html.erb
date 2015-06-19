@@ -39,7 +39,7 @@ GRAMATYKA
 </h2>
 
 <div style="float: left">
-  <%= image_tag @theory.image(:medium), :class => "main-image" %>
+<% unless @theory.image.blank? %><%= image_tag @theory.image(:medium), :class => "main-image" %> <% end %>
   <%= @theory.body.html_safe %>
 </div>
 
