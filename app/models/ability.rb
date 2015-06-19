@@ -11,7 +11,7 @@ class Ability
         can :manage, [News, Article, Vocabulary, Word, Link, Theory, Survey]
     end
     if user.role.name == "User"
-        can :manage, [News, Article, Vocabulary, Word, Link, Theory, Survey]
+        can :manage, [Article, Vocabulary, Word, Link, Theory, Survey]
     else
 
     can :read, [News, Article, Link, Vocabulary, Word, Survey, Theory]

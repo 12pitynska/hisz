@@ -17,15 +17,18 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
 
                     <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
                     <li><h3 class="highlight">KATEGORIE </i></h3></li>
-                    <li> <%= link_to links_path do %><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li><% end %>
-                    <li> <%= link_to links_category_path(1) do %><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li><% end %>
-                    <li> <%= link_to links_category_path(5) do %><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li><% end %>
-                    <li> <%= link_to links_category_path(3) do %><i class="fa fa-newspaper-o fa-lg"></i>&nbsp; Teksty, wiadomości</a></li><% end %>
-                    <li> <%= link_to links_category_path(6) do %><i class="fa fa-graduation-cap fa-lg"></i> Serwisy edukacyjne</a></li><% end %>
-                    <li> <%= link_to links_category_path(2) do %><i class="fa fa-book fa-lg"></i> Słowniki</a></li><% end %>
-                    <li> <%= link_to links_category_path(7) do %><i class="fa fa-gamepad fa-lg"></i> Gry</a></li><% end %>
-                    <li> <%= link_to links_category_path(8) do %><i class="fa fa-asterisk fa-lg"></i> Inne</a></li><% end %>    
-                                 
+                  <li> <%= link_to links_path do %><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li><% end %>
+                  <li> <%= link_to links_category_path(1) do %><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li><% end %>
+                  <li> <%= link_to links_category_path(2) do %><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li><% end %>
+                  <li> <%= link_to links_category_path(3) do %><i class="fa fa-newspaper-o fa-lg"></i>&nbsp; Teksty, wiadomości</a></li><% end %>
+               
+                  <li> <%= link_to links_category_path(5) do %><i class="fa fa-book fa-lg"></i> Słowniki</a></li><% end %>
+                     <li> <%= link_to links_category_path(4) do %><i class="fa fa-list-alt fa-lg"></i> Serwisy edukacyjne</a></li><% end %>
+                  <li> <%= link_to links_category_path(6) do %><i class="fa fa-gamepad fa-lg"></i> Gry</a></li><% end %>
+                  <li> <%= link_to links_category_path(7) do %><i class="fa fa-certificate  fa-lg"></i> Egzaminy i certyfikaty</a></li><% end %>
+                  <li> <%= link_to links_category_path(8) do %><i class="fa  fa-graduation-cap fa-lg"></i> Studia, szkoły</a></li><% end %>
+                  <li> <%= link_to links_category_path(9) do %><i class="fa fa-asterisk fa-lg"></i> Inne</a></li><% end %>
+                                  
    </ul>
 
 
@@ -53,34 +56,41 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
    
         <td> 
 
-      <% if link.category_id == 1 %>
+      <% if link.category_id == 1 %> <!-- muzyka nagrania --> 
           <i class="fa fa-headphones fa-lg"></i> 
       <% end %>
          
-       <% if link.category_id == 2 %>
-          <i class="fa fa-book fa-lg"></i> 
-      <% end %>
-
-    <% if link.category_id == 3 %>
-         <i class="fa fa-newspaper-o fa-lg"></i>
-      <% end %>
-
-    <% if link.category_id == 5 %>
+       <% if link.category_id == 2 %> <!-- filmy video --> 
          <i class="fa fa-video-camera fa-lg"></i>
       <% end %>
 
-    <% if link.category_id == 6 %>
+      <% if link.category_id == 3 %>  <!-- wiadomosci --> 
+         <i class="fa fa-newspaper-o fa-lg"></i>
+      <% end %>
+      
+      <% if link.category_id == 4 %>        <!-- serwisy edukacyjne --> 
+          <i class="fa fa-list-alt fa-lg"></i>
+      <% end %>
+
+      <% if link.category_id == 5 %>        <!-- słowniki --> 
+          <i class="fa fa-book fa-lg"></i> 
+      <% end %>
+      
+      <% if link.category_id == 6 %>  <!-- gry --> 
+         <i class="fa fa-gamepad fa-lg"></i>
+      <% end %>
+    
+      <% if link.category_id == 7 %>   <!-- egzaminy i certyfikaty --> 
+         <i class="fa fa-certificate fa-lg"></i>
+      <% end %>
+  
+      <% if link.category_id == 8 %>   <!--szkoly  --> 
           <i class="fa fa-graduation-cap fa-lg"></i>
       <% end %>
 
-    <% if link.category_id == 7 %>
-         <i class="fa fa-gamepad fa-lg"></i>
-      <% end %>
-    <% if link.category_id == 9 %>
+      <% if link.category_id == 9 %> <!-- inne --> 
         <i class="fa fa-asterisk fa-lg"></i> 
       <% end %>
-
-
 
         </td>
 
