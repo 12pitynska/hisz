@@ -24,12 +24,19 @@
 <% end %>
 
 <h1> O projekcie </h1>
-<p> Serwis został stworzony w ramach projektu licencjackiego </p>
+
 <p>
-Celem serwisu jest stworzenie plaformy do udostępniania darmowych materiałów do nauki
-języka hiszpańskiego. Użytkownik odwiedzający stronę otrzymuje dostęp do zasobów, a po
-rejestracji w serwisie sam może dzielić się materiałami do nauki z innymi użytkownikami,
-dzięki czemu baza materiałów się rozrasta i jest ciągle aktualizowana.
-W serwisie mogą być umieszczane oryginalne treści w kategoriach Słownictwo, Gramatyka i
-Artykuły oraz odnośniki do różnorodnych stron i materiałów (takich jak słowniki online czy
-filmy w serwisie youtube) w kategorii Baza linków. </p>
+HISZPAŃSKI ONLINE  to plaforma do udostępniania darmowych materiałów do nauki języka hiszpańskiego na każdym poziomie. Znajdziesz tutaj różnorodne materiały przyporządkowane do poszczególnych działów: <%= link_to "SŁOWNICTWO", vocabularies_path %>, <%= link_to "GRAMATYKA", theories_path %>, <%= link_to "ARTYKUŁY", articles_path %>, <%= link_to "ĆWICZENIA", surveys_path %> i <%= link_to "BAZA LINKÓW", links_path %>. Zachęcamy również do rejestracji w serwisie. Zalogowani użytkownicy otrzymują dostęp do interaktywnych ćwiczeń, wspomagających naukę oraz mogą współtworzyć stronę udostępniając własne treści!
+<br><br>
+W dziale <%= link_to "SŁOWNICTWO", vocabularies_path %> znajdziesz pogrupowane słówka. Do każdego zestawu słówek mogą zostać przypisane ćwiczenia, które pomogą Ci w zapamiętaniu nowego słownictwa!
+<br><br>
+W zakładce <%= link_to "GRAMATYKA", theories_path %> znajdują się wyjaśnione zagadnienia gramatyczne. Do każdego zagadanienia mogą również zostać przypisane ćwiczenia, które pomogą Ci w nauce!
+<br><br>
+Dział <%= link_to "ARTYKUŁY", articles_path %> to świetny sposób na poszerzenie słownictwa oraz ćwiczenie zdolności czytania ze zrozumieniem. Znajdziesz tam artykuły w języku hiszpańskim, o różnym stopniu trudności. Przy każdym tekście wyjaśniono trudne słówka oraz istnieje opcja dodania quizu, dzięki czemu możesz sprawdzić w jakim stopniu zrozumiałeś dany tekst.
+<br><br>
+<%= link_to "BAZA LINKÓW", links_path %> to zbiór odnośników do innych stron i zasobów, powiązanych z nauką języka hiszpańskiego. W trakcie nauki znalazłeś coś ciekawego w sieci? Podziel się z innymi! 
+<br>
+</p>
+<p> Serwis został stworzony w ramach projektu licencjackiego. </p>
+
+
