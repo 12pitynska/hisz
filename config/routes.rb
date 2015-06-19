@@ -40,8 +40,9 @@ resources :users
   post 'news/new/tinymce_assets' => 'tinymce_assets#create'
   post 'articles/new/tinymce_assets' => 'tinymce_assets#create'
   post 'theories/new/tinymce_assets' => 'tinymce_assets#create'
-  root to: "news#index"
 
+  get 'about' => 'pages#about', as: 'about'
+  root to: "news#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,35 @@
+<% content_for :cattitle do %> 
+  HISZPAŃSKI ONLINE
+<% end %>
+
+<% content_for :catdes do %> 
+  MATERIAŁY DO NAUKI JĘZYKA HISZPAŃSKIEGO
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<% content_for :rightmenu do %>
+  <% unless user_signed_in? %>
+      <div class="welcome" > 
+   
+     <h3 class="highlight">  </h3> 
+     
+    <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> korzystać ze wszystkich opcji serwisu!
+    
+  </p>
+  </div>
+<% end %>
+
+
+<% end %>
+
+<h1> O projekcie </h1>
+<p> Serwis został stworzony w ramach projektu licencjackiego </p>
+<p>
+Celem serwisu jest stworzenie plaformy do udostępniania darmowych materiałów do nauki
+języka hiszpańskiego. Użytkownik odwiedzający stronę otrzymuje dostęp do zasobów, a po
+rejestracji w serwisie sam może dzielić się materiałami do nauki z innymi użytkownikami,
+dzięki czemu baza materiałów się rozrasta i jest ciągle aktualizowana.
+W serwisie mogą być umieszczane oryginalne treści w kategoriach Słownictwo, Gramatyka i
+Artykuły oraz odnośniki do różnorodnych stron i materiałów (takich jak słowniki online czy
+filmy w serwisie youtube) w kategorii Baza linków. </p>
