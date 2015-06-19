@@ -22,12 +22,9 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
 
 <% unless user_signed_in? %>
       <div class="welcome" > 
-   
-     <h3 class="highlight">  </h3> 
-     
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> rozwiązywać ćwiczenia i korzystać ze wszystkich opcji serwisu!
-    
-  </p>
+        <h3 class="highlight">  </h3> 
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> rozwiązywać ćwiczenia i korzystać ze wszystkich opcji serwisu!
+    </p>
   </div>
 <% end %>
 
@@ -59,7 +56,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       </td>  -->
    <% if user_signed_in? %> 
 
-  <td>
+<!--   <td>
        <%= survey.theory_id %> <% if survey.theory_id == nil %> - <% end %>
 
   </td> 
@@ -74,7 +71,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
        <%= survey.vocabulary_id %> <% if survey.vocabulary_id == nil %> - <% end %>
 
   </td> 
-
+ -->
       <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
       </td>
        <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
