@@ -60,7 +60,7 @@
 
     <% end %>
 
-        <%= news.body.truncate_words(40).html_safe %>
+        <%= news.body.truncate_words(35).html_safe %>
         <%= link_to "czytaj więcej", news %>
         
       </div>      <% unless  news.image.blank? %>
