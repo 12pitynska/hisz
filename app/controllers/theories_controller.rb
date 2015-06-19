@@ -1,6 +1,7 @@
 class TheoriesController < ApplicationController
   before_action :set_theory, only: [:show, :edit, :update, :destroy]
-
+ # before_filter :authenticate_user! 
+authorize_resource
   # GET /theories
   # GET /theories.json
   def index

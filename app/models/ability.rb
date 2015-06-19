@@ -2,6 +2,33 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new # guest user
+       
+    if user.role == "Admin"
+      can :manage, [News, Article, Theory, Link, Vocabulary, Word, Image, Level, Category, Role, User, Survey]
+    end
+    if user.role == "Moderator"
+     
+        can :manage, [News, Article]
+    end
+    if user.role == "User"
+        can :manage, [News, Article, Theory, Link, Vocabulary, Word, Image, Level, Category, Role, User, Survey]
+    else
+    can :read, [News, Article, Link, Vocabulary, Word, Survey, Theory]
+  #  can :read, :level, id: 1
+    can [:read, :fromcategory], Link
+    can [:read, :fromlevel], Theory
+    can [:read, :fromlevel], Article
+can [:read, :fromlevel], Vocabulary
+
+
+
+   #  can[:read, :fromlevel], Theory, level_id: id
+    #cannot :create, :attempt
+    end
+  
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

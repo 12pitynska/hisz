@@ -2,12 +2,13 @@ class Contests::AttemptsController < ApplicationController
 
   helper 'contests/surveys'
 
+  before_filter :authenticate_user! 
 
   before_filter :load_survey
+  #load_and_authorize_resource
 
   before_filter :normalize_attempts_data, :only => :create
-
-  def new
+    def new
     @participant = current_user # you have to decide what to do here
     @theory = Theory.where(id: @survey.theory_id).first
     @article = Article.where(id: @survey.article_id).first
