@@ -6,6 +6,13 @@ authorize_resource
   # GET /vocabularies.json
   def index
     @vocabularies = Vocabulary.all.order('polish ASC')
+
+  if params[:search]
+      @vocabularies = Vocabulary.search(params[:search]).order("created_at DESC")
+    else
+      @vocabularies = Vocabulary.order("created_at DESC")
+    end
+
   end
 
   # GET /vocabularies/1

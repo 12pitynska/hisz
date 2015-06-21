@@ -6,7 +6,12 @@ authorize_resource
   # GET /theories.json
   def index
     @theories = Theory.all.order('created_at DESC')
-     
+      
+    if params[:search]
+      @theories = Theory.search(params[:search]).order("created_at DESC")
+    else
+      @theories = Theory.order("created_at DESC")
+    end
   end
 
   def fromlevel
