@@ -26,7 +26,7 @@ class NewsController < ApplicationController
 
   # GET /news/new
   def new
-    @news = News.new
+    @news = current_user.news.build
   end
 
   # GET /news/1/edit
@@ -36,7 +36,7 @@ class NewsController < ApplicationController
   # POST /news
   # POST /news.json
   def create
-    @news = News.new(news_params)
+    @news = current_user.news.build(news_params)
 
     respond_to do |format|
       if @news.save
@@ -81,6 +81,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:title, :body, :bootsy_image_gallery_id, :image)
+      params.require(:news).permit(:title, :body, :bootsy_image_gallery_id, :image, :user_id)
     end
 end

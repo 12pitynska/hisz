@@ -40,7 +40,7 @@
 
 <h2> <%= @article.title %> </h2>
 
-<p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+<p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @article.user.login %>  </i></p>
 <% unless @article.image.blank? %>
   <%= image_tag @article.image(:medium), :class => "main-image" %>
 <% end %>

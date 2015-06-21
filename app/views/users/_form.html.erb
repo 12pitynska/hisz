@@ -17,7 +17,9 @@
     <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
   </div><br>
 
-
+<div class: "form-group">
+  <%= f.label 'Login' %><br>
+  <%= f.text_field :login ,  class: "form-control" %><br>
 <div class: "form-group">
   <%= f.label 'E-mail' %><br>
   <%= f.text_field :email ,  class: "form-control" %><br>

@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   
    
    if params[:search]
-      @articles = Article.search(params[:search]).order("created_at DESC")
+      @articles = Article.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
     else
       @articles = Article.order("created_at DESC").page(params[:page]).per(5)
     end
@@ -30,7 +30,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    # @article = Article.new
+      @article = current_user.articles.build
   end
 
   # GET /articles/1/edit
@@ -40,7 +41,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
 
     respond_to do |format|
       if @article.save
@@ -85,6 +86,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :image, :level_id)
+      params.require(:article).permit(:title, :body, :image, :level_id, :user_id)
     end
 end

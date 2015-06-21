@@ -48,7 +48,7 @@ AKTUALNOŚCI
 
   <%= @news.title %>
 </h2>
-      <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+      <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @news.user.login %>  </i> </p> 
 <div style="float: left">
  
 <% unless @news.image.blank? %>

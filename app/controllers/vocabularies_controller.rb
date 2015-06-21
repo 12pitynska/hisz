@@ -29,9 +29,8 @@ authorize_resource
 
   # GET /vocabularies/new
   def new
-    @vocabulary = Vocabulary.new
+    @vocabulary = current_user.vocabularies.build
   end
-
   # GET /vocabularies/1/edit
   def edit
   end
@@ -39,7 +38,7 @@ authorize_resource
   # POST /vocabularies
   # POST /vocabularies.json
   def create
-    @vocabulary = Vocabulary.new(vocabulary_params)
+    @vocabulary = current_user.vocabularies.build(vocabulary_params)
 
     respond_to do |format|
       if @vocabulary.save
@@ -84,6 +83,6 @@ authorize_resource
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vocabulary_params
-      params.require(:vocabulary).permit(:polish, :spanish, :description, :level_id)
+      params.require(:vocabulary).permit(:polish, :spanish, :description, :level_id, :user_id)
     end
 end

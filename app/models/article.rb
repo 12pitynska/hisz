@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
 	  belongs_to :level
+	  belongs_to :user
  	  
  	  has_surveys
 	  
@@ -11,9 +12,7 @@ class Article < ActiveRecord::Base
   def self.search(query)
     # where(:title, query) -> This would return an exact match of the query
     where("title like ? OR body like ?", "%#{query}%", "%#{query}%") 
-
-
-   
+ 
   end
 
 end

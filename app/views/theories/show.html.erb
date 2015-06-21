@@ -49,13 +49,15 @@ GRAMATYKA
   <%= @theory.title %>
 </h2>
 
+<p class="date"><%= @theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @theory.user.login %>  </i></p>
+
 <div style="float: left">
 <% unless @theory.image.blank? %><%= image_tag @theory.image(:medium), :class => "main-image" %> <% end %>
   <%= @theory.body.html_safe %>
 </div>
 
 
-
+<br><br>
 
      <% if user_signed_in? %> 
 <%= link_to 'Edit', edit_theory_path(@theory) %> | <% end %>

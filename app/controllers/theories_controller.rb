@@ -31,7 +31,7 @@ authorize_resource
 
   # GET /theories/new
   def new
-    @theory = Theory.new
+    @theory = current_user.theories.build
   end
 
   # GET /theories/1/edit
@@ -41,7 +41,7 @@ authorize_resource
   # POST /theories
   # POST /theories.json
   def create
-    @theory = Theory.new(theory_params)
+    @theory = current_user.theories.build(theory_params)
 
     respond_to do |format|
       if @theory.save
@@ -86,6 +86,6 @@ authorize_resource
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id)
+      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id, :user_id)
     end
 end
