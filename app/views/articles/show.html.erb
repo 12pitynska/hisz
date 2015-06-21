@@ -38,6 +38,9 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if @article.status == "approved" %>
+
+
 <h2> <%= @article.title %> </h2>
 
 <p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @article.user.login %>  </i></p>
@@ -46,6 +49,11 @@
 <% end %>
 <p> <%= @article.body.html_safe %> </p>
 
+<% else %>
+
+<h3> Ten artykuł zostanie opublikowany po sprawdzeniu moderatora. </3>
+
+<% end %>
 
 
 

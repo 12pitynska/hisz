@@ -5,13 +5,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order('created_at DESC').page(params[:page]).per(5)
+    @articles = Article.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
   
    
    if params[:search]
-      @articles = Article.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
+      @articles = Article.where(status: "approved").search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
     else
-      @articles = Article.order("created_at DESC").page(params[:page]).per(5)
+      @articles = Article.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
     end
   end
 
@@ -23,8 +23,9 @@ class ArticlesController < ApplicationController
 
   def fromlevel
     @level = Level.find(params[:id])
-    @articles = Article.where(level_id:  @level.id).page(params[:page]).per(5)
-  
+    #@articles = Article.where(level_id:  @level.id).page(params[:page]).per(5)
+ 
+    @articles = Article.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
   end
 
 
@@ -32,6 +33,7 @@ class ArticlesController < ApplicationController
   def new
     # @article = Article.new
       @article = current_user.articles.build
+   
   end
 
   # GET /articles/1/edit
@@ -42,7 +44,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = current_user.articles.build(article_params)
-
+   @article.status = "draft"
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -78,6 +80,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+def moderation 
+  #@articles = Article.all
+  @articles = Article.where(status:  "draft")
+  @approved = Article.where(status:  "approved")
+end
+
+
+  def approve
+    Article.where(id: params[:article_ids]).update_all(status: "approved")
+    
+
+    redirect_to moderation_articles_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -86,6 +102,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :image, :level_id, :user_id)
+      params.require(:article).permit(:title, :body, :image, :level_id, :user_id, :status)
     end
 end

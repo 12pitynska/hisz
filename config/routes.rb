@@ -8,7 +8,19 @@ Rails.application.routes.draw do
 
   resources :theories
 
-  resources :articles
+
+
+
+  resources :articles do
+    collection do
+      put :approve
+    end
+  end
+
+ get '/moderation/articles' => 'articles#moderation', as: 'moderation_articles'
+
+ put '/approve/articles' => 'articles#approve', as: 'approve_articless'
+
 
  resources :vocabularies do
     resources :words
