@@ -16,6 +16,14 @@
 
 
 /* bootstrap 3 helpers */
+
+$screen-md-min: 1000px;
+
+
+$grid-float-breakpoint: $screen-md-min;
+
+
+
 @import url(http://fonts.googleapis.com/css?family=Allura&subset=latin,latin-ext);
 @import "bootsy";
 @import "bootstrap-sprockets";
@@ -23,9 +31,7 @@
 @import "font-awesome-sprockets";
   @import "font-awesome";
 
-.navbar-form input, .form-inline input {
-	width:auto;
-}
+
 
 /* end */
 
@@ -136,7 +142,7 @@ header {
 /* theme */
 .cattitle {
 
-font-size: 45px;
+font-size: 40px;
 color: #4D363E;
 
 }
@@ -306,4 +312,96 @@ h3.highlight  {
 .footer > a{
   color: black;
 }
+
+@media  (max-device-width : 480px) {
+
+
+#logo > a {
+    font-size: 17px;
+    color: #c92c2c;
+
+  /*  font-family: 'Allura', cursive;
+*/
+}
+
+
+#logo > a:hover {
+    font-size: 17px;
+    color: #4D363E;
+    background-color: #FFB600;
+}
+
+.cattitle {
+font-size: 15px;
+ max-width: 50%;
+
+}
+.catdes {
+  font-size: 10px;
+  max-width: 50%;
+}
+
+
+}
+
+
+
+@media  (max-device-width : 1000px) {
+
+
+ .collapse {
+        display: none;
+     }
+
+
+.cattitle {
+font-size: 30px;
+ max-width: 50%;
+
+}
+.catdes {
+  font-size: 15px;
+  max-width: 50%;
+}
+
+
+
+}
+
+@media  (max-device-width : 1210px) {
+
+#logo > a {
+    font-size: 20px;
+    color: #c92c2c;
+
+  /*  font-family: 'Allura', cursive;
+*/
+}
+
+#logo > a:hover {
+    font-size: 20px;
+    color: #4D363E;
+    background-color: #FFB600;
+}
+
+.navbar-nav > li > a {
+  padding-left:10px;
+  padding-right:10px;
+}
+
+
+.cattitle {
+font-size: 40px;
+ max-width: 50%;
+
+}
+.catdes {
+  font-size: 20px;
+  max-width: 50%;
+}
+
+
+
+  }
+
 
