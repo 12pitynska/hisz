@@ -5,18 +5,21 @@ authorize_resource
   # GET /theories
   # GET /theories.json
   def index
-    @theories = Theory.all.order('created_at DESC')
+    @theories = Theory.all.order('created_at DESC').page(params[:page]).per(5)
+
       
     if params[:search]
-      @theories = Theory.search(params[:search]).order("created_at DESC")
+      @theories = Theory.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
+
     else
-      @theories = Theory.order("created_at DESC")
+      @theories = Theory.order("created_at DESC").page(params[:page]).per(5)
+
     end
   end
 
   def fromlevel
     @level = Level.find(params[:id])
-    @theories = Theory.where(level_id:  @level.id)
+    @theories = Theory.where(level_id:  @level.id).page(params[:page]).per(5)
   end
 
   # GET /theories/1

@@ -5,12 +5,12 @@ authorize_resource
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.all.order('polish ASC')
+    @vocabularies = Vocabulary.all.order('polish ASC').page(params[:page]).per(5)
 
   if params[:search]
-      @vocabularies = Vocabulary.search(params[:search]).order("created_at DESC")
+      @vocabularies = Vocabulary.search(params[:search]).order("polish ASC").page(params[:page]).per(5)
     else
-      @vocabularies = Vocabulary.order("created_at DESC")
+      @vocabularies = Vocabulary.order("polish ASC").page(params[:page]).per(5)
     end
 
   end
@@ -24,7 +24,7 @@ authorize_resource
 
   def fromlevel
     @level = Level.find(params[:id])
-    @vocabularies = Vocabulary.where(level_id:  @level.id)
+    @vocabularies = Vocabulary.where(level_id:  @level.id).page(params[:page]).per(5)
   end
 
   # GET /vocabularies/new

@@ -7,7 +7,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all.order('title ASC')
+    @links = Link.all.order('title ASC').page(params[:page]).per(10)
   end
 
   def list
@@ -18,7 +18,7 @@ class LinksController < ApplicationController
 
   def fromcategory
     @category = Category.find(params[:id])
-    @links = Link.where(category_id:  @category.id)
+    @links = Link.where(category_id:  @category.id).page(params[:page]).per(10)
   end
 
   # GET /links/1

@@ -4,7 +4,7 @@ class Contests::SurveysController < ApplicationController
 
   authorize_resource
   def index
-   @surveys = Survey::Survey.all
+   @surveys = Survey::Survey.all.page(params[:page]).per(10)
 
    @par = Survey::Survey::AccessibleAttributes
 

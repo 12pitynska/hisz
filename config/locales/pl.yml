@@ -234,3 +234,22 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
+
+
+  views:
+    pagination:
+      first: "&laquo; Pierwsza"
+      last: "Ostatnia &raquo;"
+      previous: "&lsaquo; Poprzednia"
+      next: "Następna &rsaquo;"
+      truncate: "&hellip;"
+
+      helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Nie znaleziono: %{entry_name}"
+          one: "Znaleziono <b>1</b> %{entry_name}"
+          other: "Znaleziono <b> %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Znaleziono %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>. W sumie: <b>%{total}</b> "

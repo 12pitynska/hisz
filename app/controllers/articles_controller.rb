@@ -5,12 +5,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order('created_at DESC')
+    @articles = Article.all.order('created_at DESC').page(params[:page]).per(5)
+  
    
    if params[:search]
       @articles = Article.search(params[:search]).order("created_at DESC")
     else
-      @articles = Article.order("created_at DESC")
+      @articles = Article.order("created_at DESC").page(params[:page]).per(5)
     end
   end
 
@@ -22,7 +23,8 @@ class ArticlesController < ApplicationController
 
   def fromlevel
     @level = Level.find(params[:id])
-    @articles = Article.where(level_id:  @level.id)
+    @articles = Article.where(level_id:  @level.id).page(params[:page]).per(5)
+  
   end
 
 

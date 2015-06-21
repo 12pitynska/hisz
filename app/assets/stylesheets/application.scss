@@ -29,7 +29,7 @@ $grid-float-breakpoint: $screen-md-min;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
-  @import "font-awesome";
+@import "font-awesome";
 
 
 
@@ -37,6 +37,17 @@ $grid-float-breakpoint: $screen-md-min;
 
 /* custom theme */
 
+.pagination > li > a, .pagination > li > span {
+
+color: black;
+
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+
+background-color: #FFB600;
+border-color: #ddd ;
+}
 
 
 .box {

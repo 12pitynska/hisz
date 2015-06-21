@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'kaminari'
+
 gem 'font-awesome-sass'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
