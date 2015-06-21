@@ -14,10 +14,12 @@ class Contests::SurveysController < ApplicationController
   
 
     @survey = Survey::Survey.new
+   # @survey.user = current_user
   end
 
   def create
     @survey = Survey::Survey.new(survey_params)
+    @survey.user_id = current_user.id
     if @survey.valid? && @survey.save
       default_redirect
     else
@@ -56,7 +58,7 @@ end
   end
 
   def survey_params
-         params.require(:survey_survey).permit([:name, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
+         params.require(:survey_survey).permit([:name, :user_id, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
   end
 
   def params_whitelist
