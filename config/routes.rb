@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   end
 
  get '/moderation/articles' => 'articles#moderation', as: 'moderation_articles'
-
  put '/approve/articles' => 'articles#approve', as: 'approve_articless'
+
+ get '/moderation/theories' => 'theories#moderation', as: 'moderation_theories'
+ put '/approve/theories' => 'theories#approve', as: 'approve_theories'
+
 
 
  resources :vocabularies do

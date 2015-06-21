@@ -1,0 +1,55 @@
+<% content_for :cattitle do %> 
+ MODERACJA
+<% end %>
+
+<% content_for :catdes do %> 
+    GRAMATYKA
+<% end %>
+
+   <h2>Artykuły do zatwierdzenia </h2>
+    <%= form_tag approve_theories_path, method: :put do %>
+    <table class="table" id="links">
+    <tr>
+      <th></th>
+      <th>Tytuł,<br> autor</th>
+      <th>Treść</th>
+      <th>Akcje</th>
+    </tr>
+
+      <% @drafts.each do |draft| %>
+      <tr>
+        <td><%= check_box_tag "theory_ids[]", draft.id %></td>
+        <td><%= draft.title %> <br><i> @<%= draft.user.login %> </i> </td>
+        <td><%= draft.body.html_safe %></td>
+    
+
+       <td>  <%= link_to 'Edytuj', edit_theory_path(draft) %> <br>
+        <%= link_to 'Usuń', draft, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+      <% end %>
+    </table>
+      <%= submit_tag "Zatwierdź do publikacji" ,  class: "btn btn-default" %> 
+    <% end %>
+
+<h2>Opublikowane</h2>
+<table class="table" id="links">
+  <tr>
+    <th>id</th>
+    <th>Tytuł</th>
+    <th>Akcje</th>
+
+  </tr>
+  <% @approved.each do |theory| %>
+  <tr>
+    <td><%= theory.id %></td>
+    <td><%= link_to theory.title, theory %> <br><i> @<%= theory.user.login %> </i> </td>
+
+    <td><%= theory.status%></td>
+    <td><%= link_to 'Pokaż', theory_path(theory) %> <br>  <%= link_to 'Edytuj', edit_theory_path(theory) %> <br>
+        <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+ 
+    
+  </tr>
+  <% end %>
+</table>
+

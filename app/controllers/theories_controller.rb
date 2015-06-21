@@ -5,21 +5,24 @@ authorize_resource
   # GET /theories
   # GET /theories.json
   def index
-    @theories = Theory.all.order('created_at DESC').page(params[:page]).per(5)
+    @theories = Theory.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
 
       
     if params[:search]
-      @theories = Theory.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
+      @theories = Theory.where(status: "approved").search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
 
     else
-      @theories = Theory.order("created_at DESC").page(params[:page]).per(5)
+      @theories = Theory.where(status: "approved").order("created_at DESC").page(params[:page]).per(5)
 
     end
   end
 
   def fromlevel
     @level = Level.find(params[:id])
-    @theories = Theory.where(level_id:  @level.id).page(params[:page]).per(5)
+    @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
+
+
+
   end
 
   # GET /theories/1
@@ -42,7 +45,7 @@ authorize_resource
   # POST /theories.json
   def create
     @theory = current_user.theories.build(theory_params)
-
+   @theory.status = "draft"
     respond_to do |format|
       if @theory.save
         format.html { redirect_to @theory, notice: 'Theory was successfully created.' }
@@ -78,6 +81,22 @@ authorize_resource
     end
   end
 
+
+def moderation 
+
+  @drafts = Theory.where(status:  "draft")
+  @approved = Theory.where(status:  "approved")
+end
+
+
+  def approve
+    Theory.where(id: params[:theory_ids]).update_all(status: "approved")
+    redirect_to moderation_theories_path
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_theory
@@ -86,6 +105,6 @@ authorize_resource
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id, :user_id)
+      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id, :user_id, :status)
     end
 end

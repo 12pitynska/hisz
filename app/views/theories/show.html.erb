@@ -44,7 +44,7 @@ GRAMATYKA
 <% end %>
 <p id="notice"><%= notice %></p>
 
-
+<% if @theory.status == "approved" %>
 <h2>
   <%= @theory.title %>
 </h2>
@@ -56,8 +56,14 @@ GRAMATYKA
   <%= @theory.body.html_safe %>
 </div>
 
+<% else %>
+
+<h3> To zagadnienie zostanie opublikowane po sprawdzeniu przez moderatora. </3>
 
 <br><br>
+
+<% end %>
+
 
      <% if user_signed_in? %> 
 <%= link_to 'Edit', edit_theory_path(@theory) %> | <% end %>
