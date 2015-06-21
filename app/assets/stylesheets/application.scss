@@ -313,60 +313,10 @@ h3.highlight  {
   color: black;
 }
 
-@media  (max-device-width : 480px) {
-
-
-#logo > a {
-    font-size: 17px;
-    color: #c92c2c;
-
-  /*  font-family: 'Allura', cursive;
-*/
-}
-
-
-#logo > a:hover {
-    font-size: 17px;
-    color: #4D363E;
-    background-color: #FFB600;
-}
-
-.cattitle {
-font-size: 15px;
- max-width: 50%;
-
-}
-.catdes {
-  font-size: 10px;
-  max-width: 50%;
-}
-
-
-}
 
 
 
-@media  (max-device-width : 1000px) {
 
-
- .collapse {
-        display: none;
-     }
-
-
-.cattitle {
-font-size: 30px;
- max-width: 50%;
-
-}
-.catdes {
-  font-size: 15px;
-  max-width: 50%;
-}
-
-
-
-}
 
 @media  (max-device-width : 1210px) {
 
@@ -404,4 +354,55 @@ font-size: 40px;
 
   }
 
+@media  (max-device-width : 1000px) {
 
+
+ .collapse {
+        display: none;
+     }
+
+
+.cattitle {
+font-size: 30px;
+ max-width: 50%;
+
+}
+.catdes {
+  font-size: 15px;
+  max-width: 50%;
+}
+
+
+
+}
+@media  (max-device-width : 480px) {
+
+
+#logo > a {
+    font-size: 17px;
+    color: #c92c2c;
+
+  /*  font-family: 'Allura', cursive;
+*/
+}
+
+
+#logo > a:hover {
+    font-size: 17px;
+    color: #4D363E;
+    background-color: #FFB600;
+}
+
+.cattitle {
+font-size: 15px;
+ max-width: 50%;
+
+}
+
+.catdes {
+  font-size: 10px;
+  max-width: 50%;
+}
+
+
+}
