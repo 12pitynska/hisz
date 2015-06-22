@@ -80,17 +80,15 @@ class ArticlesController < ApplicationController
     end
   end
 
-def moderation 
-  #@articles = Article.all
-  @articles = Article.where(status:  "draft")
-  @approved = Article.where(status:  "approved")
-end
+  def moderation 
+    #@articles = Article.all
+    @articles = Article.where(status:  "draft")
+    @approved = Article.where(status:  "approved")
+  end
 
 
   def approve
     Article.where(id: params[:article_ids]).update_all(status: "approved")
-    
-
     redirect_to moderation_articles_path
   end
 

@@ -8,7 +8,16 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(10)
+
+   if params[:search]
+      @links = Link.where(status: "approved").search(params[:search]).order('title ASC').page(params[:page]).per(10)
+    else
+      @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(10)
+    end
   end
+
+
+
 
   def list
       @category = Category.find(params[:id]) 

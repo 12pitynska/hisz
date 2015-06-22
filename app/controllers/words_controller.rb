@@ -5,7 +5,7 @@ class WordsController < ApplicationController
   # GET /words
   # GET /words.json
   def index
-    @words = Word.all
+    @words = Word.where(status: "approved")
   end
 
   # GET /words/1
@@ -32,9 +32,11 @@ class WordsController < ApplicationController
 def create
 
   @vocabulary = Vocabulary.find(params[:vocabulary_id])
+   @word.status = "draft"
+
   @word = @vocabulary.words.create(params[:word].permit(:polish, :spanish, :description, :vocabulary_id))
 
-    redirect_to vocabulary_path(@vocabulary)
+  redirect_to vocabulary_path(@vocabulary)
 
 end
 
@@ -68,6 +70,20 @@ end
     end
   end
 
+
+  def moderation 
+    @words = Word.where(status:  "draft")
+    @approved = Word.where(status:  "approved")
+  end
+
+
+  def approve
+    Word.where(id: params[:word_ids]).update_all(status: "approved")
+    redirect_to moderation_words_path
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_word
@@ -76,6 +92,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.require(:word).permit(:polish, :spanish, :description, :vocabulary_id)
+      params.require(:word).permit(:polish, :spanish, :description, :vocabulary_id, :status)
     end
 end

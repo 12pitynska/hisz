@@ -26,10 +26,12 @@ Rails.application.routes.draw do
  get '/moderation/links' => 'links#moderation', as: 'moderation_links'
  put '/approve/links' => 'links#approve', as: 'approve_links'
 
-
  get '/moderation/vocabularies' => 'vocabularies#moderation', as: 'moderation_vocabularies'
  put '/approve/vocabularies' => 'vocabularies#approve', as: 'approve_vocabularies'
 
+ get '/moderation/words' => 'words#moderation', as: 'moderation_words'
+ put '/approve/words' => 'words#approve', as: 'approve_words'
+   resources :words
 
 
  resources :vocabularies do

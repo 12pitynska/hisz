@@ -16,20 +16,30 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
    <ul class="nav nav-stacked">
 
                
-            <% if user_signed_in? %>             <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li> <% end %>
-                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
+      <% if user_signed_in? %>             <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li> <% end %>
+                    <li><h3>KATEGORIE </i></h3></li>
                   <li> <%= link_to links_path do %><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li><% end %>
                   <li> <%= link_to links_category_path(1) do %><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li><% end %>
                   <li> <%= link_to links_category_path(2) do %><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li><% end %>
                   <li> <%= link_to links_category_path(3) do %><i class="fa fa-newspaper-o fa-lg"></i>&nbsp; Teksty, wiadomości</a></li><% end %>
-               
-                  <li> <%= link_to links_category_path(5) do %><i class="fa fa-book fa-lg"></i> Słowniki</a></li><% end %>
-                     <li> <%= link_to links_category_path(4) do %><i class="fa fa-list-alt fa-lg"></i> Serwisy edukacyjne</a></li><% end %>
-                  <li> <%= link_to links_category_path(6) do %><i class="fa fa-gamepad fa-lg"></i> Gry</a></li><% end %>
-                  <li> <%= link_to links_category_path(7) do %><i class="fa fa-certificate  fa-lg"></i> Egzaminy</a></li><% end %>
-                  <li> <%= link_to links_category_path(8) do %><i class="fa  fa-graduation-cap fa-lg"></i> Studia, szkoły</a></li><% end %>
-                  <li> <%= link_to links_category_path(9) do %><i class="fa fa-asterisk fa-lg"></i> Inne</a></li><% end %>
-                                  
+               <li> <%= link_to links_category_path(5) do %><i class="fa fa-book fa-lg"></i>  Słowniki</a></li><% end %>
+                  <li> <%= link_to links_category_path(4) do %><i class="fa fa-list-alt fa-lg"></i>  Serwisy edukacyjne</a></li><% end %>
+                 
+                  <li> <%= link_to links_category_path(6) do %><i class="fa fa-gamepad fa-lg"></i>  Gry, ćwiczenia</a></li><% end %>
+<!--                   <li> <%= link_to links_category_path(7) do %><i class="fa fa-certificate  fa-lg"></i> Egzaminy</a></li><% end %>
+ -->                  <li> <%= link_to links_category_path(8) do %><i class="fa  fa-graduation-cap fa-lg"></i>  Szkoły, egzaminy</a></li><% end %>
+                  <li> <%= link_to links_category_path(9) do %><i class="fa fa-asterisk fa-lg"></i>  Inne</a></li><% end %>
+                    
+                   <li><h3>SZUKAJ STRONY</h3></li>
+                    <li>
+                      <%= form_tag(links_path, :method => "get", class: "form-inline", id: "search-form") do %>
+                        <div class="input-group">
+                          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
+                          <div class="input-group-btn">
+                          <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></div>
+                        </div>
+                      <% end %>
+                    </li>
    </ul>
 
 

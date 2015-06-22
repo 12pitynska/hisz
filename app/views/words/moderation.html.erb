@@ -1,0 +1,60 @@
+  <% content_for :cattitle do %> 
+ MODERACJA
+<% end %>
+
+<% content_for :catdes do %> 
+SŁÓWKA
+<% end %>
+
+
+
+
+   <h2>Słówka do zatwierdzenia </h2>
+    <%= form_tag approve_words_path, method: :put do %>
+<table class="table" id="links">
+    <tr>
+      <th></th>
+      <th>Tytuł,<br> autor</th>
+      <th>Treść</th>
+
+      <th>Akcje</th>
+
+
+    </tr>
+
+      <% @words.each do |word| %>
+      <tr>
+        <td><%= check_box_tag "word_ids[]", word.id %></td>
+        <td><%= word.polish %> / <%= word.spanish %> <br></td>
+        <td><%= word.description %></td>
+    
+
+       <td>  <%= link_to 'Edytuj', edit_word_path(word) %> <br>
+        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+      <% end %>
+    </table>
+      <%= submit_tag "Zatwierdź do publikacji" ,  class: "btn btn-default" %> 
+    <% end %>
+
+<h2>Opublikowane</h2>
+<table class="table" id="links">
+  <tr>
+    <th>id</th>
+    <th>Tytuł</th>
+    <th>Akcje</th>
+
+  </tr>
+  <% @approved.each do |word| %>
+  <tr>
+    <td><%= word.id %></td>
+    <td><%= link_to word.polish, word %> / <%= link_to word.spanish, word %><br></td>
+
+    <td><%= word.status%></td>
+    <td><%= link_to 'Pokaż', word_path(word) %> <br>  <%= link_to 'Edytuj', edit_word_path(word) %> <br>
+        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+
+  </tr>
+  <% end %>
+</table>
+

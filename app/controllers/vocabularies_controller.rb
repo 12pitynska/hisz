@@ -31,6 +31,12 @@ authorize_resource
 
   end
 
+  
+  def word
+     @words =  Word.where(["vocabulary_id LIKE ? AND status LIKE ?", @vocabulary.id, "approved"])
+  end
+
+
   # GET /vocabularies/new
   def new
     @vocabulary = current_user.vocabularies.build
