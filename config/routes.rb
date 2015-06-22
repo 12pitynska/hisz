@@ -23,6 +23,8 @@ Rails.application.routes.draw do
  get '/moderation/theories' => 'theories#moderation', as: 'moderation_theories'
  put '/approve/theories' => 'theories#approve', as: 'approve_theories'
 
+ get '/moderation/links' => 'links#moderation', as: 'moderation_links'
+ put '/approve/links' => 'links#approve', as: 'approve_links'
 
 
  resources :vocabularies do

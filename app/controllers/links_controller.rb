@@ -3,11 +3,11 @@ class LinksController < ApplicationController
 #before_action :authenticate_user!, :except => [:index]
   before_action :set_link, only: [:show, :edit, :update, :destroy]
    # authorize_resource
-   authorize_resource
+  authorize_resource
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all.order('title ASC').page(params[:page]).per(10)
+    @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(10)
   end
 
   def list
@@ -18,7 +18,8 @@ class LinksController < ApplicationController
 
   def fromcategory
     @category = Category.find(params[:id])
-    @links = Link.where(category_id:  @category.id).page(params[:page]).per(10)
+    @links = Link.where(["category_id LIKE ? AND status LIKE ?", @category.id, "approved"]).page(params[:page]).per(10)
+
   end
 
   # GET /links/1
@@ -39,7 +40,7 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.build(link_params)
-
+    @link.status = "draft"
     respond_to do |format|
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
@@ -75,6 +76,23 @@ class LinksController < ApplicationController
     end
   end
 
+def moderation 
+  #@articles = Article.all
+  @links = Link.where(status:  "draft")
+  @approved = Link.where(status:  "approved")
+end
+
+
+  def approve
+    Link.where(id: params[:link_ids]).update_all(status: "approved")
+        redirect_to moderation_links_path
+  end
+
+
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
@@ -83,6 +101,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :url, :description, :category_id, :user_id)
+      params.require(:link).permit(:title, :url, :description, :category_id, :user_id, :status)
     end
 end
