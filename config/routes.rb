@@ -27,6 +27,11 @@ Rails.application.routes.draw do
  put '/approve/links' => 'links#approve', as: 'approve_links'
 
 
+ get '/moderation/vocabularies' => 'vocabularies#moderation', as: 'moderation_vocabularies'
+ put '/approve/vocabularies' => 'vocabularies#approve', as: 'approve_vocabularies'
+
+
+
  resources :vocabularies do
     resources :words
   end

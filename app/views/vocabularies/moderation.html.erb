@@ -1,0 +1,60 @@
+  <% content_for :cattitle do %> 
+ MODERACJA
+<% end %>
+
+<% content_for :catdes do %> 
+SŁOWNICTWO
+<% end %>
+
+
+
+
+   <h2>Zestawy słówek do zatwierdzenia </h2>
+    <%= form_tag approve_vocabularies_path, method: :put do %>
+<table class="table" id="links">
+    <tr>
+      <th></th>
+      <th>Tytuł,<br> autor</th>
+      <th>Treść</th>
+
+      <th>Akcje</th>
+
+
+    </tr>
+
+      <% @vocabularies.each do |vocabulary| %>
+      <tr>
+        <td><%= check_box_tag "vocabulary_ids[]", vocabulary.id %></td>
+        <td><%= vocabulary.polish %> / <%= vocabulary.spanish %> <br><i> @<%= vocabulary.user.login %> </i> </td>
+        <td><%= vocabulary.description %></td>
+    
+
+       <td>  <%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %> <br>
+        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+      <% end %>
+    </table>
+      <%= submit_tag "Zatwierdź do publikacji" ,  class: "btn btn-default" %> 
+    <% end %>
+
+<h2>Opublikowane</h2>
+<table class="table" id="links">
+  <tr>
+    <th>id</th>
+    <th>Tytuł</th>
+    <th>Akcje</th>
+
+  </tr>
+  <% @approved.each do |vocabulary| %>
+  <tr>
+    <td><%= vocabulary.id %></td>
+    <td><%= link_to vocabulary.polish, vocabulary %> / <%= link_to vocabulary.spanish, vocabulary %><br><i> @<%= vocabulary.user.login %> </i> </td>
+
+    <td><%= vocabulary.status%></td>
+    <td><%= link_to 'Pokaż', vocabulary_path(vocabulary) %> <br>  <%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %> <br>
+        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+
+  </tr>
+  <% end %>
+</table>
+

@@ -13,7 +13,7 @@
     <tr>
       <th></th>
       <th>Tytuł,<br> autor</th>
-      <th>URL, <br> opis</th>
+      <th>URL,git pu <br> opis</th>
 
       <th>Akcje</th>
 
@@ -24,7 +24,7 @@
       <tr>
         <td><%= check_box_tag "link_ids[]", link.id %></td>
         <td><%= link.title %> <br><i> @<%= link.user.login %> </i> </td>
-        <td><i><%= link_to link.url, link %> </i><br><%= link.description %></td>
+        <td><i><%= link_to link.url.truncate(25), link %> </i><br><%= link.description %></td>
     
 
        <td>  <%= link_to 'Edytuj', edit_link_path(link) %> <br>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622181325) do
+ActiveRecord::Schema.define(version: 20150622183846) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 20150622181325) do
     t.text     "description"
     t.integer  "level_id"
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "vocabularies", ["level_id"], name: "index_vocabularies_on_level_id"

@@ -5,12 +5,12 @@ authorize_resource
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.all.order('polish ASC').page(params[:page]).per(5)
+    @vocabularies = Vocabulary.where(status: "approved").order('polish ASC').page(params[:page]).per(5)
 
   if params[:search]
-      @vocabularies = Vocabulary.search(params[:search]).order("polish ASC").page(params[:page]).per(5)
+      @vocabularies = Vocabulary.where(status: "approved").search(params[:search]).order("polish ASC").page(params[:page]).per(5)
     else
-      @vocabularies = Vocabulary.order("polish ASC").page(params[:page]).per(5)
+      @vocabularies = Vocabulary.where(status: "approved").order("polish ASC").page(params[:page]).per(5)
     end
 
   end
@@ -24,7 +24,11 @@ authorize_resource
 
   def fromlevel
     @level = Level.find(params[:id])
-    @vocabularies = Vocabulary.where(level_id:  @level.id).page(params[:page]).per(5)
+  #  @vocabularies = Vocabulary.where(level_id:  @level.id).page(params[:page]).per(5)
+
+    @vocabularies = Vocabulary.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
+
+
   end
 
   # GET /vocabularies/new
@@ -39,7 +43,7 @@ authorize_resource
   # POST /vocabularies.json
   def create
     @vocabulary = current_user.vocabularies.build(vocabulary_params)
-
+   @vocabulary.status = "draft"
     respond_to do |format|
       if @vocabulary.save
         format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully created.' }
@@ -75,6 +79,18 @@ authorize_resource
     end
   end
 
+  def moderation 
+    @vocabularies = Vocabulary.where(status:  "draft")
+    @approved = Vocabulary.where(status:  "approved")
+  end
+
+
+  def approve
+    Vocabulary.where(id: params[:vocabulary_ids]).update_all(status: "approved")
+    redirect_to moderation_vocabularies_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vocabulary
@@ -83,6 +99,6 @@ authorize_resource
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vocabulary_params
-      params.require(:vocabulary).permit(:polish, :spanish, :description, :level_id, :user_id)
+      params.require(:vocabulary).permit(:polish, :spanish, :description, :level_id, :user_id, :status)
     end
 end
