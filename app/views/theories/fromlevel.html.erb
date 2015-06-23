@@ -58,7 +58,8 @@ GRAMATYKA
 
 <% end %>
 
-        <%= theory.body.truncate_words(50).html_safe %>
+      <%= Loofah.fragment(strip_tags(theory.body.truncate_words(50))) %>
+
         <%= link_to "czytaj więcej", theory %>
         
        </div> 

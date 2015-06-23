@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'kaminari'
-
+gem 'truncate_html'
 gem 'font-awesome-sass'
 gem 'sunspot_rails'
 gem 'sunspot_solr'

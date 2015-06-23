@@ -6,7 +6,14 @@ class Contests::SurveysController < ApplicationController
   def index
    @surveys = Survey::Survey.all.page(params[:page]).per(10)
 
+
    @par = Survey::Survey::AccessibleAttributes
+
+   if params[:search]
+      @surveys = Survey::Survey.all.search(params[:search]).order("name ASC").page(params[:page]).per(10)   
+    else
+      @surveys = Survey::Survey.all.order('name ASC').page(params[:page]).per(10)
+    end
 
   end
 

@@ -63,12 +63,12 @@ JĘZYKA HISZPAŃSKIEGO
         <%= link_to 'Edytuj', edit_theory_path(theory) %>
         <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <% end %>
+<p><!-- 
+  <%= truncate_html(strip_tags(remove_images(theory.body)), length: 200, omission: '...')%> -->
+   <%= Loofah.fragment(strip_tags(theory.body.truncate_words(50))) %>
 
-
-
-        <%= theory.body.truncate_words(50).html_safe %>
         <%= link_to "czytaj więcej", theory %>
-        
+        </p>
        </div> 
             <% unless  theory.image.blank? %>
          <div class="col-md-2">
