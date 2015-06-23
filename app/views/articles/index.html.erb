@@ -58,8 +58,9 @@
         <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %>
  <% end %>
       </p>
-        <%= article.body.truncate_words(50).html_safe %>
-        <%= link_to "czytaj więcej", article %>       
+        
+        <p>     <%= Loofah.fragment(strip_tags(article.body.truncate_words(35))) %>
+        <%= link_to "czytaj więcej", article %>    </p>   
   </div> 
       <% unless  article.image.blank? %>
         <div class="col-md-2">

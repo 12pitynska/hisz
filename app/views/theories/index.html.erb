@@ -65,7 +65,7 @@ JĘZYKA HISZPAŃSKIEGO
  <% end %>
 <p><!-- 
   <%= truncate_html(strip_tags(remove_images(theory.body)), length: 200, omission: '...')%> -->
-   <%= Loofah.fragment(strip_tags(theory.body.truncate_words(50))) %>
+   <%= Loofah.fragment(strip_tags(theory.body.truncate_words(35))) %>
 
         <%= link_to "czytaj więcej", theory %>
         </p>

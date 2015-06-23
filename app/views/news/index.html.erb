@@ -60,8 +60,7 @@
 
     <% end %>
 
-        <%= news.body.truncate_words(35).html_safe %>
-        <%= link_to "czytaj więcej", news %>
+     <p> <%= Loofah.fragment(strip_tags(news.body.truncate_words(35))) %>        <%= link_to "czytaj więcej", news %> </p>
         
       </div>      <% unless  news.image.blank? %>
          <div class="col-md-2">
