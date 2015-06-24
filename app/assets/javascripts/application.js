@@ -13,19 +13,15 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-
 //= require turbolinks
 //= require bootstrap
 //= require tinymce-jquery
-
 //= require_tree .
-
 
 
 $(document).ready(function(){$('#sidebar').affix({
       offset: {
-       top: 125
-      
+       top: 125 
       }
 });	
 })

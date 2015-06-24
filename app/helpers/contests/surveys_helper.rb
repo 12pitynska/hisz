@@ -4,10 +4,9 @@ module Contests::SurveysHelper
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
 
-def sur 
-   Survey::Survey.all
-end
-
+  def sur 
+     Survey::Survey.all
+  end
 
   def new_survey
     new_survey_path
@@ -51,69 +50,13 @@ end
     if answer.option_id == option.id then 'chosen' else nil end
   end
 
-  def number_of_people_who_also_answered option_id
-    count = number_of_people_who_also_answered_count(option_id)
-    "<span class='number'> #{count} </span> #{'answer'.pluralize}".html_safe
-  end
-
   def get_color_of_option answer, option
-
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
- 
   end
-
-
-
-  
-
-  def get_survey_type survey_type
-    get_survey_types[survey_type] || get_survey_types.invert[survey_type]
-  end
-
-  def get_survey_types
-    { 0 => 'quiz',
-      1 => 'score',
-      2 => 'poll' }
-  end
-
-  def is_quiz? something
-    something == 0 || something == 'quiz'
-  end
-
-  def is_score? something
-    something == 1 || something == 'score'
-  end
-
-  def is_poll? something
-    something == 2 || something == 'poll'
-  end
-
-  def get_weight option
-    return unless is_score?(option.question.survey)
-    option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
-  end
-
-  def get_weight_html_class option
-    return 'bg-warning' if option.weight == 0
-    option.weight > 0 ? 'bg-success' : 'bg-danger'
-  end
-
-  def surveys_count type = get_survey_types.keys
-    Survey::Survey.where(survey_type: type).count
-  end
-
-  def number_of_questions survey
-    survey.questions.count
-  end
-
-  def number_of_attempts survey
-    survey.attempts.count
-  end
-
   
 
   private
