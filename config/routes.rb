@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   
   end
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+ # mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :news
 
   get 'theories/level/:id' => 'theories#fromlevel', as: 'theories_level'

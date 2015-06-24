@@ -1,26 +1,21 @@
 source 'https://rubygems.org'
 
 
-gem 'kaminari'
-gem 'truncate_html'
-gem 'font-awesome-sass'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem "paperclip"
+gem 'kaminari' # pagination
+gem 'truncate_html' 
 gem 'polskie_stringi', '~> 0.0.4'
-gem 'bootsy'
+gem 'font-awesome-sass' 
+gem "paperclip" # image upload
 
-gem 'tinymce-rails', '4.1.6'
-gem 'tinymce-rails-langs'
+gem 'tinymce-rails', '4.1.6' # text editor tinyMCE
+gem 'tinymce-rails-langs' # tinyMCE translations
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta' #  plugin for image upload in tinyMCE (using Paperclip)
+gem "survey", "~> 0.1" # plugin for creating quizes
 
-gem "survey", "~> 0.1"
+gem 'sprockets', '~> 2.8' #compiling and serving web assets
 
- gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
-gem 'sprockets', '~> 2.8'
-
-gem 'devise', '~> 3.4.1'
-gem 'cancancan', '~> 1.10'
-
+gem 'devise', '~> 3.4.1' # autentication
+gem 'cancancan', '~> 1.10' #autorization
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
