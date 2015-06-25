@@ -7,7 +7,7 @@ authorize_resource
   def index
     @vocabularies = Vocabulary.where(status: "approved").order('polish ASC').page(params[:page]).per(5)
 
-  if params[:search]
+    if params[:search]
       @vocabularies = Vocabulary.where(status: "approved").search(params[:search]).order("polish ASC").page(params[:page]).per(5)
     else
       @vocabularies = Vocabulary.where(status: "approved").order("polish ASC").page(params[:page]).per(5)
@@ -52,7 +52,7 @@ authorize_resource
    @vocabulary.status = "draft"
     respond_to do |format|
       if @vocabulary.save
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully created.' }
+        format.html { redirect_to @vocabulary, notice: 'Nowy zestaw słówek został stworzony, możesz uzupełnić słówka używająć poniższego formularza. Słówka będą widoczne w serwisie po zaakceptowaniu przez moderatora.' }
         format.json { render :show, status: :created, location: @vocabulary }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ authorize_resource
   def update
     respond_to do |format|
       if @vocabulary.update(vocabulary_params)
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully updated.' }
+        format.html { redirect_to @vocabulary, notice: 'Zestaw słówek zostal pomyślnie zaktualizowany.' }
         format.json { render :show, status: :ok, location: @vocabulary }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ authorize_resource
   def destroy
     @vocabulary.destroy
     respond_to do |format|
-      format.html { redirect_to vocabularies_url, notice: 'Vocabulary was successfully destroyed.' }
+      format.html { redirect_to vocabularies_url, notice: 'Zestaw słówek został pomyślnie usunięty.' }
       format.json { head :no_content }
     end
   end

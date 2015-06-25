@@ -43,12 +43,12 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = current_user.articles.build(article_params)
+   @article = current_user.articles.build(article_params)
    @article.status = "draft"
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
+        format.html { redirect_to articles_path, notice: 'Dziękujemy, artykuł został dodany. Będzie on widoczny w serwisie, po zaakceptowaniu przez moderatora.' }
+  
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: 'Artykuł został pomyślnie zaktualizowany.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to articles_url, notice: 'Artykuł został usunięty.' }
       format.json { head :no_content }
     end
   end

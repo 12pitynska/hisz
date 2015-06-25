@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :theories
 
+  match "*path", :to => "application#routing_error", :via => :all
 
 
 
@@ -55,7 +56,7 @@ Rails.application.routes.draw do
  #get 'showtheories/:id' => 'levels#show_theories'
 
   devise_for :users
-resources :users 
+  resources :users 
 
   resources :links
   resources :images

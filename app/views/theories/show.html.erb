@@ -42,7 +42,7 @@ GRAMATYKA
 
 
 <% end %>
-<p id="notice"><%= notice %></p>
+
 
 <% if @theory.status == "approved" %>
 <h2>
@@ -58,7 +58,7 @@ GRAMATYKA
 
 <% else %>
 
-<h3> To zagadnienie zostanie opublikowane po sprawdzeniu przez moderatora. </3>
+<h3> To zagadnienie zostanie opublikowane po sprawdzeniu przez moderatora. </h3>
 
 <br><br>
 
@@ -66,5 +66,5 @@ GRAMATYKA
 
 
      <% if user_signed_in? %> 
-<%= link_to 'Edit', edit_theory_path(@theory) %> | <% end %>
+<%= link_to 'Edytuj', edit_theory_path(@theory) %> | <% end %>
 <%= link_to 'Powrót', theories_path %>

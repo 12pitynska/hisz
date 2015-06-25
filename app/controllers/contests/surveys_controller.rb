@@ -10,7 +10,7 @@ class Contests::SurveysController < ApplicationController
    @par = Survey::Survey::AccessibleAttributes
 
    if params[:search]
-      @surveys = Survey::Survey.all.search(params[:search]).order("name ASC").page(params[:page]).per(10)   
+      @surveys = Survey::Survey.lall.search(params[:search]).order("name ASC").page(params[:page]).per(10)   
     else
       @surveys = Survey::Survey.all.order('name ASC').page(params[:page]).per(10)
     end
@@ -28,7 +28,7 @@ class Contests::SurveysController < ApplicationController
     @survey = Survey::Survey.new(survey_params)
     @survey.user_id = current_user.id
     if @survey.valid? && @survey.save
-      default_redirect
+        redirect_to surveys_path, notice: 'Quiz został pomyślnie dodany.'
     else
       render :action => :new
     end
@@ -42,7 +42,7 @@ class Contests::SurveysController < ApplicationController
 
   def update
     if @survey.update_attributes(survey_params)
-      default_redirect
+      redirect_to surveys_path, notice: 'Quiz został pomyślnie zaktualizowany.'
     else
       render :action => :edit
     end
@@ -50,7 +50,7 @@ class Contests::SurveysController < ApplicationController
 
  def destroy
     @survey.destroy
-    default_redirect
+    redirect_to surveys_path, notice: 'Quiz został pomyślnie usunięty.'
 end
 
 

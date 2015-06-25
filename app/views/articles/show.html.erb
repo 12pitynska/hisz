@@ -21,7 +21,7 @@
    <ul class="nav nav-stacked">
    <% unless @surveys == nil %>
 
-<% if user_signed_in? %>
+     <% if user_signed_in? %>
                     <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
       <% @surveys.each do |survey| %>
     
@@ -35,8 +35,6 @@
 
     <% end %>
 
-
-<p id="notice"><%= notice %></p>
 
 <% if @article.status == "approved" %>
 

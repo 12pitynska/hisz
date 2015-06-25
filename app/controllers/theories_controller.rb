@@ -48,7 +48,7 @@ authorize_resource
    @theory.status = "draft"
     respond_to do |format|
       if @theory.save
-        format.html { redirect_to @theory, notice: 'Theory was successfully created.' }
+        format.html { redirect_to theories_path, notice: 'Zagadnienie zostało dodane. Będzie ono widoczne w serwisie po zakceptowaniu przez moderatora.' }
         format.json { render :show, status: :created, location: @theory }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ authorize_resource
   def update
     respond_to do |format|
       if @theory.update(theory_params)
-        format.html { redirect_to @theory, notice: 'Theory was successfully updated.' }
+        format.html { redirect_to @theory, notice: 'Zagadnienie zostało pomyślnie zaktualizowane.' }
         format.json { render :show, status: :ok, location: @theory }
       else
         format.html { render :edit }
@@ -76,7 +76,7 @@ authorize_resource
   def destroy
     @theory.destroy
     respond_to do |format|
-      format.html { redirect_to theories_url, notice: 'Theory was successfully destroyed.' }
+      format.html { redirect_to theories_url, notice: 'Zagadnienie zostało pomyślnie usunięte.' }
       format.json { head :no_content }
     end
   end

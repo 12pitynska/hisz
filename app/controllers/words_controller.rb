@@ -49,7 +49,7 @@ end
     @vocabulary = Vocabulary.find(params[:vocabulary_id])
     respond_to do |format|
       if @word.update(word_params)
-        format.html {  redirect_to vocabulary_path(@vocabulary), notice: 'Word was successfully updated.' }
+        format.html {  redirect_to vocabulary_path(@vocabulary), notice: 'Słowo zostało pomyślnie zaktualizowane.' }
         format.json { render :show, status: :ok, location: @word }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ end
       @word = Word.find params[:id]
     @word.destroy
     respond_to do |format|
-      format.html { redirect_to vocabulary_path(@vocabulary), notice: 'Word was successfully destroyed.' }
+      format.html { redirect_to vocabulary_path(@vocabulary), notice: 'Słowo zostało pomyślnie usunięte.' }
       format.json { head :no_content }
     end
   end
