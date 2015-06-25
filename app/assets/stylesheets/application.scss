@@ -39,6 +39,9 @@ $grid-float-breakpoint: $screen-md-min;
   text-align: center;
 }
 
+.table-responsive {
+    overflow-x: auto;
+}
 /* pagination */
 
 
