@@ -25,7 +25,14 @@ $grid-float-breakpoint: $screen-md-min;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+  a {
+    color: #666;
+  }
 
+  a:hover {
+    color: #c92c2c;
+  } 
+  
 
 .alert {
 
@@ -140,14 +147,7 @@ header {
 
 
 /* media queries */
- a {
-    color: #666;
-  }
 
-  a:hover {
-    color: #c92c2c;
-  } 
-  
 
 @media (min-width: 979px) {
   
@@ -156,7 +156,7 @@ header {
     width: 175px;
   }
 
- 
+
   #sidebar.affix {
     position: fixed;
     top: 80px;
@@ -361,13 +361,46 @@ h3.highlight  {
 
 }
 
-@media  (max-device-width : 480px) {
+@media  (max-device-width : 1000px) {
 
 #sidebar > .nav > li > a {
 
-font-size: 13px;
+font-size: 10px;
 
 }
+
+a.highlight  {
+  padding-top:13px;
+  font-size: 17px;
+}
+
+h3.highlight  {
+  padding-top:13px;
+  font-size: 17px;
+}
+
+.collapse {
+  display: none;
+}
+
+.cattitle {
+  font-size: 30px;
+  max-width: 50%;
+}
+
+.catdes {
+  font-size: 15px;
+  max-width: 50%;
+}
+
+.panel {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+}
+
+@media  (max-device-width : 480px) {
 
 #logo > a {
   font-size: 17px;
