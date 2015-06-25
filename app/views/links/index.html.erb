@@ -16,7 +16,7 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
    <ul class="nav nav-stacked">
 
             <% if user_signed_in? %>             <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li> <% end %>
-                    <li><h3>KATEGORIE </i></h3></li>
+                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
                   <li> <%= link_to links_path do %><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li><% end %>
                   <li> <%= link_to links_category_path(1) do %><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li><% end %>
                   <li> <%= link_to links_category_path(2) do %><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li><% end %>
@@ -29,7 +29,7 @@ DO STRON ZWIĄZANYCH Z JĘZYKIEM HISZPAŃSKIM
  -->                  <li> <%= link_to links_category_path(8) do %><i class="fa  fa-graduation-cap fa-lg"></i>  Szkoły, egzaminy</a></li><% end %>
                   <li> <%= link_to links_category_path(9) do %><i class="fa fa-asterisk fa-lg"></i>  Inne</a></li><% end %>
                     
-                   <li><h3>SZUKAJ STRONY</h3></li>
+                   <li><h3 class="highlight">SZUKAJ STRONY</h3></li>
                     <li>
                       <%= form_tag(links_path, :method => "get", class: "form-inline", id: "search-form") do %>
                         <div class="input-group">
