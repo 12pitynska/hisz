@@ -363,11 +363,19 @@ h3.highlight  {
 
 @media  (max-device-width : 1000px) {
 
+#sidebar > .nav > li > a {
 
+font-size: 10px;
+
+}
+a.highlight  {
+  padding-top:13px;
+  font-size: 17px;
+}
 
 h3.highlight  {
   padding-top:13px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .collapse {
@@ -392,6 +400,12 @@ h3.highlight  {
 }
 
 @media  (max-device-width : 480px) {
+
+#sidebar > .nav > li > a {
+
+font-size: 13px;
+
+}
 
 #logo > a {
   font-size: 17px;
