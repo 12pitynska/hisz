@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   resources :theories
 
-  match "*path", :to => "application#routing_error", :via => :all
-
 
 
   resources :articles do
@@ -68,6 +66,8 @@ Rails.application.routes.draw do
 
   get 'about' => 'pages#about', as: 'about'
   root to: "news#index"
+  match "*path", :to => "application#routing_error", :via => :all
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
