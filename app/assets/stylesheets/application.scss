@@ -340,6 +340,8 @@ h3.highlight  {
 
 @media  (max-device-width : 1210px) {
 
+
+
 #logo > a {
   font-size: 20px;
   color: #c92c2c;
@@ -360,6 +362,13 @@ h3.highlight  {
 }
 
 @media  (max-device-width : 1000px) {
+
+
+
+h3.highlight  {
+  padding-top:13px;
+  font-size: 20px;
+}
 
 .collapse {
   display: none;
