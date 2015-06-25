@@ -7,6 +7,24 @@
 <% end %>
 
 
+<% content_for :rightmenu do %>
+     <ul class="nav nav-stacked">
+
+         
+                    <li><h3 class="highlight">MODERACJA </i></h3></li>
+                    <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+                  <li><%= link_to "Linki", moderation_links_path %> </li>
+                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   <li>
+             
+                    </li>
+              
+               
+        </ul>
+<% end %>
+  
+
    <h2>Linki do zatwierdzenia </h2>
     <%= form_tag approve_links_path, method: :put do %>
 <table class="table" id="links">

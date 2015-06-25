@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :catdes do %> 
-    ARTYKUŁY I TEKSTY
+   ĆWICZENIA
 <% end %>
 
 
@@ -14,7 +14,7 @@
                     <li><h3 class="highlight">MODERACJA </i></h3></li>
                     <li><%= link_to "Artykuły", moderation_articles_path %> </li>
                   <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
-                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+                  <li><%= link_to "Ćwiczenia", users_path %> </li>
                   <li><%= link_to "Linki", moderation_links_path %> </li>
                   <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   <li>
              
@@ -26,7 +26,7 @@
   
 
 
-   <h2>Artykuły do zatwierdzenia </h2>
+   <h2>Ćwiczenia do zatwierdzenia </h2>
     <%= form_tag approve_articles_path, method: :put do %>
 <table class="table" id="links">
     <tr>
@@ -39,15 +39,20 @@
 
     </tr>
 
-      <% @articles.each do |article| %>
+      <% @surveys.each do |survey| %>
       <tr>
-        <td><%= check_box_tag "article_ids[]", article.id %></td>
-        <td><%= article.title %> <br><i> @<%= article.user.login %> </i> </td>
-        <td><%= article.body.html_safe %></td>
+        <td><%= check_box_tag "survey_ids[]", survey.id %></td>
+        <td>    <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> <br><i> @<%= User.find(survey.user_id).login %> </i> </td>
+        <td><%= survey.description %></td>
     
 
-       <td>  <%= link_to 'Edytuj', edit_article_path(article) %> <br>
-        <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+     
+
+<td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
+      <br>
+       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+
+
       </tr>
       <% end %>
     </table>
@@ -62,14 +67,14 @@
     <th>Akcje</th>
 
   </tr>
-  <% @approved.each do |article| %>
+  <% @approved.each do |survey| %>
   <tr>
-    <td><%= article.id %></td>
-    <td><%= link_to article.title, article %> <br><i> @<%= article.user.login %> </i> </td>
+    <td><%= survey.id %></td>
+    <td>    <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %><br><i>@<%= User.find(survey.user_id).login %>  </i> </td>
 
-    <td><%= article.status%></td>
-    <td><%= link_to 'Pokaż', article_path(article) %> <br>  <%= link_to 'Edytuj', edit_article_path(article) %> <br>
-        <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+    <td><%= survey.status%></td>
+    <td>  <%= link_to 'Edytuj', edit_article_path(survey) %> <br>
+        <%= link_to 'Usuń',  survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
  
     
   </tr>

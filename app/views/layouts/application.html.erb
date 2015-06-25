@@ -62,6 +62,21 @@
               	  	<li><%= link_to "Zaloguj się", new_user_session_path %></li>
                   <% end %>
 
+              <% if user_signed_in? %>
+                 <% if current_user.role.name == "Admin" %>    <li class="divider"></li>
+                  <li><%= link_to "Użytkownicy", users_path %> </li>
+                <% end %>
+                 <% if current_user.role.name == "Admin" || current_user.role.name == "Moderator"  %>    <li class="divider"></li>
+                      <li><%= link_to "MODERACJA", moderation_articles_path %> </li>
+                  <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+                  <li><%= link_to "Linki", moderation_links_path %> </li>
+                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>
+               <% end %>
+
+              <% end %>
+
                   <li class="divider"></li>
                   <li><%= link_to "O projekcie", about_path %> </li>
                 </ul>

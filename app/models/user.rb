@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :vocabularies
   has_many :surveys
   has_many :links
+
+
+
 def assign_role
   self.role = Role.find_by name: "User" if self.role.nil?
 end

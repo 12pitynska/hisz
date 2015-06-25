@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
  get '/moderation/words' => 'words#moderation', as: 'moderation_words'
  put '/approve/words' => 'words#approve', as: 'approve_words'
+
+
    resources :words
 
 
@@ -40,7 +42,9 @@ Rails.application.routes.draw do
   scope module: 'contests' do
    resources :surveys
    resources :attempts
-  
+   get '/moderation/surveys' => 'surveys#moderation', as: 'moderation_surveys'
+   put '/approve/surveys' => 'surveys#approve', as: 'approve_surveys'
+
   end
 
  # mount Bootsy::Engine => '/bootsy', as: 'bootsy'
@@ -66,6 +70,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'pages#about', as: 'about'
   root to: "news#index"
+
   match "*path", :to => "application#routing_error", :via => :all
 
 
