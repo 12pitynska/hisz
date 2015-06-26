@@ -4,7 +4,7 @@ class News < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
-
+  validates :short, presence: true
   validates :title, presence: true, length: { minimum: 5, maximum: 40 }
   validates :body, presence: true
 

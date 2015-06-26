@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
 
     validates :title, presence: true, length: { minimum: 5, maximum: 40 }
     validates :body, presence: true
-
+    validates :short, presence: true
     scope :approved, -> { where status: 'approved'}
     scope :draft, -> { where status: 'draft'}
 
