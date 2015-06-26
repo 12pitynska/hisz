@@ -49,6 +49,6 @@ class Survey::Survey < ActiveRecord::Base
 
   # a surveys only can be activated if has one or more questions
   def check_active_requirements
-    errors.add(:active, "Survey without questions cannot be activated") if self.active && self.questions.empty?
+    errors.add(:active, "Quiz bez pytań nie może zostać opublikowany.") if self.active && self.questions.empty?
   end
 end

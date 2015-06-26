@@ -1,13 +1,20 @@
 
-  <legend>Nowe pytanie</legend>
-  <div class="field">
-    <%= f.label "Treść pytania" %> <br />
-    <%= f.text_field :text, class: "form-control " %> </div>   <div class="field">
-    <ul class="options">
-      <%= f.fields_for :options do |builder| %>
-          <%= render "option_fields", :f => builder %>
-      <% end -%>
-    </ul>
-    <%= link_to_add_field "Dodaj nową odpowiedź", f, :options %> </div>  
 
-    <div class="field">  <%= link_to_remove_field "Usuń pytanie", f %> </div>  
+
+<div class='field clearfix'>
+  <hr/>
+  <h4>Dodaj pytanie</h4>
+  <div>
+    <div class='form-group'>
+      <%= f.label "Pytanie", class: 'sr-only' %>
+      <%= f.text_field :text, placeholder: 'Treść pytania', class: 'form-control' %>
+    </div>
+  </div>
+  <ol class='appendable'>
+    <%= f.fields_for :options do |builder| %>
+      <%= render 'option_fields', :f => builder %>
+    <% end -%>
+  </ol>
+  <%= link_to_add_field 'Dodaj odpowiedź', f, :options %>
+  <%= link_to_remove_field 'Usuń pytanie', f %>
+</div>

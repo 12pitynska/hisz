@@ -1,8 +1,11 @@
-
-  <div class="field ">
-    <%= f.label "Odpowiedź"  %> <br/ >
-   <div class="col-lg-9">  <%= f.text_field :text, class: "form-control " %>   </div>
-    <%= f.check_box :correct %>
-    <%= f.label "Poprawna" %>
-    <%= link_to_remove_field "Usuń", f %>
+<div class="field">
+  <div class="row">
+    <div class="form-group col-xs-6">
+      <%= f.label :text, class: 'sr-only' %>
+      <%= f.text_field :text, placeholder: 'Odpowiedź', class: 'form-control' %>      </div> 
+    <div class="col-xs-4">     <%= f.check_box :correct %>
+    <%= f.label "Poprawna   " %>
+    <%= link_to_remove_field "Usuń odpowiedź", f %>
+    </div>
   </div>
+</div>

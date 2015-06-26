@@ -288,6 +288,7 @@ pl:
         survey:
           name: "Nazwa"
           description: "Krótki opis"
+          active_survey: "aktywny"
         user:
           email: "email"
           password: "hasło"
