@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails-html-sanitizer'
 
 gem 'kaminari' # pagination
 gem 'truncate_html' 
