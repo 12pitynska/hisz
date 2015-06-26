@@ -35,3 +35,8 @@
     <% end %>
   <ol>
 </div>
+ 
+<br><br>
+     <%= link_to "Spróbuj jeszcze raz", new_attempt_path(survey_id: @attempt.survey.id), class: 'btn btn-default' %>
+      
+<br><br><%= link_to 'Powrót', surveys_path %>

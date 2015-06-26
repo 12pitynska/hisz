@@ -255,6 +255,9 @@ pl:
         display_entries: "Znaleziono %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>. W sumie: <b>%{total}</b> "
 
 
+
+
+
   activerecord:
       attributes:
         survey_surveys:
@@ -288,7 +291,7 @@ pl:
         survey:
           name: "Nazwa"
           description: "Krótki opis"
-          active_survey: "aktywny"
+          active: "aktywny"
         user:
           email: "email"
           password: "hasło"

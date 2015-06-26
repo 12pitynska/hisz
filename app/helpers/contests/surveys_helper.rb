@@ -1,9 +1,13 @@
 module Contests::SurveysHelper
-
   def link_to_remove_field(name, f)
     f.hidden_field(:_destroy) +
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
+
+def sur 
+   Survey::Survey.all
+end
+
 
   def new_survey
     new_survey_path
@@ -53,16 +57,18 @@ module Contests::SurveysHelper
   end
 
   def get_color_of_option answer, option
-    if is_quiz?(answer.question.survey.survey_type)
+
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
-    elsif is_score?(answer.question.survey.survey_type)
-      get_weight_html_class option
-    end
+ 
   end
+
+
+
+  
 
   def get_survey_type survey_type
     get_survey_types[survey_type] || get_survey_types.invert[survey_type]
@@ -87,7 +93,7 @@ module Contests::SurveysHelper
   end
 
   def get_weight option
-    return unless is_score?(option.question.survey.survey_type)
+    return unless is_score?(option.question.survey)
     option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
   end
 
@@ -107,6 +113,8 @@ module Contests::SurveysHelper
   def number_of_attempts survey
     survey.attempts.count
   end
+
+  
 
   private
 

@@ -27,10 +27,27 @@
     </div>
     <div class='row'>
       <div class='form-group col-sm-12'>
-        <%= f.label "Króŧki opis" %>
+        <%= f.label "Krótki opis" %>
         <%= f.text_area :description, size: '100x3', class: 'form-control', style: 'max-width: 100%;' %>
       </div>
     </div>
+    
+
+ <div class="field">
+    <%= f.label 'Przyporządkuj do zagadnienia gramatycznego' %><br>
+    <%= collection_select(:survey_survey, :theory_id, Theory.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+
+   <div class="field">
+    <%= f.label 'Przyporządkuj do artykułu' %><br>
+    <%= collection_select(:survey_survey, :article_id, Article.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+  
+     <div class="field">
+    <%= f.label 'Przyporządkuj do zestawu słówek' %><br>
+    <%= collection_select(:survey_survey, :vocabulary_id, Vocabulary.all.order('polish ASC'), :id, :polish, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+
     
     <div class='appendable'>
  

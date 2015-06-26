@@ -27,8 +27,9 @@ GRAMATYKA
 
 
    <ul class="nav nav-stacked">
-<% unless @surveys == nil %>
 
+    <% if user_signed_in? %>   <li>  <h3 class="highlight" > <%= link_to 'DODAJ ZAGADNIENIE', new_theory_path %> </h3></li> <% end %>
+   <% unless @surveys.first == nil %>
 
            <% if user_signed_in? %>
          <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>

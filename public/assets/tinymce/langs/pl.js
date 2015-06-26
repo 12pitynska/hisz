@@ -174,4 +174,5 @@ tinymce.addI18n('pl',{
 "View": "Widok",
 "Table": "Tabela",
 "Format": "Format"
+
 });

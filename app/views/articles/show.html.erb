@@ -1,5 +1,5 @@
 <% content_for :cattitle do %> 
-	AKTUALNOŚCI
+	ARTYKUŁY I TEKSTY
 <% end %>
 
 <% content_for :catdes do %> 
@@ -24,14 +24,19 @@
 
 
    <ul class="nav nav-stacked">
-   <% unless @surveys == nil %>
+        
+     <% if user_signed_in? %>
+     <li>  <h3 class="highlight" > <%= link_to 'DODAJ ARTYKUŁ', new_article_path %> </h3></li> 
+         <% end %>
+   <% unless @surveys.first == nil %>
 
      <% if user_signed_in? %>
+
                     <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
       <% @surveys.each do |survey| %>
     
       <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
-   
+    
     <% end %>
 
          <% end %>
