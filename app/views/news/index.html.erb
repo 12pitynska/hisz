@@ -52,7 +52,7 @@
 
     <% end %>
 </p>
-     <p> <%= sanitize news.body.truncate_words(35) %>        <%= link_to "czytaj więcej", news %> </p>
+     <p> <%= news.short.truncate_words(35) %>        <%= link_to "czytaj więcej", news %> </p>
         
       </div>      <% unless  news.image.blank? %>
          <div class="col-md-2">
