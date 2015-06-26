@@ -59,7 +59,7 @@
  <% end %>
       </p>
         
-        <p>     <%= Loofah.fragment(strip_tags(article.body.truncate_words(35))) %>
+        <p>     <%= article.short %>
         <%= link_to "czytaj więcej", article %>    </p>   
   </div> 
       <% unless  article.image.blank? %>

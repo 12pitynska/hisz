@@ -63,7 +63,7 @@ JĘZYKA HISZPAŃSKIEGO
         <%= link_to 'Edytuj', edit_theory_path(theory) %>
         <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <% end %>
-<p><%= Loofah.fragment(strip_tags(theory.body.truncate_words(35))) %>
+<p><%= theory.short %>
 
         <%= link_to "czytaj więcej", theory %>
         </p>

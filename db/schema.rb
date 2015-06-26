@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626215045) do
+ActiveRecord::Schema.define(version: 20150626221854) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150626215045) do
     t.integer  "level_id"
     t.integer  "user_id"
     t.string   "status"
+    t.text     "short"
   end
 
   add_index "articles", ["level_id"], name: "index_articles_on_level_id"
@@ -180,6 +181,7 @@ ActiveRecord::Schema.define(version: 20150626215045) do
     t.integer  "survey_id"
     t.integer  "user_id"
     t.string   "status"
+    t.text     "short"
   end
 
   add_index "theories", ["level_id"], name: "index_theories_on_level_id"

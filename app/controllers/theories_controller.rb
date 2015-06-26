@@ -105,6 +105,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theory_params
-      params.require(:theory).permit(:title, :body, :image, :level_id, :survey_id, :user_id, :status)
+      params.require(:theory).permit(:title, :short, :body, :image, :level_id, :survey_id, :user_id, :status)
     end
 end
