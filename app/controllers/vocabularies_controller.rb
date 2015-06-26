@@ -5,12 +5,12 @@ authorize_resource
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.where(status: "approved").order('polish ASC').page(params[:page]).per(5)
+    @vocabularies = Vocabulary.where(status: "approved").order('polish ASC').page(params[:page]).per(10)
 
     if params[:search]
-      @vocabularies = Vocabulary.where(status: "approved").search(params[:search]).order("polish ASC").page(params[:page]).per(5)
+      @vocabularies = Vocabulary.where(status: "approved").search(params[:search]).order("polish ASC").page(params[:page]).per(10)
     else
-      @vocabularies = Vocabulary.where(status: "approved").order("polish ASC").page(params[:page]).per(5)
+      @vocabularies = Vocabulary.where(status: "approved").order("polish ASC").page(params[:page]).per(10)
     end
 
   end
