@@ -40,28 +40,19 @@
 
 
 <% @news.each do |news| %>
-  
- <div class="row">
- 
-
-
-     <% unless  news.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
-
+   <div class="row">
+      <% unless  news.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
       <% if  news.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
-
-
-
-
-
-        <h2><%= link_to news.title, news %></h2>
+      <h2><%= link_to news.title, news %></h2>
+        
         <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= news.user.login %>  </i>
   <% if user_signed_in? %>
               <%= link_to 'Edytuj', edit_news_path(news) %>
               <%= link_to 'Usuń', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
     <% end %>
-
-     <p> <%= Loofah.fragment(strip_tags(news.body.truncate_words(35))) %>        <%= link_to "czytaj więcej", news %> </p>
+</p>
+     <p>  <%= news.body %>   <%= link_to "czytaj więcej", news %> </p>
         
       </div>      <% unless  news.image.blank? %>
          <div class="col-md-2">
@@ -75,7 +66,4 @@
 <div class="text-center"><%= paginate @news %></div>
 
 
-<br>
-<!-- 
-<%= link_to 'New News', new_news_path %>
- -->
+
