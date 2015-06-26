@@ -25,6 +25,60 @@ $grid-float-breakpoint: $screen-md-min;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
+h3.highlight  {
+  font-size: 20px;
+}
+
+
+
+#error_explanation {
+  width: 100%;
+  border: none;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: white;
+border-radius: 4px;
+padding: 0px;
+padding-top: 15px;
+padding-bottom: 15px;
+background-color: #4D363E;
+color: white;
+border-bottom: 1px solid #ddd;
+text-align: center;
+
+
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 7px 7px 7px 15px;
+  font-size: 15px;
+  margin: 7px;
+  background-color: #4D363E;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #4D363E;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+  text-align: left;
+}
+
+.field_with_errors {
+background-color:  #4D363E;
+
+}
+
+
   a {
     color: #666;
   }
@@ -92,8 +146,11 @@ header {
 }
 
 .welcome {
-  text-align: center;
+  text-align: left;
+  color: #c92c2c;
 }
+
+
 
 .cattitle {
   font-size: 40px;

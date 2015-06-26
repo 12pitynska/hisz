@@ -1,14 +1,19 @@
 <%= form_for(@survey, :url => survey_scope(@survey)) do |f| %>
 
-  <% if f.object.errors.messages.any? %>
-    <ul>
-      <% f.object.errors.messages.each_pair do |field, msg| %>
-        <li>
-          <%= "#{field} - #{msg}" %>
-        </li>
-      <% end -%>
-    </ul>
-  <% end -%>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2> Quiz nie został dodany z powodu <%= @survey.errors.count %> <% if @survey.errors.count == 1 %> błędu. <% else %> błędów. <% end %> </h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
 
   <div class="form-group ">
     <%= f.label "Nazwa" %> <br />

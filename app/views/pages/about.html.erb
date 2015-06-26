@@ -14,7 +14,8 @@
    
      <h3 class="highlight">  </h3> 
      
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> korzystać ze wszystkich opcji serwisu!
+<%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
+    aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
     
   </p>
   </div>
@@ -24,19 +25,29 @@
 <% end %>
 
 <h1> O projekcie </h1>
-
-<p>
-HISZPAŃSKI ONLINE  to plaforma do udostępniania darmowych materiałów do nauki języka hiszpańskiego na każdym poziomie. Znajdziesz tutaj różnorodne materiały przyporządkowane do poszczególnych działów: <%= link_to "SŁOWNICTWO", vocabularies_path %>, <%= link_to "GRAMATYKA", theories_path %>, <%= link_to "ARTYKUŁY", articles_path %>, <%= link_to "ĆWICZENIA", surveys_path %> i <%= link_to "BAZA LINKÓW", links_path %>. Zachęcamy również do rejestracji w serwisie. Zalogowani użytkownicy otrzymują dostęp do interaktywnych ćwiczeń, wspomagających naukę oraz mogą współtworzyć stronę udostępniając własne treści!
-<br><br>
-W dziale <%= link_to "SŁOWNICTWO", vocabularies_path %> znajdziesz pogrupowane słówka. Do każdego zestawu słówek mogą zostać przypisane ćwiczenia, które pomogą Ci w zapamiętaniu nowego słownictwa!
-<br><br>
-W zakładce <%= link_to "GRAMATYKA", theories_path %> znajdują się wyjaśnione zagadnienia gramatyczne. Do każdego zagadanienia mogą również zostać przypisane ćwiczenia, które pomogą Ci w nauce!
-<br><br>
-Dział <%= link_to "ARTYKUŁY", articles_path %> to świetny sposób na poszerzenie słownictwa oraz ćwiczenie zdolności czytania ze zrozumieniem. Znajdziesz tam artykuły w języku hiszpańskim, o różnym stopniu trudności. Przy każdym tekście wyjaśniono trudne słówka oraz istnieje opcja dodania quizu, dzięki czemu możesz sprawdzić w jakim stopniu zrozumiałeś dany tekst.
-<br><br>
-<%= link_to "BAZA LINKÓW", links_path %> to zbiór odnośników do innych stron i zasobów, powiązanych z nauką języka hiszpańskiego. W trakcie nauki znalazłeś coś ciekawego w sieci? Podziel się z innymi! 
 <br>
-</p>
-<p> Serwis został stworzony w ramach projektu licencjackiego. </p>
+<p>
+HISZPAŃSKI ONLINE  to plaforma do udostępniania darmowych materiałów do nauki języka hiszpańskiego na każdym poziomie. Znajdziesz tutaj różnorodne materiały przyporządkowane do poszczególnych działów: <Br> <%= link_to "SŁOWNICTWO", vocabularies_path %>, <%= link_to "GRAMATYKA", theories_path %>, <%= link_to "ARTYKUŁY", articles_path %>, <%= link_to "ĆWICZENIA", surveys_path %> i <%= link_to "BAZA LINKÓW", links_path %>. </p> <p> Zachęcamy do   <%= link_to "rejestracji", new_user_registration_path %> w serwisie. Zalogowani użytkownicy otrzymują dostęp do interaktywnych ćwiczeń wspomagających naukę oraz mogą współtworzyć stronę udostępniając własne treści! </p><br>
+<h4> Słownictwo </h4>
+<p> W dziale <%= link_to "SŁOWNICTWO", vocabularies_path %> znajdziesz pogrupowane słówka. Do każdego zestawu słówek mogą zostać przypisane ćwiczenia, które pomogą Ci w zapamiętaniu nowego słownictwa! </p>
+<h4> Gramatyka </h4>
+<p> W zakładce <%= link_to "GRAMATYKA", theories_path %> znajdują się wyjaśnione zagadnienia gramatyczne. Do każdego zagadanienia mogą również zostać przypisane ćwiczenia, które pomogą Ci w nauce!</p>
+<h4> Artykuły </h4>
+<p> Dział <%= link_to "ARTYKUŁY", articles_path %> to świetny sposób na poszerzenie słownictwa oraz ćwiczenie zdolności czytania ze zrozumieniem. Znajdziesz tam artykuły w języku hiszpańskim, o różnym stopniu trudności. Przy każdym tekście wyjaśniono trudne słówka oraz istnieje opcja dodania quizu, dzięki czemu możesz sprawdzić w jakim stopniu zrozumiałeś dany tekst.</p>
+<h4>Ćwiczenia</h4>
+<p> <%= link_to "ĆWCZENIA", links_path %> to dział dla zarejestrowanych użytkowników. Znajdziesz tutaj interaktywne ćwiczenia w formie quizu, które pomogą Ci przyswoić wiedzę. </p>
+
+<h4> Baza linków </h4>
+<p> <%= link_to "BAZA LINKÓW", links_path %> to zbiór odnośników do innych stron i zasobów, powiązanych z nauką języka hiszpańskiego. W trakcie nauki znalazłeś coś ciekawego w sieci? Podziel się z innymi! </p>
+<br>
+
+<p> Serwis został stworzony w ramach projektu licencjackiego pod kierunkiem prof. dra hab. Grzegorza Bilińskiego. </p>
+<p> Aneta Pityńska <br> Uniwersytet Jagielloński <br>
+Wydział Zarządzania i Komunikacji Społecznej <br>
+Katedra Lingwistyki Komputerowej <br>
+kierunek: elektorniczne przetwarzanie informacji </p>
+
+
+
 
 

@@ -35,7 +35,7 @@ pl:
       long: ! '%B %d, %Y'
       short: ! '%d %b'
     month_names:
-    -
+    
     - styczeń
     - luty
     - marzec
@@ -86,7 +86,7 @@ pl:
         one: mniej niż sekundę
         other: mniej niż %{count} sekund
       over_x_years:
-        few: ponad %{count} lata
+        few: ponad %{count} lataz
         many: ponad %{count} lat
         one: ponad rok
         other: ponad %{count} lat
@@ -118,7 +118,7 @@ pl:
       second: Sekundy
       year: Rok
   errors:
-    format: ! '%{attribute} %{message}'
+    format: ! 'Pole %{attribute} %{message}'
     messages:
       accepted: musi zostać zaakceptowane
       blank: nie może być puste
@@ -148,10 +148,10 @@ pl:
         one: jest za długie (maksymalnie jeden znak) 
         other: jest za długie (maksymalnie %{count} znaków)
       too_short:
-        few: jest za krótkie (przynajmniej %{count} znaki)
-        many: jest za krótkie (przynajmniej %{count} znaków)
-        one: jest za krótkie (przynajmniej jeden znak)
-        other: jest za krótkie (przynajmniej %{count} znaków)
+        few: jest za krótkie (wymagane przynajmniej %{count} znaki)
+        many: jest za krótkie (wymagane przynajmniej %{count} znaków)
+        one: jest za krótkie (wymagane przynajmniej jeden znak)
+        other: jest za krótkie (wymagane przynajmniej %{count} znaków)
       wrong_length:
         few: ma nieprawidłową długość (powinna wynosić %{count} znaki)
         many: ma nieprawidłową długość (powinna wynosić %{count} znaków)
@@ -253,3 +253,52 @@ pl:
           other: "Znaleziono <b> %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Znaleziono %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>. W sumie: <b>%{total}</b> "
+
+
+  activerecord:
+      attributes:
+        survey_surveys:
+          name: "Nazwa"
+          description: "Krótki opis"
+        link:
+          title: "nazwa"
+          url: "adres url"
+          description: "krótki opis"
+          category_id: "kategoria"
+        article:
+          title: "tytuł"
+          body: "treść"
+          image: "obrazek"
+        news:
+          title: "tytuł"
+          body: "treść"
+          image: "obrazek"
+        theory:
+          title: "tytuł"
+          body: "treść"
+          image: "obrazek"
+        vocabulary:
+          polish: "polska nazwa"
+          spanish: "hiszpańska nazwa"
+          description: "komentarz"
+        word:
+          polish: "polskie tłumaczenie"
+          spanish: "hiszpańskie tłumaczenie"
+          description: "komentarz"
+        survey:
+          name: "Nazwa"
+          description: "Krótki opis"
+        user:
+          email: "email"
+          password: "hasło"
+          current_password: "aktualne hasło"
+          password_confirmation: "powtórz hasło"
+          login: "login"
+         
+       
+       
+       
+       
+       
+       
+       

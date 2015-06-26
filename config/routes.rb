@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   post 'theories/new/tinymce_assets' => 'tinymce_assets#create'
 
   get 'about' => 'pages#about', as: 'about'
+  get 'search' => 'pages#search', as: 'search'
+
   root to: "news#index"
 
   match "*path", :to => "application#routing_error", :via => :all

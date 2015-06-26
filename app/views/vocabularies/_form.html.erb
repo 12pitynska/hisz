@@ -1,7 +1,7 @@
 <%= form_for(@vocabulary) do |f| %>
   <% if @vocabulary.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@vocabulary.errors.count, "error") %> prohibited this vocabulary from being saved:</h2>
+      <h2>Zestaw słówek nie został dodany z powodu <%= @vocabulary.errors.count %> <% if @vocabulary.errors.count == 1 %> błędu. <% else %> błędów. <% end %> </h2>
 
       <ul>
       <% @vocabulary.errors.full_messages.each do |message| %>

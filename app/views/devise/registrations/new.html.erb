@@ -15,7 +15,8 @@
   <div class="form-group ">
 
    <div class="field">
-    <%= f.label 'Nazwa użytkownika' %><br />
+    <%= f.label 'Nazwa użytkownika' %>       <em>(Minimum 5 znaków )</em><br />
+ 
     <%= f.text_field :login, autofocus: true , class: "form-control" %>
   </div>
 
@@ -27,7 +28,7 @@
   <div class="field">
     <%= f.label 'Hasło' %>
     <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Minimum <%= @minimum_password_length %> znaków )</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off"  , class: "form-control" %>
   </div>

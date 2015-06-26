@@ -1,7 +1,7 @@
 <%= form_for @theory,  html: { multipart: true } do |f| %>
   <% if @theory.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@theory.errors.count, "error") %> prohibited this theory from being saved:</h2>
+      <h2>Zagadnienie nie zostało dodane z powodu <%= @theory.errors.count %> <% if @theory.errors.count == 1 %> błędu. <% else %> błędów. <% end %> </h2>
 
       <ul>
       <% @theory.errors.full_messages.each do |message| %>
@@ -16,7 +16,7 @@
     <%= f.text_field :title, class: "form-control "  %> 
   </div>
     <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label "Obrazek" %><br>
     <%= f.file_field :image  %> 
   </div>
   <div class="field">

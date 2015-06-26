@@ -25,7 +25,7 @@ class Contests::SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey::Survey.new(survey_param)
+    @survey = Survey::Survey.new(survey_params)
     @survey.status = "draft"
     @survey.user_id = current_user.id
     if @survey.valid? && @survey.save
@@ -84,7 +84,7 @@ def moderation
   end
 
   def survey_params
-         params.require(:survey_survey).permit([:name, :user_id, :status, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
+         params.require(:survey_survey).permit([:name, :status, :user_id, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
   end
 
   def params_whitelist

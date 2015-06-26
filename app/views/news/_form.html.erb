@@ -1,7 +1,7 @@
 <%= form_for @news,  html: { multipart: true } do |f| %>
   <% if @news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2>Aktualność nie została dodana z powodu <%= @news.errors.count %> <% if @news.errors.count == 1 %> błędu. <% else %> błędów. <% end %> </h2>
 
       <ul>
       <% @news.errors.full_messages.each do |message| %>

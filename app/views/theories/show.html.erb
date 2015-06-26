@@ -13,11 +13,15 @@ GRAMATYKA
 <% content_for :rightmenu do %>
  
 
-<% unless user_signed_in? %>
+  <% unless user_signed_in? %>
       <div class="welcome" > 
-        <h3 class="highlight">  </h3> 
-        <%= link_to "Zarejestruj się", new_user_registration_path %> lub <br> <%= link_to "zaloguj", new_user_session_path %> aby móc <br> rozwiązywać ćwiczenia i korzystać ze wszystkich opcji serwisu!
-    </p>
+   
+     <h3 class="highlight">  </h3> 
+     
+    <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
+    aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
+    
+  </p>
   </div>
 <% end %>
 

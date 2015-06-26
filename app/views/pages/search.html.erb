@@ -1,0 +1,249 @@
+<% content_for :rightmenu do %>
+ 
+   <ul class="nav nav-stacked">
+            
+                   <li><h3 class="highlight">SZUKAJ STRONY</h3></li>
+                    <li>
+                      <%= form_tag(search_path, :method => "get", class: "form-inline", id: "search-form") do %>
+                        <div class="input-group">
+                          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
+                          <div class="input-group-btn">
+                          <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></div>
+                        </div>
+                      <% end %>
+                    </li>
+
+        </ul>
+
+<% end %>
+
+
+
+<h1> Aktualności </h1>
+
+<% @news.each do |news| %>
+  
+ <div class="row">
+ 
+
+
+     <% unless  news.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
+
+      <% if  news.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
+
+
+
+
+
+        <h2><%= link_to news.title, news %></h2>
+        <p class="date"><%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= news.user.login %>  </i>
+  <% if user_signed_in? %>
+              <%= link_to 'Edytuj', edit_news_path(news) %>
+              <%= link_to 'Usuń', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+    <% end %>
+
+     <p> <%= Loofah.fragment(strip_tags(news.body.truncate_words(35))) %>        <%= link_to "czytaj więcej", news %> </p>
+        
+      </div>      <% unless  news.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag news.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
+</div>
+ 
+<% end %>
+
+
+<h1> Zestawy słówek </h1>
+
+
+
+<div class="table-responsive">
+<table class="table" id="links">
+
+  <tbody>
+    <% @vocabularies.each do |vocabulary| %>
+      <tr>
+        <td><%= link_to vocabulary.polish, vocabulary %></td>
+        <td><%= link_to vocabulary.spanish, vocabulary %></td>
+
+        <td>  <%= vocabulary.description %></td>
+        
+       <% if user_signed_in? %>
+        <td><%= link_to 'Pokaż', vocabulary %></td>
+        <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
+        <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>
+
+     <% end %>     
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+
+<h1> Gramatyka </h1>
+
+  <% @theories.each do |theory| %>
+  
+ <div class="row">
+
+   <% unless  theory.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
+
+      <% if  theory.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
+
+        <h2><%= link_to theory.title, theory %></h2>
+        <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <i> @<%= theory.user.login %>  </i>
+     <% if user_signed_in? %> 
+        <%= link_to 'Edytuj', edit_theory_path(theory) %>
+        <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+ <% end %>
+<p><%= Loofah.fragment(strip_tags(theory.body.truncate_words(35))) %>
+
+        <%= link_to "czytaj więcej", theory %>
+        </p>
+       </div> 
+            <% unless  theory.image.blank? %>
+         <div class="col-md-2">
+                  <div class="thumbimage"> <%= image_tag theory.image.url(:thumb) %> </div>
+         </div>
+      <% end %>
+
+</div>
+
+<% end %>
+
+
+
+<h1> Artykuły i teksty w języku hiszpańskim </h1>
+
+
+
+<% @articles.each do |article| %>  
+  <div class="row">
+      <% unless  article.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
+      <% if  article.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
+        <h2><%= link_to article.title, article %></h2>
+
+        <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <i> @<%= article.user.login %>  </i>
+      <% if user_signed_in? %> 
+          <%= link_to 'Edytuj', edit_article_path(article) %>
+       
+        <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+ <% end %>
+      </p>
+        
+        <p>     <%= Loofah.fragment(strip_tags(article.body.truncate_words(35))) %>
+        <%= link_to "czytaj więcej", article %>    </p>   
+  </div> 
+      <% unless  article.image.blank? %>
+        <div class="col-md-2">
+           <div class="thumbimage"> <%= image_tag article.image.url(:thumb) %> </div>
+        </div>
+      <% end %>
+  </div>
+ 
+
+<% end %>
+
+
+
+<h1> Ćwiczenia </h1>
+
+<div class="table-responsive">
+
+<table class="table" id="links">
+    <tbody>
+
+    <% @surveys.each do |survey| %>
+ <tr>
+       
+        <td>
+       <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %>
+      </td>
+
+
+       <td>
+       <%= survey.description %>
+      </td>
+
+
+   <% if user_signed_in? %> 
+
+      <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
+      </td>
+       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+ <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+
+<h1> Linki </h1>
+
+<div class="table-responsive">
+<table class="table" id="links">
+
+  <tbody>
+    <% @links.each do |link| %>
+   
+        <td> 
+
+      <% if link.category_id == 1 %> <!-- muzyka nagrania --> 
+          <i class="fa fa-headphones fa-lg"></i> 
+      <% end %>
+         
+       <% if link.category_id == 2 %> <!-- filmy video --> 
+         <i class="fa fa-video-camera fa-lg"></i>
+      <% end %>
+
+      <% if link.category_id == 3 %>  <!-- wiadomosci --> 
+         <i class="fa fa-newspaper-o fa-lg"></i>
+      <% end %>
+      
+      <% if link.category_id == 4 %>        <!-- serwisy edukacyjne --> 
+          <i class="fa fa-list-alt fa-lg"></i>
+      <% end %>
+
+      <% if link.category_id == 5 %>        <!-- słowniki --> 
+          <i class="fa fa-book fa-lg"></i> 
+      <% end %>
+      
+      <% if link.category_id == 6 %>  <!-- gry --> 
+         <i class="fa fa-gamepad fa-lg"></i>
+      <% end %>
+    
+      <% if link.category_id == 7 %>   <!-- egzaminy i certyfikaty --> 
+         <i class="fa fa-certificate fa-lg"></i>
+      <% end %>
+  
+      <% if link.category_id == 8 %>   <!--szkoly  --> 
+          <i class="fa fa-graduation-cap fa-lg"></i>
+      <% end %>
+
+      <% if link.category_id == 9 %> <!-- inne --> 
+        <i class="fa fa-asterisk fa-lg"></i> 
+      <% end %>
+
+
+
+        </td>
+
+
+
+
+
+        <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
+<!--         <td><%= link.url %></td> -->
+      <!--  -->  <td><%= link.description %></td>
+       <% if user_signed_in? %>      <td><%= link_to 'Pokaż', link %></td>
+        <td><%= link_to 'Edytuj', edit_link_path(link) %></td>
+        <td><%= link_to 'Usuń', link, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td> <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
