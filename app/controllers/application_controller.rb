@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 	helper :all
 	 # Prevent CSRF attacks by raising an exception.
      # For APIs, you may want to use :null_session instead.
+
+
+before_filter :store_location
+
 before_action :configure_permitted_parameters, if: :devise_controller?
 protect_from_forgery with: :exception
 rescue_from ActionController::RoutingError, :with => :record_not_found
@@ -11,9 +15,6 @@ def routing_error
     raise ActionController::RoutingError.new(params[:path])
 end
 
-
-
-after_filter :store_location
 
 def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
