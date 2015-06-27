@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :catdes do %> 
-  <%= @article.title %>, <%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+  <%= @article.title.upcase %>
 <% end %>
 
 <% content_for :rightmenu do %>

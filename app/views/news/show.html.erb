@@ -6,7 +6,7 @@ AKTUALNOŚCI
 
 
 <% content_for :catdes do %> 
-  <%= @news.title %>, <%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+  <%= @news.title.upcase %>
 <% end %>
 
 
