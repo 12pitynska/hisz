@@ -55,7 +55,7 @@ BAZA HISZPAŃSKICH SŁÓWEK
         <td><%= link_to vocabulary.spanish, vocabulary %></td>
 
         <td>  <%= vocabulary.description %></td>
-        
+        <td> <% if vocabulary.level_id %> <i><%= vocabulary.level.name %></i> <% end %> </td>
        <% if user_signed_in? %>
         <td><%= link_to 'Pokaż', vocabulary %></td>
         <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>

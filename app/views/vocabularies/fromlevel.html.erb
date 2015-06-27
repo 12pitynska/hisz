@@ -56,9 +56,11 @@ BAZA HISZPAŃSKICH SŁÓWEK
         <td><%= link_to vocabulary.polish, vocabulary %></td>
           <td><%= vocabulary.spanish %></td>
             <td><%= vocabulary.description %></td>
-        <td><%= link_to 'Pokaż', vocabulary %></td>
+                    <td> <% if vocabulary.level_id %> <i><%= vocabulary.level.name %></i><% end %></td> 
+
+         <% if user_signed_in? %>      <td><%= link_to 'Pokaż', vocabulary %></td>
         <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
-        <td><%= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td> <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -33,6 +33,12 @@
     </div>
     
 
+
+ <div class="field">
+    <%= f.label 'Poziom' %><br>
+    <%= collection_select(:survey_survey, :level_id, Level.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
+  </div>
+
  <div class="field">
     <%= f.label 'Przyporządkuj do zagadnienia gramatycznego' %><br>
     <%= collection_select(:survey_survey, :theory_id, Theory.all.order('title ASC'), :id, :title, {prompt: "Wybierz z listy"},  class: "form-control" )%>

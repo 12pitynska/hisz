@@ -54,7 +54,8 @@ GRAMATYKA
   <%= @theory.title %>
 </h2>
 
-<p class="date"><%= @theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @theory.user.login %>  </i></p>
+<p class="date"><%= @theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @theory.user.login %>  </i>         
+  <% if @theory.level_id %> | <i> <%= @theory.level.name %> </i><% end %></p>
 
 <div style="float: left">
 <% unless @theory.image.blank? %><%= image_tag @theory.image(:medium), :class => "main-image" %> <% end %>

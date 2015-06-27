@@ -44,6 +44,7 @@ Rails.application.routes.draw do
    resources :attempts
    get '/moderation/surveys' => 'surveys#moderation', as: 'moderation_surveys'
    put '/approve/surveys' => 'surveys#approve', as: 'approve_surveys'
+   get 'surveys/level/:id' => 'surveys#fromlevel', as: 'surveys_level'
 
   end
 

@@ -57,7 +57,7 @@
   <%= @vocabulary.polish %> /  <%= @vocabulary.spanish %>
 </h2>
 
-<p class="date"><%= @vocabulary.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @vocabulary.user.login %>  </i> </p>
+<p class="date"><%= @vocabulary.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @vocabulary.user.login %>  </i>  <% if @vocabulary.level_id %> | <i><%= @vocabulary.level.name %></i> <% end %> </p>
 
 
 

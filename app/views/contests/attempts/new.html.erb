@@ -37,7 +37,7 @@
 
 <% if @survey.nil? %>
   <p>
-    <%= @participant.email %> there are not Active Surveys right now.
+    <%= @participant.email %> brak aktywnych ćwiczeń.
   </p>
 <% elsif @survey.avaliable_for_participant?(@participant) %>
 
@@ -47,6 +47,6 @@
   <%= render 'form' %>
 <% else %>
   <p>
-    <%= @participant.email %> spent all the possible attempts to answer this Survey
+    <%= @participant.email %> brak dodatkowych prób.
   </p>
 <% end -%>

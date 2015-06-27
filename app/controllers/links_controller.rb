@@ -7,12 +7,12 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(10)
+    @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(15)
 
    if params[:search]
-      @links = Link.where(status: "approved").search(params[:search]).order('title ASC').page(params[:page]).per(10)
+      @links = Link.where(status: "approved").search(params[:search]).order('title ASC').page(params[:page]).per(15)
     else
-      @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(10)
+      @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(15)
     end
   end
 

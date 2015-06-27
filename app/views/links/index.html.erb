@@ -101,6 +101,8 @@ DO STRON ZWIĄZANYCH Z J. HISZPAŃSKIM
         <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
 <!--         <td><%= link.url %></td> -->
       <!--  -->  <td><%= link.description %></td>
+<td><i> @<%= link.user.login %>  </i></td>
+
        <% if user_signed_in? %>      <td><%= link_to 'Pokaż', link %></td>
         <td><%= link_to 'Edytuj', edit_link_path(link) %></td>
         <td><%= link_to 'Usuń', link, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten link?' } %></td> <% end %>

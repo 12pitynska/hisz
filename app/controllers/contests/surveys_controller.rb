@@ -4,18 +4,25 @@ class Contests::SurveysController < ApplicationController
 
   authorize_resource
   def index
-   @surveys = Survey::Survey.where(status: "approved").order('name ASC').page(params[:page]).per(10)
+   @surveys = Survey::Survey.where(status: "approved").order('name ASC').page(params[:page]).per(15)
 
 
    @par = Survey::Survey::AccessibleAttributes
 
    if params[:search]
-      @surveys = Survey::Survey.where(status: "approved").search(params[:search]).order("name ASC").page(params[:page]).per(10)   
+      @surveys = Survey::Survey.where(status: "approved").search(params[:search]).order("name ASC").page(params[:page]).per(15)   
     else
-   @surveys = Survey::Survey.where(status: "approved").order('name ASC').page(params[:page]).per(10)
+   @surveys = Survey::Survey.where(status: "approved").order('name ASC').page(params[:page]).per(15)
     end
 
   end
+
+
+  def fromlevel
+    @level = Level.find(params[:id])
+     @surveys = Survey::Survey.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(15)
+  end
+
 
   def new
   
@@ -84,7 +91,7 @@ def moderation
   end
 
   def survey_params
-         params.require(:survey_survey).permit([:name, :status, :user_id, :description, :finished, :active, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
+         params.require(:survey_survey).permit([:name, :status, :user_id, :description, :finished, :active, :level_id, :theory_id, :article_id, :vocabulary_id, :attempts_number, {:questions_attributes=>[:text, :survey, {:options_attributes=>[:text, :correct, :weight, :id, :_destroy]}, :id, :_destroy]}, :id, :_destroy])
   end
 
   def params_whitelist
