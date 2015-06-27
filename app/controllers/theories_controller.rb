@@ -19,7 +19,7 @@ authorize_resource
 
   def fromlevel
     @level = Level.find(params[:id])
-    @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
+    @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).order("created_at DESC").page(params[:page]).per(5)
 
 
 
