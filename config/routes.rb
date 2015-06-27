@@ -76,7 +76,7 @@ Rails.application.routes.draw do
 
   match "*path", :to => "application#routing_error", :via => :all
 
-devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
