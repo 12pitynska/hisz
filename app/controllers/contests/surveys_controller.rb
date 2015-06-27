@@ -20,7 +20,7 @@ class Contests::SurveysController < ApplicationController
 
   def fromlevel
     @level = Level.find(params[:id])
-     @surveys = Survey::Survey.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(15)
+     @surveys = Survey::Survey.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).order('name ASC').page(params[:page]).per(15)
   end
 
 

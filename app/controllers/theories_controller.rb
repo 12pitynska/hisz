@@ -5,21 +5,21 @@ authorize_resource
   # GET /theories
   # GET /theories.json
   def index
-    @theories = Theory.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
+    @theories = Theory.where(status: "approved").order('title ASC').page(params[:page]).per(5)
 
       
     if params[:search]
-      @theories = Theory.where(status: "approved").search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
+      @theories = Theory.where(status: "approved").search(params[:search]).order("title ASC").page(params[:page]).per(5)
 
     else
-      @theories = Theory.where(status: "approved").order("created_at DESC").page(params[:page]).per(5)
+      @theories = Theory.where(status: "approved").order("title ASC").page(params[:page]).per(5)
 
     end
   end
 
   def fromlevel
     @level = Level.find(params[:id])
-    @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).order("created_at DESC").page(params[:page]).per(5)
+    @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).order("title ASC").page(params[:page]).per(5)
 
 
 

@@ -57,7 +57,7 @@ BAZA HISZPAŃSKICH SŁÓWEK
 
         <td>  <%= vocabulary.description %></td>
         <td> <% if vocabulary.level_id %> <i><%= vocabulary.level.name %></i> <% end %> </td>
-       <% if user_signed_in? %>
+  <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
         <td><%= link_to 'Pokaż', vocabulary %></td>
         <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
         <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>

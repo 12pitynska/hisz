@@ -8,6 +8,7 @@ class Ability
         can [:read, :fromlevel], Theory
         can [:read, :fromlevel], Article
         can [:read, :fromlevel], Vocabulary
+        can [:read, :fromlevel], Survey::Survey
 
  
       if user != nil
@@ -18,6 +19,7 @@ class Ability
         end
         if user.role.name == "Moderator"
             can :manage, [News, Article, Vocabulary, Word, Link, Theory, Survey]
+            can :manage, [Survey::Survey]
         end
         if user.role.name == "User"
             can :create, [Article, Vocabulary, Word, Link, Theory, Survey]
@@ -30,6 +32,8 @@ class Ability
             can [:read, :fromlevel], Article
             can [:read, :fromlevel], Vocabulary
 
+
+        can [:read, :fromlevel], Survey
 
 
    #  can[:read, :fromlevel], Theory, level_id: id

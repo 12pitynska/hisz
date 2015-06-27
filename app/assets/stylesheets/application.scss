@@ -124,7 +124,9 @@ background-color:  #4D363E;
   border-color: #ddd ;
 }
 
-
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+  color: #c92c2c;
+}
 /* links */
 
 #links > tbody > tr> td {

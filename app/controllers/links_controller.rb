@@ -27,7 +27,7 @@ class LinksController < ApplicationController
 
   def fromcategory
     @category = Category.find(params[:id])
-    @links = Link.where(["category_id LIKE ? AND status LIKE ?", @category.id, "approved"]).page(params[:page]).per(10)
+    @links = Link.where(["category_id LIKE ? AND status LIKE ?", @category.id, "approved"]).order('title ASC').page(params[:page]).per(10)
 
   end
 

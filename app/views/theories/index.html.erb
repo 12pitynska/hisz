@@ -62,7 +62,7 @@ JĘZYKA HISZPAŃSKIEGO
         <h2><%= link_to theory.title, theory %></h2>
         <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <i> @<%= theory.user.login %>  </i>
                      <% if theory.level_id %> | <i> <%= theory.level.name %> </i><% end %>
-     <% if user_signed_in? %> 
+    <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
         <%= link_to 'Edytuj', edit_theory_path(theory) %>
         <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <% end %>

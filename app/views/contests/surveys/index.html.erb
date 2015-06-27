@@ -80,8 +80,7 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
       </td>
         <td> <% if survey.level_id %> <i><%= Level.where( id: survey.level_id).first.name %></i> <% end %> </td>
 
-   <% if user_signed_in? %> 
-
+   <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
       <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
       </td>
        <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
