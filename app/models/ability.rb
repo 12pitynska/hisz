@@ -9,7 +9,7 @@ class Ability
         can [:read, :fromlevel], Article
         can [:read, :fromlevel], Vocabulary
         can [:read, :fromlevel], Survey::Survey
-
+        cannot :show, Link
  
       if user != nil
 
@@ -23,9 +23,10 @@ class Ability
         end
         if user.role.name == "User"
             can :create, [Article, Vocabulary, Word, Link, Theory, Survey]
+            cannot :show, Link
         else
 
-
+            cannot :show, Link
             can :read, [News, Article, Link, Vocabulary, Word, Survey, Theory]
             can [:read, :fromcategory], Link
             can [:read, :fromlevel], Theory
