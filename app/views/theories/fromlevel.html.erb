@@ -40,7 +40,7 @@ GRAMATYKA
 
 <% end %>
 
-
+   <% if @theories.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
    <% @theories.each do |theory| %>
   

@@ -26,14 +26,14 @@ authorize_resource
     @level = Level.find(params[:id])
   #  @vocabularies = Vocabulary.where(level_id:  @level.id).page(params[:page]).per(5)
 
-    @vocabularies = Vocabulary.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
+    @vocabularies = Vocabulary.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(15)
 
 
   end
 
   
   def word
-     @words =  Word.where(["vocabulary_id LIKE ? AND status LIKE ?", @vocabulary.id, "approved"])
+     @words =  Word.where(["vocabulary_id LIKE ? AND status LIKE ?", @vocabulary.id, "approved"]).order('spanish ASC')
   end
 
 
@@ -52,7 +52,7 @@ authorize_resource
    @vocabulary.status = "draft"
     respond_to do |format|
       if @vocabulary.save
-        format.html { redirect_to @vocabulary, notice: 'Nowy zestaw słówek został stworzony, możesz uzupełnić słówka używająć poniższego formularza. Słówka będą widoczne w serwisie po zaakceptowaniu przez moderatora.' }
+        format.html { redirect_to @vocabulary, notice: 'Nowy zestaw słówek został stworzony, możesz uzupełnić słówka używając poniższego formularza. Słówka będą widoczne w serwisie po zaakceptowaniu przez moderatora.' }
         format.json { render :show, status: :created, location: @vocabulary }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ authorize_resource
   def update
     respond_to do |format|
       if @vocabulary.update(vocabulary_params)
-        format.html { redirect_to @vocabulary, notice: 'Zestaw słówek zostal pomyślnie zaktualizowany.' }
+        format.html { redirect_to @vocabulary, notice: 'Zestaw słówek został pomyślnie zaktualizowany.' }
         format.json { render :show, status: :ok, location: @vocabulary }
       else
         format.html { render :edit }
