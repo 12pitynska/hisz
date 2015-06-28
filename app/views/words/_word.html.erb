@@ -3,8 +3,8 @@
      <td><%=word.polish %></td>
      <td><%= word.spanish %></td>
      <td><%= word.description %></td>   
-   
-     <% if user_signed_in? %> 
+
+    <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2 || (word.vocabulary.status == "draft" && word.vocabulary.user_id == current_user.id)) %>
         <td><%= link_to 'Edytuj', edit_vocabulary_word_path(id: word.id, vocabulary_id: @vocabulary.id) %></td>
         <td><%= link_to 'Usuń' ,[word.vocabulary, word], method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td>
 	<% end %>

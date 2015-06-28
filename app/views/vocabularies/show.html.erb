@@ -54,6 +54,12 @@
          <td><h4>POLSKI</h4></td>
          <td><h4>HISZPAŃSKI</h4></td>
          <td><h4>KOMENTARZ</h4></td>   
+          <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2 || (@vocabulary.status == "draft" && @vocabulary.user_id == current_user.id)) %>
+
+         <td></td>   
+         <td></td>   
+
+          <% end %>
       </tr>
 
 <%= render @vocabulary.words %>
@@ -62,7 +68,7 @@
  </tbody>
 </table>
 </div>
-  <% if user_signed_in? %> 
+    <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2 || (@vocabulary.status == "draft" && @vocabulary.user_id == current_user.id)) %>
 
 <%= render "words/form" %>
 
