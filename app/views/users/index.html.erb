@@ -1,12 +1,9 @@
 <% content_for :cattitle do %> 
-
-
-UŻYTKOWNICY
+  UŻYTKOWNICY
 <% end %>
 
 <% content_for :catdes do %> 
 
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
 
 
@@ -28,8 +25,8 @@ UŻYTKOWNICY
         <td><%= user.email %></td>
         <td><%= user.role.name %></td>
         <td><%= link_to 'Pokaż', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edytuj', edit_user_path(user) %></td>
+        <td><%= link_to 'Usuń', user, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +34,4 @@ UŻYTKOWNICY
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Nowy użytkownik', new_user_path %>

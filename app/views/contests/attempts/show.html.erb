@@ -1,14 +1,10 @@
 <% content_for :cattitle do %> 
-
-
-ĆWICZENIA
+    ĆWICZENIA
 <% end %>
 
 <% content_for :catdes do %> 
   <%= @attempt.survey.name.upcase %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
-
 
 <div class="container">
   <h2 class="survey-title">
@@ -26,8 +22,7 @@
                 <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
                 <% color = get_color_of_option(answer, option) %>
                 <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> <%= get_weight(option) %> </span>
-              </label>
-           
+              </label>         
             </li>
           <% end %>
         </ul>
@@ -35,8 +30,6 @@
     <% end %>
   <ol>
 </div>
- 
 <br><br>
-     <%= link_to "Spróbuj jeszcze raz", new_attempt_path(survey_id: @attempt.survey.id), class: 'btn btn-default' %>
-      
+<%= link_to "Spróbuj jeszcze raz", new_attempt_path(survey_id: @attempt.survey.id), class: 'btn btn-default' %>    
 <br><br><%= link_to 'Powrót', surveys_path %>

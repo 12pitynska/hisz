@@ -9,35 +9,29 @@
 
 <% content_for :rightmenu do %>
      <ul class="nav nav-stacked">
-
          
-                    <li><h3 class="highlight">MODERACJA </i></h3></li>
-                    <li><%= link_to "Artykuły", moderation_articles_path %> </li>
-                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
-                  <li><%= link_to "Ćwiczenia", users_path %> </li>
-                  <li><%= link_to "Linki", moderation_links_path %> </li>
-                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   <li>
-             
-                    </li>
-              
+        <li><h3 class="highlight">MODERACJA </i></h3></li>
+        <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+        <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+        <li><%= link_to "Ćwiczenia", users_path %> </li>
+        <li><%= link_to "Linki", moderation_links_path %> </li>
+        <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   
+        <li>     </li>             
                
-        </ul>
+    </ul>
 <% end %>
-  
 
 
-   <h2>Ćwiczenia do zatwierdzenia </h2>
-    <%= form_tag approve_surveys_path, method: :put do %>
+<h2>Ćwiczenia do zatwierdzenia </h2>
+<%= form_tag approve_surveys_path, method: :put do %>
 <table class="table" id="links">
     <tr>
       <th></th>
       <th>Tytuł,<br> autor</th>
       <th>Treść</th>
-
       <th>Akcje</th>
 
-
-    </tr>
+   </tr>
 
       <% @surveys.each do |survey| %>
       <tr>
@@ -46,12 +40,9 @@
         <td><%= survey.description %></td>
     
 
-     
-
 <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
       <br>
-       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-
+       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td> 
 
       </tr>
       <% end %>
@@ -74,7 +65,7 @@
 
     <td><%= survey.status%></td>
     <td>  <%= link_to 'Edytuj', edit_article_path(survey) %> <br>
-        <%= link_to 'Usuń',  survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń',  survey_path(survey), method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
  
     
   </tr>

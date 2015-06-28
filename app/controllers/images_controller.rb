@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user! 
   load_and_authorize_resource
+  
   # GET /images
   # GET /images.json
   def index
@@ -26,7 +27,6 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
-
     respond_to do |format|
       if @image.save
         format.html { redirect_to @image, notice: 'Image was successfully created.' }

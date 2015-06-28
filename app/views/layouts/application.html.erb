@@ -1,107 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>Hiszpański online</title>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-	<%= favicon_link_tag 'favicon.ico' %>
+
 	</head>
+
 	<body>
-    <!--Top navigation starts -->
-    <nav class="navbar  navbar-fixed-top" role="navigation">  
-        <div class="container">
-         <div class="navbar-header">  <span class="navbar-brand" id="logo"> <%= link_to "HISZPAŃSKI ONLINE", root_path %> </span>
-
-          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="glyphicon glyphicon-chevron-down"></span>
-          </a>  </div>
-          <div class="collapse navbar-collapse" >
-            <ul class="nav navbar-nav ">  
-            <!--   <li id='logo'><%= link_to "HISZPAŃSKI ONLINE", root_path %></li> -->
-              <li><%= link_to "AKTUALNOŚCI", root_path %> </li>
-              <li><%= link_to "SŁOWNICTWO", vocabularies_path %></li>
-              <li><%= link_to "GRAMATYKA", theories_path %></li>
-              <li><%= link_to "ARTYKUŁY", articles_path %></li>
-              <li><%= link_to "ĆWICZENIA", surveys_path %></li>
-    		      <li><%= link_to "BAZA LINKÓW", links_path %></li>
-            </ul>
-            <ul class="nav navbar-right navbar-nav" id="menuicons">
-              <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-                <ul class="dropdown-menu" style="padding:12px;">
-                    <form class="form-inline">
-                       <div class="input-group">
-                         <input type="text" class="form-control" placeholder="Search">
-                         <div class="input-group-btn">
-         			       <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                         </div>
-                       </div>
-                    </form>
-                </ul>
-              </li> -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user  fa-lg"></i> <i class="fa  fa-caret-down"></i></a>
-                <ul class="dropdown-menu">                
-
-            			<% if user_signed_in? %>
+    <!--Main navigation -->
+    <nav class="navbar navbar-fixed-top" role="navigation">  
+      <div class="container">
+        <div class="navbar-header"> 
+          <span class="navbar-brand" id="logo"> <%= link_to "HISZPAŃSKI ONLINE", root_path %> </span>
+           <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="glyphicon glyphicon-chevron-down"></span>
+           </a>  
+        </div>
         
+        <div class="collapse navbar-collapse" >
+          <ul class="nav navbar-nav ">  
+            <li><%= link_to "AKTUALNOŚCI", root_path %> </li>
+            <li><%= link_to "SŁOWNICTWO", vocabularies_path %></li>
+            <li><%= link_to "GRAMATYKA", theories_path %></li>
+            <li><%= link_to "ARTYKUŁY", articles_path %></li>
+            <li><%= link_to "ĆWICZENIA", surveys_path %></li>
+  		      <li><%= link_to "BAZA LINKÓW", links_path %></li>
+          </ul>
+          <ul class="nav navbar-right navbar-nav" id="menuicons">
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user  fa-lg"></i> <i class="fa  fa-caret-down"></i>
+            </a>
+              <ul class="dropdown-menu">                
+            			<% if user_signed_in? %>     
             			  <li><%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></li>
                     <li><%= link_to "Edytuj swój profil", edit_user_registration_path %></li>
                   <% else %>	
                     <li><%= link_to "Zarejestruj się", new_user_registration_path %></li>
               	  	<li><%= link_to "Zaloguj się", new_user_session_path %></li>
                   <% end %>
-
-              <% if user_signed_in? %>
-                 <% if current_user.role.name == "Admin" %>    <li class="divider"></li>
-                  <li><%= link_to "Użytkownicy", users_path %> </li>
-                <% end %>
-                 <% if current_user.role.name == "Admin" || current_user.role.name == "Moderator"  %>    <li class="divider"></li>
-                      <li><%= link_to "MODERACJA", moderation_articles_path %> </li>
-                  <li><%= link_to "Artykuły", moderation_articles_path %> </li>
-                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
-                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
-                  <li><%= link_to "Linki", moderation_links_path %> </li>
-                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li><li class="divider"></li>
-                      <li><%= link_to "Dodaj news", new_news_path %> </li>
-
-               <% end %>
-
-              <% end %>
+               
+                  <% if user_signed_in? %>
+                      <% if current_user.role.name == "Admin" %>
+                         <li class="divider"></li>
+                         <li><%= link_to "Użytkownicy", users_path %> </li>
+                      <% end %>
+                      <% if current_user.role.name == "Admin" || current_user.role.name == "Moderator"  %>   
+                          <li class="divider"></li>
+                          <li><%= link_to "MODERACJA", moderation_articles_path %> </li>
+                          <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+                          <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+                          <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+                          <li><%= link_to "Linki", moderation_links_path %> </li>
+                          <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li><li class="divider"></li>
+                          <li><%= link_to "Dodaj news", new_news_path %> </li>
+                     <% end %>
+                  <% end %>
 
                   <li class="divider"></li>
                   <li><%= link_to "O projekcie", about_path %> </li>
-                </ul>
-              </li>  
-            </ul>
-          </div>		
-        </div>
+              </ul>
+            </li>  
+          </ul>
+        </div>		
+      </div>
     </nav> 
-    <!-- Top navigation ends -->
+    <!-- Main navigation ends -->
 
     <!-- Header image & category title -->
     <header class="masthead">
       <div class="container">
         <div class="row">
           <div class="col col-sm-12" id="headtext">
-
             <h1 class="cattitle">   
               <%= yield :cattitle %>   <!-- title --> 
             </h1>
             <p class="catdes"> 
               <%= yield :catdes %>     <!-- subpage/category description -->
-            </p>
-             
+            </p>         
           </div>
         </div>
       </div>     
@@ -114,9 +102,7 @@
         <!-- Right menu-->
       	<div class="col col-sm-2">
          	<div id="sidebar">  		
-
-            <%= yield :rightmenu %> 
-     
+            <%= yield :rightmenu %>
           </div>
     		</div>  
           		
@@ -129,8 +115,6 @@
           				<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
           	<% end %>
 
-
-
             <!-- Load content-->
             <%= yield %>
 
@@ -141,8 +125,6 @@
 
     <!-- Footer-->
     <footer class="footer "> <span>  Aneta Pityńska | Projekt licencjacki 2015 | </span> <span > <%= link_to "O projekcie", about_path %> </span></footer>  
-
-    <!-- js script references -->
 
   </body><%= tinymce :content_css => asset_path('application.css')%>
 </html>

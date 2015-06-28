@@ -1,19 +1,19 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-#  before_filter :authenticate_user! 
-   authorize_resource
+  #  before_filter :authenticate_user! 
+  authorize_resource
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
   
-   
-   if params[:search]
-      @articles = Article.where(status: "approved").search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
-    else
-      @articles = Article.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
+    # Search 
+    if params[:search]
+        @articles = Article.where(status: "approved").search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
+      else
+        @articles = Article.where(status: "approved").order('created_at DESC').page(params[:page]).per(5)
+      end
     end
-  end
 
   # GET /articles/1
   # GET /articles/1.json
@@ -22,18 +22,13 @@ class ArticlesController < ApplicationController
   end
 
   def fromlevel
-    @level = Level.find(params[:id])
-    #@articles = Article.where(level_id:  @level.id).page(params[:page]).per(5)
- 
+    @level = Level.find(params[:id]) 
     @articles = Article.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(5)
   end
 
-
   # GET /articles/new
   def new
-    # @article = Article.new
       @article = current_user.articles.build
-   
   end
 
   # GET /articles/1/edit
@@ -48,7 +43,6 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to articles_path, notice: 'Dziękujemy, artykuł został dodany. Będzie on widoczny w serwisie, po zaakceptowaniu przez moderatora.' }
-  
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -81,7 +75,6 @@ class ArticlesController < ApplicationController
   end
 
   def moderation 
-    #@articles = Article.all
     @articles = Article.where(status:  "draft")
     @approved = Article.where(status:  "approved")
   end

@@ -1,50 +1,39 @@
 <% content_for :cattitle do %> 
- SŁOWNICTWO
+  SŁOWNICTWO
 <% end %>
 
 <% content_for :catdes do %> 
-BAZA HISZPAŃSKICH SŁÓWEK
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+  BAZA HISZPAŃSKICH SŁÓWEK
 <% end %>
 
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">
 
-           <% if user_signed_in? %>         <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> <% end %>
+           <% if user_signed_in? %>      
+             <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> 
+           <% end %>
 
-                    <li><h3 class="highlight">POZIOM </i></h3></li>
-                    <li><%= link_to "Wszystkie", vocabularies_path %></li>
-                    <li><%= link_to "Początkujący", vocabularies_level_path(1) %></li>
-                    <li><%= link_to "Średniozaawansowany", vocabularies_level_path(2) %></li>
-                    <li><%= link_to "Zaawansowany", vocabularies_level_path(3) %></li>
-                              <li><h3 class="highlight">SZUKAJ ZESTAWU </i></h3></li>
-                    <li>
-                      <%= form_tag(vocabularies_path, :method => "get", class: "form-inline", id: "search-form") do %>
-                        <div class="input-group">
-                          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
-                          <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
-                               of using a Rails form helper --><div class="input-group-btn">
-                          <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i></button></div>
-                        </div>
-                      <% end %>
-                    </li>
-              
-
+              <li><h3 class="highlight">POZIOM </i></h3></li>
+              <li><%= link_to "Wszystkie", vocabularies_path %></li>
+              <li><%= link_to "Początkujący", vocabularies_level_path(1) %></li>
+              <li><%= link_to "Średniozaawansowany", vocabularies_level_path(2) %></li>
+              <li><%= link_to "Zaawansowany", vocabularies_level_path(3) %></li>
+              <li><h3 class="highlight">SZUKAJ ZESTAWU </i></h3></li>
+              <li>
+                <%= form_tag(vocabularies_path, :method => "get", class: "form-inline", id: "search-form") do %>
+                  <div class="input-group">
+                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
+                   <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i></button></div>
+                  </div>
+                <% end %>
+              </li>  
    </ul>
-
-
 
 <% end %>
 
-
-
-
-
-
-
-   <% if @vocabularies.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
-
+<% if @vocabularies.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
 <div class="table-responsive">
 <table class="table" id="links">
@@ -57,19 +46,18 @@ BAZA HISZPAŃSKICH SŁÓWEK
 
         <td>  <%= vocabulary.description %></td>
         <td> <% if vocabulary.level_id %> <i><%= vocabulary.level.name %></i> <% end %> </td>
-  <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
-        <td><%= link_to 'Pokaż', vocabulary %></td>
-        <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
-        <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>
+        <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
+              <td><%= link_to 'Pokaż', vocabulary %></td>
+              <td><%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %></td>
+              <td><%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno chcesz usunąć ten zestaw słówek?' } %></td>
 
-     <% end %>     
+       <% end %>     
       </tr>
     <% end %>
   </tbody>
 </table>
 
 </div>
-<div class="text-center"><%= paginate @vocabularies %></div>
 
-<br>
+<div class="text-center"><%= paginate @vocabularies %></div>
 

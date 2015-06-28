@@ -1,66 +1,49 @@
-
 <% content_for :cattitle do %> 
-
-ĆWICZENIA
+    ĆWICZENIA
 <% end %>
 
 <% content_for :catdes do %> 
-QUIZY ZE SŁOWNICTWA I GRAMATYKI
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+    QUIZY ZE SŁOWNICTWA I GRAMATYKI
 <% end %>
-
 
 <% content_for :rightmenu do %>
   <% unless user_signed_in? %>
       <div class="welcome" > 
-   
-     <h3 class="highlight">  </h3> 
+        <h3 class="highlight">  </h3> 
      
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
-    aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
-    
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
+        aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
+        
   </p>
   </div>
-<% end %>
-
-
+  <% end %>
  
    <ul class="nav nav-stacked">
 
-                <% if user_signed_in? %>        <li>  <h3 class="highlight" > <%= link_to 'DODAJ QUIZ', new_survey_path %> </h3></li>
-                
-
-
-               <% end %>
+     <% if user_signed_in? %>  <h3 class="highlight" > <%= link_to 'DODAJ QUIZ', new_survey_path %> </h3></li>
+     <% end %>
  
-
       <li><h3 class="highlight">POZIOM </i></h3></li>
-                    <li><%= link_to "Wszystkie", surveys_path %></li>
-                    <li><%= link_to "Początkujący", surveys_level_path(1) %></li>
-                    <li><%= link_to "Średniozaawansowany", surveys_level_path(2) %></li>
-                    <li><%= link_to "Zaawansowany", surveys_level_path(3) %></li>
+      <li><%= link_to "Wszystkie", surveys_path %></li>
+      <li><%= link_to "Początkujący", surveys_level_path(1) %></li>
+      <li><%= link_to "Średniozaawansowany", surveys_level_path(2) %></li>
+      <li><%= link_to "Zaawansowany", surveys_level_path(3) %></li>
 
-
-
-         <li><h3 class="highlight">SZUKAJ ĆWICZENIA</h3></li>
-                    <li>
-                      <%= form_tag(surveys_path, :method => "get", class: "form-inline", id: "search-form") do %>
-                        <div class="input-group">
-                          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
-                          <div class="input-group-btn">
-                          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button></div>
-                        </div>
-                      <% end %>
-                    </li>
-
-
-        </ul>
-
-
+      <li><h3 class="highlight">SZUKAJ ĆWICZENIA</h3></li>
+                <li>
+                  <%= form_tag(surveys_path, :method => "get", class: "form-inline", id: "search-form") do %>
+                    <div class="input-group">
+                      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
+                      <div class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button></div>
+                    </div>
+                  <% end %>
+      </li>
+   </ul>
 
 <% end %>
-   <% if @surveys.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
+<% if @surveys.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
 <div class="table-responsive">
 
@@ -68,26 +51,27 @@ QUIZY ZE SŁOWNICTWA I GRAMATYKI
     <tbody>
 
     <% @surveys.each do |survey| %>
- <tr>
+    <tr>
        
-        <td>
+      <td>
        <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %>
       </td>
 
-
-       <td>
+      <td>
        <%= survey.description %>
       </td>
-        <td> <% if survey.level_id %> <i><%= Level.where( id: survey.level_id).first.name %></i> <% end %> </td>
 
-   <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
-      <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
-      </td>
-       <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
- <% end %>
+      <td> <% if survey.level_id %> <i><%= Level.where( id: survey.level_id).first.name %></i> <% end %> </td>
+
+      <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
+          <td> <%= link_to 'Edytuj', edit_survey_path(survey) %>
+          </td>
+          <td><%= link_to 'Usuń', survey_path(survey), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      <% end %>
     </tr>
     <% end %>
   </tbody>
   </table>
 </div>
+
 <div class="text-center"><%= paginate @surveys %></div>

@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <h1>Listing News</h1> -->
-
-
 <% content_for :rightmenu do %>
 
-  
         <div class="welcome" > <h3 class="highlight"> HISZPAŃSKI ONLINE </h3> <p> to wciąż rosnąca baza materiałów do nauki języka hiszpańskiego, współtworzona przez użytkowników serwisu! </p> <p> 
         <%= link_to "Zarejestruj się", new_user_registration_path %> lub <%= link_to "zaloguj", new_user_session_path %> aby móc korzystać ze wszystkich opcji serwisu!</p></div></li>
 
@@ -13,7 +9,6 @@
   
     <% @images.each do |image| %>
   
-
     <%=  image.file.url %> <br>
 
 <% end %>

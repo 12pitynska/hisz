@@ -1,42 +1,34 @@
-  <% content_for :cattitle do %> 
- MODERACJA
+<% content_for :cattitle do %> 
+   MODERACJA
 <% end %>
 
 <% content_for :catdes do %> 
-SŁOWNICTWO
+  SŁOWNICTWO
 <% end %>
-
-
 
 <% content_for :rightmenu do %>
      <ul class="nav nav-stacked">
-
          
-                    <li><h3 class="highlight">MODERACJA </i></h3></li>
-                    <li><%= link_to "Artykuły", moderation_articles_path %> </li>
-                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
-                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
-                  <li><%= link_to "Linki", moderation_links_path %> </li>
-                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   <li>
-             
-                    </li>
+        <li><h3 class="highlight">MODERACJA </i></h3></li>
+        <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+        <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+        <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+        <li><%= link_to "Linki", moderation_links_path %> </li>
+        <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li> 
+        <li>      </li>         
               
-               
-        </ul>
+    </ul>
 <% end %>
   
+<h2>Zestawy słówek do zatwierdzenia </h2>
 
-   <h2>Zestawy słówek do zatwierdzenia </h2>
-    <%= form_tag approve_vocabularies_path, method: :put do %>
+<%= form_tag approve_vocabularies_path, method: :put do %>
 <table class="table" id="links">
     <tr>
       <th></th>
       <th>Tytuł,<br> autor</th>
       <th>Treść</th>
-
       <th>Akcje</th>
-
-
     </tr>
 
       <% @vocabularies.each do |vocabulary| %>
@@ -47,7 +39,7 @@ SŁOWNICTWO
     
 
        <td>  <%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %> <br>
-        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
       </tr>
       <% end %>
     </table>
@@ -69,7 +61,7 @@ SŁOWNICTWO
 
     <td><%= vocabulary.status%></td>
     <td><%= link_to 'Pokaż', vocabulary_path(vocabulary) %> <br>  <%= link_to 'Edytuj', edit_vocabulary_path(vocabulary) %> <br>
-        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', vocabulary, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
 
   </tr>
   <% end %>

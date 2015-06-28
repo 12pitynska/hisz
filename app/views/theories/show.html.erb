@@ -1,22 +1,17 @@
 <% content_for :cattitle do %> 
-
-GRAMATYKA 
+  GRAMATYKA 
 <% end %>
 
 <% content_for :catdes do %> 
   <%= @theory.title.upcase %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
 
-
-
 <% content_for :rightmenu do %>
- 
 
-  <% unless user_signed_in? %>
-      <div class="welcome" > 
-   
-     <h3 class="highlight">  </h3> 
+<% unless user_signed_in? %>
+
+    <div class="welcome" >  
+    <h3 class="highlight">  </h3> 
      
     <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
     aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
@@ -28,22 +23,23 @@ GRAMATYKA
 
    <ul class="nav nav-stacked">
 
-    <% if user_signed_in? %>   <li>  <h3 class="highlight" > <%= link_to 'DODAJ ZAGADNIENIE', new_theory_path %> </h3></li> <% end %>
-   <% unless @surveys.first == nil %>
+        <% if user_signed_in? %>  
+         <li>  <h3 class="highlight" > <%= link_to 'DODAJ ZAGADNIENIE', new_theory_path %> </h3></li> 
+        <% end %>
+
+       <% unless @surveys.first == nil %>
 
            <% if user_signed_in? %>
-         <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
-      <% @surveys.each do |survey| %>
-    
-      <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
-   
-    <% end %>
-<% end %>
-    <% end %>
+             <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+            <% @surveys.each do |survey| %>
+        
+            <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
+         
+          <% end %>
+        <% end %>
+      <% end %>
 
-        </ul>
-
-
+  </ul>
 
 
 <% end %>
@@ -71,6 +67,7 @@ GRAMATYKA
 <% end %>
 
 
-     <% if user_signed_in? %> 
+<% if user_signed_in? %> 
+
 <%= link_to 'Edytuj', edit_theory_path(@theory) %> | <% end %>
 <%= link_to 'Powrót', theories_path %>

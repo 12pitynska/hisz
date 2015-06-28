@@ -1,31 +1,28 @@
 <% content_for :cattitle do %> 
- MODERACJA
+  MODERACJA
 <% end %>
 
 <% content_for :catdes do %> 
-    GRAMATYKA
+  GRAMATYKA
 <% end %>
 
 <% content_for :rightmenu do %>
      <ul class="nav nav-stacked">
 
-         
-                    <li><h3 class="highlight">MODERACJA </i></h3></li>
-                    <li><%= link_to "Artykuły", moderation_articles_path %> </li>
-                  <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
-                  <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
-                  <li><%= link_to "Linki", moderation_links_path %> </li>
-                  <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li>   <li>
-             
-                    </li>
-              
-               
-        </ul>
+        <li><h3 class="highlight">MODERACJA </i></h3></li>
+        <li><%= link_to "Artykuły", moderation_articles_path %> </li>
+        <li><%= link_to "Gramatyka", moderation_theories_path %> </li>
+        <li><%= link_to "Ćwiczenia", moderation_surveys_path %> </li>
+        <li><%= link_to "Linki", moderation_links_path %> </li>
+        <li><%= link_to "Słownictwo", moderation_vocabularies_path %> </li> 
+        <li>       </li> 
+      </ul>
 <% end %>
   
 
-   <h2>Artykuły do zatwierdzenia </h2>
-    <%= form_tag approve_theories_path, method: :put do %>
+<h2>Artykuły do zatwierdzenia </h2>
+   
+<%= form_tag approve_theories_path, method: :put do %>
     <table class="table" id="links">
     <tr>
       <th></th>
@@ -42,7 +39,7 @@
     
 
        <td>  <%= link_to 'Edytuj', edit_theory_path(draft) %> <br>
-        <%= link_to 'Usuń', draft, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', draft, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
       </tr>
       <% end %>
     </table>
@@ -64,7 +61,7 @@
 
     <td><%= theory.status%></td>
     <td><%= link_to 'Pokaż', theory_path(theory) %> <br>  <%= link_to 'Edytuj', edit_theory_path(theory) %> <br>
-        <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
  
     
   </tr>

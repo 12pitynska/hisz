@@ -1,41 +1,32 @@
 class VocabulariesController < ApplicationController
   before_action :set_vocabulary, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_user! 
-authorize_resource
+  # before_filter :authenticate_user! 
+  authorize_resource
   # GET /vocabularies
   # GET /vocabularies.json
   def index
     @vocabularies = Vocabulary.where(status: "approved").order('polish ASC').page(params[:page]).per(15)
-
     if params[:search]
       @vocabularies = Vocabulary.where(status: "approved").search(params[:search]).order("polish ASC").page(params[:page]).per(15)
     else
       @vocabularies = Vocabulary.where(status: "approved").order("polish ASC").page(params[:page]).per(15)
     end
-
   end
 
   # GET /vocabularies/1
   # GET /vocabularies/1.json
   def show
-        @surveys = Survey::Survey.where(vocabulary_id: @vocabulary.id)
-
+    @surveys = Survey::Survey.where(vocabulary_id: @vocabulary.id)
   end
 
   def fromlevel
     @level = Level.find(params[:id])
-  #  @vocabularies = Vocabulary.where(level_id:  @level.id).page(params[:page]).per(5)
-
     @vocabularies = Vocabulary.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).page(params[:page]).per(15)
-
-
   end
 
-  
   def word
      @words =  Word.where(["vocabulary_id LIKE ? AND status LIKE ?", @vocabulary.id, "approved"]).order('spanish ASC')
   end
-
 
   # GET /vocabularies/new
   def new
@@ -49,7 +40,7 @@ authorize_resource
   # POST /vocabularies.json
   def create
     @vocabulary = current_user.vocabularies.build(vocabulary_params)
-   @vocabulary.status = "draft"
+    @vocabulary.status = "draft"
     respond_to do |format|
       if @vocabulary.save
         format.html { redirect_to @vocabulary, notice: 'Nowy zestaw słówek został stworzony, możesz uzupełnić słówka używając poniższego formularza. Słówka będą widoczne w serwisie po zaakceptowaniu przez moderatora.' }
@@ -90,12 +81,10 @@ authorize_resource
     @approved = Vocabulary.where(status:  "approved")
   end
 
-
   def approve
     Vocabulary.where(id: params[:vocabulary_ids]).update_all(status: "approved")
     redirect_to moderation_vocabularies_path
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

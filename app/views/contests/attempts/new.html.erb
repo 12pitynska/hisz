@@ -1,39 +1,24 @@
 <% content_for :cattitle do %> 
-
-
-ĆWICZENIA
+    ĆWICZENIA
 <% end %>
 
 <% content_for :catdes do %> 
-  <%= @survey.name.upcase %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+    <%= @survey.name.upcase %>
 <% end %>
-
-
-<!-- <h1>Listing News</h1> -->
-
 
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > POWIĄZANE ĆWICZENIA </h3></li>
-                      <% @surveys.each do |survey| %>
-    
-     					 <li>  <% unless survey.id == @survey.id %> <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> <% end %> </li>
-   
-					<% end %>
+      <li>  <h3 class="highlight" > POWIĄZANE ĆWICZENIA </h3></li>
+        <% @surveys.each do |survey| %>
 
-              
+			 <li>  <% unless survey.id == @survey.id %> <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> <% end %> </li>
+
+        <% end %>  
                    
         </ul>
-
-
-
 <% end %>
-
-
-
 
 <% if @survey.nil? %>
   <p>
@@ -41,12 +26,10 @@
   </p>
 <% elsif @survey.avaliable_for_participant?(@participant) %>
 
-
-
-
   <%= render 'form' %>
+
 <% else %>
   <p>
     <%= @participant.email %> brak dodatkowych prób.
   </p>
-<% end -%>
+<% end %>

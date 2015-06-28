@@ -35,9 +35,6 @@
     <%= collection_select(:article, :level_id, Level.all, :id, :name, {prompt: "Wybierz z listy"},  class: "form-control" )%>
   </div>
   
-
-  
-
   <div class="actions">
     <%= f.submit  "Zapisz" ,  class: "btn btn-default"  %>
   </div>

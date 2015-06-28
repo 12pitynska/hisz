@@ -1,75 +1,55 @@
 <% content_for :cattitle do %> 
-
-
-GRAMATYKA 
+  GRAMATYKA 
 <% end %>
 
 <% content_for :catdes do %> 
-JĘZYKA HISZPAŃSKIEGO
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+  JĘZYKA HISZPAŃSKIEGO
 <% end %>
-
-
-<!-- <h1>Listing News</h1> -->
-
 
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">
-       <% if user_signed_in? %>   <li>  <h3 class="highlight" > <%= link_to 'DODAJ ZAGADNIENIE', new_theory_path %> </h3></li> <% end %>
+       <% if user_signed_in? %>   
+          <li>  <h3 class="highlight" > <%= link_to 'DODAJ ZAGADNIENIE', new_theory_path %> </h3></li> 
+       <% end %>
          
-                    <li><h3 class="highlight">POZIOM </i></h3></li>
-                          <li><%= link_to "Wszystkie", theories_path %></li>
-                    <li><%= link_to "Początkujący", theories_level_path(1) %></li>
-                    <li><%= link_to "Średniozaawansowany", theories_level_path(2) %></li>
-                    <li><%= link_to "Zaawansowany", theories_level_path(3) %></li>
-              
-               
-
-        <li><h3 class="highlight">SZUKAJ ZAGADNIENIA </i></h3></li>
+          <li><h3 class="highlight">POZIOM </i></h3></li>
+          <li><%= link_to "Wszystkie", theories_path %></li>
+          <li><%= link_to "Początkujący", theories_level_path(1) %></li>
+          <li><%= link_to "Średniozaawansowany", theories_level_path(2) %></li>
+          <li><%= link_to "Zaawansowany", theories_level_path(3) %></li>
+    
+          <li><h3 class="highlight">SZUKAJ ZAGADNIENIA </i></h3></li>
                     <li>
                       <%= form_tag(theories_path, :method => "get", class: "form-inline", id: "search-form") do %>
                         <div class="input-group">
                           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
-                          <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
-                               of using a Rails form helper --><div class="input-group-btn">
+                         <div class="input-group-btn">
                           <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i></button></div>
                         </div>
                       <% end %>
                     </li>
-              
-
-
-
-
-
-        </ul>
-
-
-
+    </ul>
 <% end %>
-   <% if @theories.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
+<% if @theories.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
   
-   <% @theories.each do |theory| %>
+<% @theories.each do |theory| %>
   
- <div class="row">
+<div class="row">
 
    <% unless  theory.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
-
-      <% if  theory.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
-
+     <% if  theory.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
         <h2><%= link_to theory.title, theory %></h2>
         <p class="date"><%= theory.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <i> @<%= theory.user.login %>  </i>
                      <% if theory.level_id %> | <i> <%= theory.level.name %> </i><% end %>
-    <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
+     <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
         <%= link_to 'Edytuj', edit_theory_path(theory) %>
         <%= link_to 'Usuń', theory, method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <% end %>
-<p><%= theory.short %>
-
-        <%= link_to "czytaj więcej", theory %>
-        </p>
+  <p><%= theory.short %>
+          <%= link_to "czytaj więcej", theory %>
+   </p>
        </div> 
             <% unless  theory.image.blank? %>
          <div class="col-md-2">
@@ -84,6 +64,3 @@ JĘZYKA HISZPAŃSKIEGO
 
 <div class="text-center"><%= paginate @theories %></div>
 <br>
-<!-- 
-<%= link_to 'New News', new_article_path %>
- -->

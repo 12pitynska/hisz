@@ -8,58 +8,46 @@
 
 <% content_for :rightmenu do %>
  
-
-
   <% unless user_signed_in? %>
       <div class="welcome" > 
-   
-     <h3 class="highlight">  </h3> 
+      <h3 class="highlight">  </h3> 
      
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
-    aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
-    
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
+        aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
+        
   </p>
   </div>
-<% end %>
-
-
+  <% end %>
+   
    <ul class="nav nav-stacked">
         
-     <% if user_signed_in? %>
-     <li>  <h3 class="highlight" > <%= link_to 'DODAJ ARTYKUŁ', new_article_path %> </h3></li> 
-         <% end %>
-   <% unless @surveys.first == nil %>
+      <% if user_signed_in? %>
+         <li>  <h3 class="highlight" > <%= link_to 'DODAJ ARTYKUŁ', new_article_path %> </h3></li> 
+      <% end %>
+      <% unless @surveys.first == nil %>
 
-     <% if user_signed_in? %>
-
-                    <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
-      <% @surveys.each do |survey| %>
-    
-      <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
-    
+       <% if user_signed_in? %>
+          <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+          <% @surveys.each do |survey| %>
+          <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
+          <% end %>
+       <% end %>
+      <% end %>
     <% end %>
-
-         <% end %>
-
-    <% end %>
-
-    <% end %>
-
 
 <% if @article.status == "approved" %>
 
+    <h2> <%= @article.title %> </h2>
 
-<h2> <%= @article.title %> </h2>
-
-<p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @article.user.login %>  </i> <% if @article.level_id %> | <i> <%= @article.level.name %> </i><% end %></p>
-<% unless @article.image.blank? %>
-  <%= image_tag @article.image(:medium), :class => "main-image" %>
-<% end %>
-<p> <%= @article.body.html_safe %> </p>
+    <p class="date"><%= @article.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @article.user.login %>  </i> <% if @article.level_id %> | <i> <%= @article.level.name %> </i><% end %></p>
+    <% unless @article.image.blank? %>
+      <%= image_tag @article.image(:medium), :class => "main-image" %>
+    <% end %>
+    <p> <%= @article.body.html_safe %> </p>
 
 <% else %>
 
-<h3> Ten artykuł zostanie opublikowany po sprawdzeniu moderatora. </3>
+    <h3> Ten artykuł zostanie opublikowany po sprawdzeniu moderatora. </3>
 
 <% end %>
 

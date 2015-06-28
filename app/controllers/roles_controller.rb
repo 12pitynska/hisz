@@ -4,6 +4,7 @@ class RolesController < ApplicationController
   load_and_authorize_resource
   # GET /roles
   # GET /roles.json
+ 
   def index
     @roles = Role.all
   end
@@ -26,10 +27,9 @@ class RolesController < ApplicationController
   # POST /roles.json
   def create
     @role = Role.new(role_params)
-
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.html { redirect_to @role, notice: 'Rola zostałą dodana.' }
         format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
+        format.html { redirect_to @role, notice: 'Rola została zaktualizowana.' }
         format.json { render :show, status: :ok, location: @role }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RolesController < ApplicationController
   def destroy
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
+      format.html { redirect_to roles_url, notice: 'Rola zostałą usunięŧa.' }
       format.json { head :no_content }
     end
   end

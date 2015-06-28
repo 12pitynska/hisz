@@ -1,40 +1,31 @@
-
 <% content_for :cattitle do %> 
-
-GRAMATYKA
+  GRAMATYKA
 <% end %>
 
 <% content_for :catdes do %> 
- POZIOM <%= @level.name.upcase %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+  POZIOM <%= @level.name.upcase %>
 <% end %>
-
-
 
 <% content_for :rightmenu do %>
  
    <ul class="nav nav-stacked">
 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
-                    <li><h3 class="highlight">POZIOMY </i></h3></li>
-                     <li><a href="/theories">Wszystkie</a></li>
-                    <li><a href="/levels/1">  Początkujący</a></li>
-                    <li><a href="/levels/2"> Średniozaawansowany</a></li>
-                    <li><a href="/levels/3">Zaawansowany</a></li>
-              
+      <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
+      <li><h3 class="highlight">POZIOMY </i></h3></li>
+      <li><a href="/theories">Wszystkie</a></li>
+      <li><a href="/levels/1">  Początkujący</a></li>
+      <li><a href="/levels/2"> Średniozaawansowany</a></li>
+      <li><a href="/levels/3">Zaawansowany</a></li>
                    
-        </ul>
-
-
+   </ul>
 
 <% end %>
 
-
 <p id="notice"><%= notice %></p>
 
-    <% @theories.each do |theory| %>
+<% @theories.each do |theory| %>
   
- <div class="row">
+<div class="row">
 
    <% unless  theory.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
 

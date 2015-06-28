@@ -1,14 +1,10 @@
 <% content_for :cattitle do %> 
-
-
-UŻYTKOWNIK
+  UŻYTKOWNIK
 <% end %>
 
 <% content_for :catdes do %> 
   <%= @user.email %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
 <% end %>
-
 
 <p>
   <strong>Email:</strong>
@@ -35,5 +31,5 @@ UŻYTKOWNIK
   <%= @user.sign_in_count %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edytuj', edit_user_path(@user) %> |
 <%= link_to 'Powrót', users_path %>

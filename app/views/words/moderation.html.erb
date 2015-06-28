@@ -1,25 +1,21 @@
-  <% content_for :cattitle do %> 
- MODERACJA
+<% content_for :cattitle do %> 
+   MODERACJA
 <% end %>
 
 <% content_for :catdes do %> 
-SŁÓWKA
+   SŁÓWKA
 <% end %>
 
+<h2>Słówka do zatwierdzenia </h2>
 
+<%= form_tag approve_words_path, method: :put do %>
 
-
-   <h2>Słówka do zatwierdzenia </h2>
-    <%= form_tag approve_words_path, method: :put do %>
 <table class="table" id="links">
     <tr>
       <th></th>
       <th>Tytuł,<br> autor</th>
       <th>Treść</th>
-
       <th>Akcje</th>
-
-
     </tr>
 
       <% @words.each do |word| %>
@@ -27,10 +23,9 @@ SŁÓWKA
         <td><%= check_box_tag "word_ids[]", word.id %></td>
         <td><%= word.polish %> / <%= word.spanish %> <br></td>
         <td><%= word.description %></td>
-    
-
+   
        <td>  <%= link_to 'Edytuj', edit_word_path(word) %> <br>
-        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
       </tr>
       <% end %>
     </table>
@@ -52,7 +47,7 @@ SŁÓWKA
 
     <td><%= word.status%></td>
     <td><%= link_to 'Pokaż', word_path(word) %> <br>  <%= link_to 'Edytuj', edit_word_path(word) %> <br>
-        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <%= link_to 'Usuń', word, method: :delete, data: { confirm: 'Na pewno usunąć?' } %> </td>
 
   </tr>
   <% end %>

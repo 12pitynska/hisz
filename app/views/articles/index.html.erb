@@ -7,71 +7,56 @@
 <% end %>
 
 <% content_for :rightmenu do %>
- 
-   <ul class="nav nav-stacked">
+     <ul class="nav nav-stacked">
+          <% if user_signed_in? %> 
+            <li>  <h3 class="highlight" > <%= link_to 'DODAJ ARTYKUŁ', new_article_path %> </h3></li> 
+          <% end %>
+          
+          <li><h3 class="highlight">POZIOM </i></h3></li>
+          <li><%= link_to "Wszystkie", articles_path %></li>
+          <li><%= link_to "Początkujący", articles_level_path(1) %></li>
+          <li><%= link_to "Średniozaawansowany", articles_level_path(2) %></li>
+          <li><%= link_to "Zaawansowany", articles_level_path(3) %></li>
+        
+          <li><h3 class="highlight">SZUKAJ ARTYKUŁU </i></h3></li>
+          <li>
+          <%= form_tag(articles_path, :method => "get", class: "form-inline", id: "search-form") do %>
+            <div class="input-group">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button></div>
+              </div>
+            <% end %>
+          </li>                        
+     </ul>
+<% end %>
 
-
-
-
-              <% if user_signed_in? %> 
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ ARTYKUŁ', new_article_path %> </h3></li> <% end %>
-
-
-                    <li><h3 class="highlight">POZIOM </i></h3></li>
-                    <li><%= link_to "Wszystkie", articles_path %></li>
-                    <li><%= link_to "Początkujący", articles_level_path(1) %></li>
-                    <li><%= link_to "Średniozaawansowany", articles_level_path(2) %></li>
-                    <li><%= link_to "Zaawansowany", articles_level_path(3) %></li>
-              
-                    <li><h3 class="highlight">SZUKAJ ARTYKUŁU </i></h3></li>
-                    <li>
-                      <%= form_tag(articles_path, :method => "get", class: "form-inline", id: "search-form") do %>
-                        <div class="input-group">
-                          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Szukaj" %>
-                          <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
-                               of using a Rails form helper --><div class="input-group-btn">
-                          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button></div>
-                        </div>
-                      <% end %>
-                    </li>
-              
-               </ul>
-
-
-
-<% end %>  
-
-
-
-     <% if @articles.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
-
+<% if @articles.first == nil %>  <div id="error_explanation"> Brak materiałów w tej kategorii  </div> <% end %>
 
 <% @articles.each do |article| %>  
   <div class="row">
       <% unless  article.image.blank? %>   <div class="col-md-9 shorttext">     <% end %>
       <% if  article.image.blank? %>   <div class="col-md-12 shorttext">     <% end %>
         <h2><%= link_to article.title, article %></h2>
-
         <p class="date"><%= article.created_at.strftime("%d-%m-%Y %H:%M:%S") %> <i> @<%= article.user.login %>  </i>
-           <% if article.level_id %> | <i> <%= article.level.name %> </i><% end %>
+        <% if article.level_id %> | <i> <%= article.level.name %> </i><% end %>
 
-      <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
+        <% if user_signed_in? && (current_user.role_id == 1 ||  current_user.role_id == 2) %>
           <%= link_to 'Edytuj', edit_article_path(article) %> 
-       
-        <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %>
- <% end %>
-      </p>
+          <%= link_to 'Usuń', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </p>
         
         <p>     <%= article.short %>
         <%= link_to "czytaj więcej", article %>    </p>   
   </div> 
-      <% unless  article.image.blank? %>
-        <div class="col-md-2">
+
+  <% unless  article.image.blank? %>
+    <div class="col-md-2">
            <div class="thumbimage"> <%= image_tag article.image.url(:thumb) %> </div>
         </div>
       <% end %>
-  </div>
- 
-
+    </div>
 <% end %>
-   <div class="text-center">    <%= paginate @articles %> </div>
+
+<div class="text-center">    <%= paginate @articles %> </div>

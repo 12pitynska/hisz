@@ -1,14 +1,9 @@
 <h2 class="survey-title">
   <%= @survey.name %>
-  <p><i> @<%= @user.login %>  </i> 
- <% if @survey.level_id %> | <i><%= Level.where( id: @survey.level_id).first.name %></i> <% end %> </p>
-
-
- <p><b> Opis: </b><%= @attempt.survey.description %></p> 
-
+     <p><i> @<%= @user.login %>  </i> 
+     <% if @survey.level_id %> | <i><%= Level.where( id: @survey.level_id).first.name %></i> <% end %> </p>
+     <p><%= @attempt.survey.description %></p> 
 </h2>
-
-
 
 <%= form_for(@attempt, url: attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :survey_id, @survey.id %>

@@ -8,7 +8,7 @@ class Theory < ActiveRecord::Base
 
     validates :title, presence: true, length: { minimum: 5, maximum: 40 }
     validates :body, presence: true
-  validates :short, presence: true
+    validates :short, presence: true
 
   def self.search(query)
     where("title like ? OR body like ?", "%#{query}%", "%#{query}%") 

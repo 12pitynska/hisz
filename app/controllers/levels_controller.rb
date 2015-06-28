@@ -4,6 +4,7 @@ class LevelsController < ApplicationController
   load_and_authorize_resource
   # GET /levels
   # GET /levels.json
+ 
   def index
     @levels = Level.all
   end
@@ -13,10 +14,6 @@ class LevelsController < ApplicationController
   def show
      @theories = Theory.where(level_id:  @level.id)
   end
-
- # def show_theories
-   #   @theories = Theory.where(level_id:  @level.id)
-  #end
 
   # GET /levels/new
   def new
@@ -34,7 +31,7 @@ class LevelsController < ApplicationController
 
     respond_to do |format|
       if @level.save
-        format.html { redirect_to @level, notice: 'Level was successfully created.' }
+        format.html { redirect_to @level, notice: 'Poziom został dodany.' }
         format.json { render :show, status: :created, location: @level }
       else
         format.html { render :new }
@@ -48,7 +45,7 @@ class LevelsController < ApplicationController
   def update
     respond_to do |format|
       if @level.update(level_params)
-        format.html { redirect_to @level, notice: 'Level was successfully updated.' }
+        format.html { redirect_to @level, notice: 'Poziom został zaktualizowany.' }
         format.json { render :show, status: :ok, location: @level }
       else
         format.html { render :edit }
@@ -62,7 +59,7 @@ class LevelsController < ApplicationController
   def destroy
     @level.destroy
     respond_to do |format|
-      format.html { redirect_to levels_url, notice: 'Level was successfully destroyed.' }
+      format.html { redirect_to levels_url, notice: 'Poziom został usunięty.' }
       format.json { head :no_content }
     end
   end

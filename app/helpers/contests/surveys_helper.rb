@@ -1,13 +1,13 @@
 module Contests::SurveysHelper
+
   def link_to_remove_field(name, f)
     f.hidden_field(:_destroy) +
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
 
-def sur 
-   Survey::Survey.all
-end
-
+  def sur 
+     Survey::Survey.all
+  end
 
   def new_survey
     new_survey_path
@@ -57,27 +57,11 @@ end
   end
 
   def get_color_of_option answer, option
-
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
- 
-  end
-
-
-
-  
-
-  def get_survey_type survey_type
-    get_survey_types[survey_type] || get_survey_types.invert[survey_type]
-  end
-
-  def get_survey_types
-    { 0 => 'quiz',
-      1 => 'score',
-      2 => 'poll' }
   end
 
   def is_quiz? something
@@ -113,16 +97,14 @@ end
   def number_of_attempts survey
     survey.attempts.count
   end
-
   
 
   private
+    def __link_to_function(name, on_click_event, opts={})
+      link_to(name, 'javascript:;', opts.merge(onclick: on_click_event))
+    end
 
-  def __link_to_function(name, on_click_event, opts={})
-    link_to(name, 'javascript:;', opts.merge(onclick: on_click_event))
-  end
-
-  def has_weights? survey
-    survey.questions.map(&:options).flatten.any? { |o| o.weight != 0 }
-  end
+    def has_weights? survey
+      survey.questions.map(&:options).flatten.any? { |o| o.weight != 0 }
+    end
 end

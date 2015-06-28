@@ -1,105 +1,78 @@
 
 <% content_for :cattitle do %> 
-
-BAZA LINKÓW
+    BAZA LINKÓW
 <% end %>
 
 <% content_for :catdes do %> 
- <%= @category.name %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+   <%= @category.name %>
 <% end %>
 
 
 <% content_for :rightmenu do %>
- 
    <ul class="nav nav-stacked">
-
-                  
-                    <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
-                    <li><h3 class="highlight">KATEGORIE </i></h3></li>
-                     <li><a href="/links"><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li>
-                    <li><a href="/categories/1"><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li>
-                    <li><a href="/categories/5"><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li>
-                    <li><a href="/categories/3"><i class="fa fa-newspaper-o fa-lg"></i>&nbsp; Teksty, wiadomości</a></li>
-                    <li><a href="/categories/6"><i class="fa fa-graduation-cap fa-lg"></i> Serwisy edukacyjne</a></li>
-                    <li><a href="/categories/2"><i class="fa fa-book fa-lg"></i> Słowniki</a></li>
-                    <li><a href="/categories/7"><i class="fa fa-gamepad fa-lg"></i> Gry</a></li>
-
-                    <li><a href="/categories/8"><i class="fa fa-asterisk fa-lg"></i> Inne</a></li>
-                   
-        </ul>
-
-
-
+     
+        <li>  <h3 class="highlight" > <%= link_to 'DODAJ LINK', new_link_path %> </h3></li>
+        <li><h3 class="highlight">KATEGORIE </i></h3></li>
+        <li><a href="/links"><i class="fa fa-eye fa-lg "></i>&nbsp; Wszystkie</a></li>
+        <li><a href="/categories/1"><i class="fa fa-headphones fa-lg"></i>&nbsp;  Muzyka, nagrania </a></li>
+        <li><a href="/categories/5"><i class="fa fa-video-camera fa-lg"></i>&nbsp; Filmy, wideo</a></li>
+        <li><a href="/categories/3"><i class="fa fa-newspaper-o fa-lg"></i>&nbsp; Teksty, wiadomości</a></li>
+        <li><a href="/categories/6"><i class="fa fa-graduation-cap fa-lg"></i> Serwisy edukacyjne</a></li>
+        <li><a href="/categories/2"><i class="fa fa-book fa-lg"></i> Słowniki</a></li>
+        <li><a href="/categories/7"><i class="fa fa-gamepad fa-lg"></i> Gry</a></li>
+        <li><a href="/categories/8"><i class="fa fa-asterisk fa-lg"></i> Inne</a></li>
+       
+   </ul>
 <% end %>
 
 
-
-
-
 <table class="table" id="links">
- <!--  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead> -->
 
   <tbody>
      <% @links.each do |link| %>
    
         <td> 
 
-      <% if link.category_id == 1 %>
-          <i class="fa fa-headphones fa-lg"></i> 
-      <% end %>
-         
-       <% if link.category_id == 2 %>
-          <i class="fa fa-book fa-lg"></i> 
-      <% end %>
+            <% if link.category_id == 1 %>
+                <i class="fa fa-headphones fa-lg"></i> 
+            <% end %>
+               
+            <% if link.category_id == 2 %>
+                <i class="fa fa-book fa-lg"></i> 
+            <% end %>
 
-    <% if link.category_id == 3 %>
-         <i class="fa fa-newspaper-o fa-lg"></i>
-      <% end %>
+            <% if link.category_id == 3 %>
+               <i class="fa fa-newspaper-o fa-lg"></i>
+            <% end %>
 
-    <% if link.category_id == 5 %>
-         <i class="fa fa-video-camera fa-lg"></i>
-      <% end %>
+            <% if link.category_id == 5 %>
+               <i class="fa fa-video-camera fa-lg"></i>
+            <% end %>
 
-    <% if link.category_id == 6 %>
-          <i class="fa fa-graduation-cap fa-lg"></i>
-      <% end %>
+            <% if link.category_id == 6 %>
+                <i class="fa fa-graduation-cap fa-lg"></i>
+            <% end %>
 
-    <% if link.category_id == 7 %>
-         <i class="fa fa-gamepad fa-lg"></i>
-      <% end %>
-    <% if link.category_id == 9 %>
-        <i class="fa fa-asterisk fa-lg"></i> 
-      <% end %>
-
-
+            <% if link.category_id == 7 %>
+               <i class="fa fa-gamepad fa-lg"></i>
+            <% end %>
+           
+            <% if link.category_id == 9 %>
+              <i class="fa fa-asterisk fa-lg"></i> 
+            <% end %>
 
         </td>
 
-
-
-
-
         <td><a href="<%= link.url %>"><%= link.title %> </a> </td>
-<!--         <td><%= link.url %></td> -->
-      <!--  -->  <td><%= link.description %></td>
-      <!--   <td><%= link_to 'Pokaż', link %></td>
+
+        <td><%= link.description %></td>
+        <!--   <td><%= link_to 'Pokaż', link %></td>
         <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Na pewno usunąć?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Edytuj', edit_category_path(@category) %> |
 <%= link_to 'Powrót', categories_path %>

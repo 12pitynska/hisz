@@ -1,76 +1,64 @@
 Rails.application.routes.draw do
 
-  resources :roles
+  resources :roles, :path => "role"
+  resources :levels, :path => "poziomy"
+  resources :categories, :path => "kategorie"
+  resources :theories, :path => "zagadnienia"
 
-  resources :levels
-
-  resources :categories
-
-  resources :theories
-
-
-
-  resources :articles do
+  resources :articles, :path => "artykuly" do
     collection do
       put :approve
     end
   end
 
- get '/moderation/articles' => 'articles#moderation', as: 'moderation_articles'
- put '/approve/articles' => 'articles#approve', as: 'approve_articless'
+  get '/moderacja/artykuly' => 'articles#moderation', as: 'moderation_articles'
+  put '/zatwierdz/artykuly' => 'articles#approve', as: 'approve_articless'
 
- get '/moderation/theories' => 'theories#moderation', as: 'moderation_theories'
- put '/approve/theories' => 'theories#approve', as: 'approve_theories'
+  get '/moderacja/zagadnienia' => 'theories#moderation', as: 'moderation_theories'
+  put '/zatwierdz/zagadnienia' => 'theories#approve', as: 'approve_theories'
 
- get '/moderation/links' => 'links#moderation', as: 'moderation_links'
- put '/approve/links' => 'links#approve', as: 'approve_links'
+  get '/moderacja/linki' => 'links#moderation', as: 'moderation_links'
+  put '/zatwierdz/linki' => 'links#approve', as: 'approve_links'
 
- get '/moderation/vocabularies' => 'vocabularies#moderation', as: 'moderation_vocabularies'
- put '/approve/vocabularies' => 'vocabularies#approve', as: 'approve_vocabularies'
+  get '/moderacja/slownictwo' => 'vocabularies#moderation', as: 'moderation_vocabularies'
+  put '/zatwierdz/slownictwo' => 'vocabularies#approve', as: 'approve_vocabularies'
+ 
+  get '/moderacja/slowa' => 'words#moderation', as: 'moderation_words'
+  put '/zatwierdz/slowa' => 'words#approve', as: 'approve_words'
 
- get '/moderation/words' => 'words#moderation', as: 'moderation_words'
- put '/approve/words' => 'words#approve', as: 'approve_words'
+  resources :words, :path => "slowa"
 
-
-   resources :words
-
-
- resources :vocabularies do
-    resources :words
+  resources :vocabularies, :path => "slownictwo" do
+    resources :words, :path => "slowa"
   end
 
   scope module: 'contests' do
-   resources :surveys
-   resources :attempts
-   get '/moderation/surveys' => 'surveys#moderation', as: 'moderation_surveys'
-   put '/approve/surveys' => 'surveys#approve', as: 'approve_surveys'
-   get 'surveys/level/:id' => 'surveys#fromlevel', as: 'surveys_level'
-
+     resources :surveys, :path => "cwiczenia"
+     resources :attempts, :path => "quiz"
+     get '/moderacja/cwiczenia' => 'surveys#moderation', as: 'moderation_surveys'
+     put '/zatwierdz/cwiczenia' => 'surveys#approve', as: 'approve_surveys'
+     get 'cwiczenia/poziom/:id' => 'surveys#fromlevel', as: 'surveys_level'
   end
 
- # mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  resources :news
+  resources :news, :path => "aktualnosci"
 
-  get 'theories/level/:id' => 'theories#fromlevel', as: 'theories_level'
-  get 'articles/level/:id' => 'articles#fromlevel', as: 'articles_level'
-  get 'vocabularies/level/:id' => 'vocabularies#fromlevel', as: 'vocabularies_level'
-  get 'links/category/:id' => 'links#fromcategory', as: 'links_category'
-
- #get 'showtheories/:id' => 'levels#show_theories'
+  get 'zagadnienia/poziom/:id' => 'theories#fromlevel', as: 'theories_level'
+  get 'artykuly/poziom/:id' => 'articles#fromlevel', as: 'articles_level'
+  get 'slownictwo/poziom/:id' => 'vocabularies#fromlevel', as: 'vocabularies_level'
+  get 'linki/kategoria/:id' => 'links#fromcategory', as: 'links_category'
 
   devise_for :users
-  resources :users 
+  resources :users, :path => "uzytkownicy"
 
-  resources :links
+  resources :links, :path => "linki"
   resources :images
 
   post 'tinymce_assets' => 'tinymce_assets#create'
-  post 'news/new/tinymce_assets' => 'tinymce_assets#create'
-  post 'articles/new/tinymce_assets' => 'tinymce_assets#create'
-  post 'theories/new/tinymce_assets' => 'tinymce_assets#create'
+  post 'aktualnosci/nowa/tinymce_assets' => 'tinymce_assets#create'
+  post 'artykuly/nowy/tinymce_assets' => 'tinymce_assets#create'
+  post 'zagadnienia/nowy/tinymce_assets' => 'tinymce_assets#create'
 
-  get 'about' => 'pages#about', as: 'about'
-  get 'search' => 'pages#search', as: 'search'
+  get 'oserwisie' => 'pages#about', as: 'about'
 
   root to: "news#index"
 

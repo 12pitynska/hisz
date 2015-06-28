@@ -14,8 +14,6 @@
  *= require_self
  */
 
-
-
 $screen-md-min: 970px;
 $grid-float-breakpoint: $screen-md-min;
 $input-border-focus: #FFB600;
@@ -26,19 +24,17 @@ $input-border-focus: #FFB600;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
 .btn:focus { 
   outline: none !important ;
- }
+}
 
-.btn:hover { background-color: #FFB600 ; }
-
+.btn:hover { 
+  background-color: #FFB600 ; 
+}
 
 h3.highlight  {
   font-size: 20px;
 }
-
-
 
 #error_explanation {
   width: 100%;
@@ -47,16 +43,14 @@ h3.highlight  {
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: white;
-border-radius: 4px;
-padding: 0px;
-padding-top: 15px;
-padding-bottom: 15px;
-background-color: #4D363E;
-color: white;
-border-bottom: 1px solid #ddd;
-text-align: center;
-
-
+  border-radius: 4px;
+  padding: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #4D363E;
+  color: white;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 
 #error_explanation h2 {
@@ -82,28 +76,23 @@ text-align: center;
 }
 
 .field_with_errors {
-background-color:  #4D363E;
-
+  background-color:  #4D363E;
 }
 
-
-  a {
+a {
     color: #666;
-  }
+}
 
-  a:hover {
+a:hover {
     color: #c92c2c;
-  } 
-  
+} 
 
 .alert {
-
   padding: 0px;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #4D363E;
   color: white;
-
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
@@ -112,8 +101,6 @@ background-color:  #4D363E;
     overflow-x: auto;
 }
 /* pagination */
-
-
 
 .pagination > li > a, .pagination > li > span {
   color: black;

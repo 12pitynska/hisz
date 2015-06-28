@@ -1,21 +1,14 @@
 class NewsController < ApplicationController
- # before_action :set_news, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_user! 
+  # before_action :set_news, only: [:show, :edit, :update, :destroy]
+  # before_filter :authenticate_user! 
   load_and_authorize_resource
   # GET /news
   # GET /news.json
-  def search
-    @search = News.search do
-      keywords(params[:q])
-    end
-  end
-
 
   def index
     @news = News.all.order('created_at DESC').page(params[:page]).per(5)
     @links = Link.all.count
     @archnews = News.all.order('created_at ASC').last(4).reverse
-
   end
 
   # GET /news/1
@@ -37,7 +30,6 @@ class NewsController < ApplicationController
   # POST /news.json
   def create
     @news = current_user.news.build(news_params)
-
     respond_to do |format|
       if @news.save
         format.html { redirect_to @news, notice: 'Aktualność została pomyślnie dodana.' }

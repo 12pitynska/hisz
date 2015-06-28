@@ -1,34 +1,30 @@
 class LinksController < ApplicationController
 
-#before_action :authenticate_user!, :except => [:index]
+  #before_action :authenticate_user!, :except => [:index]
   before_action :set_link, only: [:show, :edit, :update, :destroy]
-   # authorize_resource
+  # authorize_resource
   authorize_resource
   # GET /links
   # GET /links.json
+  
   def index
     @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(15)
 
-   if params[:search]
+    if params[:search]
       @links = Link.where(status: "approved").search(params[:search]).order('title ASC').page(params[:page]).per(15)
     else
       @links = Link.where(status: "approved").order('title ASC').page(params[:page]).per(15)
     end
   end
 
-
-
-
   def list
-      @category = Category.find(params[:id]) 
-      @links = Link.where(id_category == @category.id)
+    @category = Category.find(params[:id]) 
+    @links = Link.where(id_category == @category.id)
   end
-
 
   def fromcategory
     @category = Category.find(params[:id])
     @links = Link.where(["category_id LIKE ? AND status LIKE ?", @category.id, "approved"]).order('title ASC').page(params[:page]).per(10)
-
   end
 
   # GET /links/1
@@ -85,22 +81,15 @@ class LinksController < ApplicationController
     end
   end
 
-def moderation 
-  #@articles = Article.all
-  @links = Link.where(status:  "draft")
-  @approved = Link.where(status:  "approved")
-end
-
+  def moderation 
+    @links = Link.where(status:  "draft")
+    @approved = Link.where(status:  "approved")
+  end
 
   def approve
     Link.where(id: params[:link_ids]).update_all(status: "approved")
-        redirect_to moderation_links_path
+    redirect_to moderation_links_path
   end
-
-
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

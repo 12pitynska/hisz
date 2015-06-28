@@ -1,35 +1,29 @@
 class TheoriesController < ApplicationController
   before_action :set_theory, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_user! 
-authorize_resource
+  # before_filter :authenticate_user! 
+  authorize_resource
   # GET /theories
   # GET /theories.json
+  
   def index
     @theories = Theory.where(status: "approved").order('title ASC').page(params[:page]).per(5)
 
-      
     if params[:search]
       @theories = Theory.where(status: "approved").search(params[:search]).order("title ASC").page(params[:page]).per(5)
-
     else
       @theories = Theory.where(status: "approved").order("title ASC").page(params[:page]).per(5)
-
     end
   end
 
   def fromlevel
     @level = Level.find(params[:id])
     @theories = Theory.where(["level_id LIKE ? AND status LIKE ?", @level.id, "approved"]).order("title ASC").page(params[:page]).per(5)
-
-
-
   end
 
   # GET /theories/1
   # GET /theories/1.json
   def show
     @surveys = Survey::Survey.where(theory_id: @theory.id)
-  
   end
 
   # GET /theories/new
@@ -45,7 +39,7 @@ authorize_resource
   # POST /theories.json
   def create
     @theory = current_user.theories.build(theory_params)
-   @theory.status = "draft"
+    @theory.status = "draft"
     respond_to do |format|
       if @theory.save
         format.html { redirect_to theories_path, notice: 'Zagadnienie zostało dodane. Będzie ono widoczne w serwisie po zakceptowaniu przez moderatora.' }
@@ -81,21 +75,15 @@ authorize_resource
     end
   end
 
-
-def moderation 
-
-  @drafts = Theory.where(status:  "draft")
-  @approved = Theory.where(status:  "approved")
-end
-
+  def moderation 
+    @drafts = Theory.where(status:  "draft")
+    @approved = Theory.where(status:  "approved")
+  end
 
   def approve
     Theory.where(id: params[:theory_ids]).update_all(status: "approved")
     redirect_to moderation_theories_path
   end
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

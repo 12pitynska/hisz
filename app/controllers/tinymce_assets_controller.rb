@@ -1,5 +1,5 @@
 class TinymceAssetsController < ApplicationController
-   respond_to :json
+  respond_to :json
 
   def create
     image    = Image.create(file: params[:file])

@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-#  load_and_authorize_resource
+  #  load_and_authorize_resource
   before_filter :authenticate_user! 
   load_and_authorize_resource
   # GET /users
   # GET /users.json
+ 
   def index
     @users = User.all
   end
@@ -12,8 +13,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-     @user = User.find params[:id]
-      @joined_on = @user.created_at.to_formatted_s(:short)
+    @user = User.find params[:id]
+    @joined_on = @user.created_at.to_formatted_s(:short)
     if @user.current_sign_in_at
       @last_login = @user.current_sign_in_at.to_formatted_s(:short)
     else
@@ -27,15 +28,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
      @user = User.find params[:id]
   end
 
   # POST /users
   # POST /users.json
   def create
-       @user = User.find params[:id]
-    respond_to do |format|
+      @user = User.find params[:id]
+      respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }

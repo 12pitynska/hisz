@@ -1,9 +1,10 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_user! 
+  # before_filter :authenticate_user! 
   load_and_authorize_resource
   # GET /words
   # GET /words.json
+ 
   def index
     @words = Word.where(status: "approved")
   end
@@ -11,7 +12,6 @@ class WordsController < ApplicationController
   # GET /words/1
   # GET /words/1.json
   def show
-
   end
 
   # GET /words/new
@@ -21,27 +21,18 @@ class WordsController < ApplicationController
 
   # GET /words/1/edit
   def edit
-
-  @word = Word.find params[:id]
-  @vocabulary = Vocabulary.find(params[:vocabulary_id])
-
+    @word = Word.find params[:id]
+    @vocabulary = Vocabulary.find(params[:vocabulary_id])
   end
 
   # POST /words
   # POST /words.json
-def create
-
-  @vocabulary = Vocabulary.find(params[:vocabulary_id])
-   @word.status = "draft"
-
-  @word = @vocabulary.words.create(params[:word].permit(:polish, :spanish, :description, :vocabulary_id))
-
-  redirect_to vocabulary_path(@vocabulary)
-
-end
-
-
-
+  def create
+    @vocabulary = Vocabulary.find(params[:vocabulary_id])
+    @word.status = "draft"
+    @word = @vocabulary.words.create(params[:word].permit(:polish, :spanish, :description, :vocabulary_id))
+    redirect_to vocabulary_path(@vocabulary)
+  end
 
   # PATCH/PUT /words/1
   # PATCH/PUT /words/1.json
@@ -70,19 +61,15 @@ end
     end
   end
 
-
   def moderation 
     @words = Word.where(status:  "draft")
     @approved = Word.where(status:  "approved")
   end
 
-
   def approve
     Word.where(id: params[:word_ids]).update_all(status: "approved")
     redirect_to moderation_words_path
   end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

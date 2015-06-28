@@ -1,56 +1,43 @@
 <% content_for :cattitle do %> 
-  <%= @vocabulary.polish.upcase %>
+   <%= @vocabulary.polish.upcase %>
 <% end %>
 
 <% content_for :catdes do %> 
-  <%= @vocabulary.spanish.upcase %>
-<!-- Linki do stron i materiałów związanych z nauką jezyka hiszpańskiego.-->
+   <%= @vocabulary.spanish.upcase %>
 <% end %>
-
-
-
-
 
 <% content_for :rightmenu do %>
  
 
-  <% unless user_signed_in? %>
-      <div class="welcome" > 
-   
-     <h3 class="highlight">  </h3> 
-     
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
-    aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
-    
-  </p>
-  </div>
-<% end %>
+    <% unless user_signed_in? %>
+        <div class="welcome" > 
+        <h3 class="highlight">  </h3> 
+         
+        <%= link_to "Zarejestruj się", new_user_registration_path %> lub  <%= link_to "zaloguj", new_user_session_path %> 
+        aby uzyskać dostęp do wszystkich funkcjonalności!<br>    <%= link_to "Dowiedz się więcej", about_path %>
+        
+      </p>
+      </div>
+    <% end %>
 
  
-   <ul class="nav nav-stacked">
+     <ul class="nav nav-stacked">
+                    
+       <% if user_signed_in? %>  
+          <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> 
+       <% end %>
 
-                
-   <% if user_signed_in? %>     <li>  <h3 class="highlight" > <%= link_to 'DODAJ NOWY ZESTAW', new_vocabulary_path %> </h3></li> 
-    <% end %>
-    <% unless @surveys.first == nil %>
-                 <% if user_signed_in? %>        <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
-      <% @surveys.each do |survey| %>
-    
-      <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
-   
-    <% end %>
-
-    <% end %>
- <% end %>
-        </ul>
-
-
+       <% unless @surveys.first == nil %>
+          <% if user_signed_in? %>  <li>  <h3 class="highlight" > ĆWICZENIA </h3></li>
+              <% @surveys.each do |survey| %>
+                  <li>  <%= link_to survey.name, new_attempt_path(survey_id: survey.id) %> </li>
+              <% end %>
+          <% end %>
+        <% end %>
+    </ul>
 
 
 <% end %>
-
-
-
 
 
 <h2>
@@ -59,29 +46,20 @@
 
 <p class="date"><%= @vocabulary.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @vocabulary.user.login %>  </i>  <% if @vocabulary.level_id %> | <i><%= @vocabulary.level.name %></i> <% end %> </p>
 
-
-
 <div class="table-responsive">
 <table class="table" id="links">
   <tbody>
    
-       
- 
-      <tr>
-      
+      <tr>  
          <td><h4>POLSKI</h4></td>
          <td><h4>HISZPAŃSKI</h4></td>
          <td><h4>KOMENTARZ</h4></td>   
-    <!--      <td><h4>ID</h4></td>
-        -->
       </tr>
-
 
 <%= render @vocabulary.words %>
 
 
-   
-  </tbody>
+ </tbody>
 </table>
 </div>
   <% if user_signed_in? %> 

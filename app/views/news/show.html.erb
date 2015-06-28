@@ -1,49 +1,33 @@
-
 <% content_for :cattitle do %> 
-
-AKTUALNOŚCI
+  AKTUALNOŚCI
 <% end %>
-
 
 <% content_for :catdes do %> 
   <%= @news.title.upcase %>
 <% end %>
 
-
 <% content_for :rightmenu do %>
- 
+
    <ul class="nav nav-stacked">
       <li>  <h3 class="highlight" >ARCHIWUM </h3></li>
                    
-   <% @archnews.each do |news| %>
-  
+      <% @archnews.each do |news| %>
         <li>
-        <%= link_to news.title, news %>
-        <%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
-       
-
-      </li>
-
-         <% end %>
-
-
-
-                  
+          <%= link_to news.title, news %>
+          <%= news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+        </li>
+      <% end %>                 
                    
-        </ul>
-
-
-
+   </ul>
 <% end %>
 
 
+<h2>  <%= @news.title %> </h2>
 
+<p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+  <i> @<%= @news.user.login %>  </i> 
+</p> 
 
-<h2>
-
-  <%= @news.title %>
-</h2>
-      <p class="date"><%= @news.created_at.strftime("%d-%m-%Y %H:%M:%S") %><i> @<%= @news.user.login %>  </i> </p> 
 <div style="float: left">
  
 <% unless @news.image.blank? %>
@@ -55,9 +39,4 @@ AKTUALNOŚCI
 
 <br>
 
-
-<!-- 
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
- -->
 <%= link_to 'Powrót', news_index_path %>
